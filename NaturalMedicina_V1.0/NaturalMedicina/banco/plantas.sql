@@ -1,6 +1,6 @@
 -- Criar banco de dados
-CREATE DATABASE site_plantas_medicinais;
-USE site_plantas_medicinais;
+CREATE DATABASE plantas;
+USE plantas;
 
 -- Tabela: usuarios
 CREATE TABLE usuarios (
