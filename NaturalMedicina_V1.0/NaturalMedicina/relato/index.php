@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Erro ao salvar dados.";
 }
 elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    $formulario = file_get_contents('form_cad_relato.html');
+    $formulario = file_get_contents('relatos.html');
 
     $id_relato = $_GET['id_relato'] ?? 0;
     $resultado = Relato::listar(1, $id_relato);

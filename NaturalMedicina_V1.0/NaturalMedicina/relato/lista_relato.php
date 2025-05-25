@@ -1,5 +1,5 @@
 <?php
-require_once("../Classes/Relato.class.php");
+require_once("Relato.class.php");
 
 $lista = Relato::listar();
 $tabela = file_get_contents('listagem_relato.html');
