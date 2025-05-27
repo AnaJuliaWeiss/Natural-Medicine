@@ -54,5 +54,9 @@ CREATE TABLE relatos (
     FOREIGN KEY (id_planta) REFERENCES plantas(id_planta)
         ON DELETE CASCADE
 );
+<<<<<<< HEAD
+
+=======
 ALTER TABLE relatos DROP FOREIGN KEY relatos_ibfk_1; -- id_usuario FK
 ALTER TABLE relatos DROP FOREIGN KEY relatos_ibfk_2; -- id_planta FK (supondo nome)
+>>>>>>> 5d26c09d86cdca822c78d62ab3b9046ea0f2f91e
