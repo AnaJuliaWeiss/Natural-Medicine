@@ -1,10 +1,3 @@
-<?php require_once '../models/Planta.php'; ?>
-<?php
-$db = new PDO('mysql:host=localhost;dbname=plantas', 'root', '');
-$planta = new Planta($db);
-$plantas = $planta->listarTodas();
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -46,18 +39,22 @@ $plantas = $planta->listarTodas();
 <h2>Lista de Plantas Medicinais</h2>
 <a href="cadastro.php" class="btn add-btn">Cadastrar Nova Planta</a>
 
-<?php foreach ($plantas as $planta): ?>
-    <div class="card">
-    <img src="../uploads/<?= $planta['imagem_url'] ?>" alt="<?= $planta['nome_popular'] ?>" />
-    <h3><?= $planta['nome_popular'] ?></h3>
-    <a href="detalhes.php?id=<?= $planta['id'] ?>"><button>Ver Detalhes</button></a>
-    <a href="editar.php?id=<?= $planta['id'] ?>"><button>Editar</button></a>
-    <a href="../controllers/processaExcluir.php?id=<?= $planta['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir esta planta?')">
-        <button style="background-color: red; color: white;">Excluir</button>
-    </a>
-</div>
 
-<?php endforeach; ?>
+<?php if (!empty($plantas)): ?>
+    <?php foreach ($plantas as $planta): ?>
+        <div class="card">
+            <img src="uploads/<?= htmlspecialchars($planta['imagem_url']) ?>" alt="<?= htmlspecialchars($planta['nome_popular']) ?>" />
+            <h3><?= htmlspecialchars($planta['nome_popular']) ?></h3>
+            <a href="views/detalhes.php?id=<?= $planta['id'] ?>"><button>Ver Detalhes</button></a>
+            <a href="views/editar.php?id=<?= $planta['id'] ?>"><button>Editar</button></a>
+            <a href="controllers/processaExcluir.php?id=<?= $planta['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir esta planta?')">
+                <button style="background-color: red; color: white;">Excluir</button>
+            </a>
+        </div>
+    <?php endforeach; ?>
+<?php else: ?>
+    <p>Nenhuma planta cadastrada ainda.</p>
+<?php endif; ?>
 
 </body>
 </html>
