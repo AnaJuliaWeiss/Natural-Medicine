@@ -1,46 +1,47 @@
 <?php
-require_once '../config/database.php';
-require_once '../models/Planta.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../models/Planta.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $db = new Database();
-    $conn = $db->conectar();
-    $planta = new Planta($conn);
+$db = new Database();
+$conn = $db->conectar();
 
-    // Upload da imagem
-    $imagemNome = '';
-    if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
-        $uploadDir = '../uploads/';
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0755, true);
-        }
+$planta = new Planta($conn);
 
-        $imagemTmp = $_FILES['imagem']['tmp_name'];
-        $imagemNome = uniqid() . '_' . basename($_FILES['imagem']['name']);
-        $imagemCaminho = $uploadDir . $imagemNome;
+$nome_popular = $_POST['nome_popular'];
+$nome_cientifico = $_POST['nome_cientifico'];
+$uso_medicinal = $_POST['uso_medicinal'];
+$modo_uso = $_POST['modo_uso'];
+$dosagem = $_POST['dosagem'];
+$efeitos_colaterais = $_POST['efeitos_colaterais'];
+$beneficios = $_POST['beneficios'];
+$maleficios = $_POST['maleficios'];
+$fonte = $_POST['fonte'];
 
-        if (!move_uploaded_file($imagemTmp, $imagemCaminho)) {
-            die("Erro ao fazer upload da imagem.");
-        }
+// Upload da imagem
+$imagem_nome = '';
+if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
+    $upload_dir = __DIR__ . '/../uploads/';
+    if (!is_dir($upload_dir)) {
+        mkdir($upload_dir, 0777, true);
     }
 
-    // Dados do formulário
-    $dados = [
-        'nome_popular' => $_POST['nome_popular'],
-        'nome_cientifico' => $_POST['nome_cientifico'],
-        'uso_medicinal' => $_POST['uso_medicinal'],
-        'modo_uso' => $_POST['modo_uso'],
-        'dosagem' => $_POST['dosagem'],
-        'efeitos_colaterais' => $_POST['efeitos_colaterais'],
-        'beneficios' => $_POST['beneficios'],
-        'maleficios' => $_POST['maleficios'],
-        'imagem_url' => $imagemNome, // Apenas o nome do arquivo
-        'fonte' => $_POST['fonte']
-    ];
-
-    $planta->salvar($dados);
-
-    header('Location: ../views/lista.php');
-    exit;
+    $imagem_nome = uniqid() . '_' . basename($_FILES['imagem']['name']);
+    $caminho_imagem = $upload_dir . $imagem_nome;
+    move_uploaded_file($_FILES['imagem']['tmp_name'], $caminho_imagem);
 }
-?>
+
+$planta->cadastrar([
+    'nome_popular' => $nome_popular,
+    'nome_cientifico' => $nome_cientifico,
+    'uso_medicinal' => $uso_medicinal,
+    'modo_uso' => $modo_uso,
+    'dosagem' => $dosagem,
+    'efeitos_colaterais' => $efeitos_colaterais,
+    'beneficios' => $beneficios,
+    'maleficios' => $maleficios,
+    'fonte' => $fonte,
+    'imagem_url' => $imagem_nome
+]);
+
+header("Location: ../index.php");
+exit;

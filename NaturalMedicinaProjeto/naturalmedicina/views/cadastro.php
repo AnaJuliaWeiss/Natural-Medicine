@@ -41,13 +41,11 @@
             background-color: #1b5fbd;
         }
     </style>
-
+</head>
+<body>
 
 <h2 style="text-align:center;">Cadastro de Planta Medicinal</h2>
 
-<?php require_once '../config/database.php'; ?>
-
-<h2>Cadastro de Nova Planta</h2>
 <form action="../controllers/processaCadastro.php" method="POST" enctype="multipart/form-data">
   <label>Nome Popular:</label>
   <input type="text" name="nome_popular" required><br>
@@ -81,6 +79,7 @@
 
   <button type="submit">Cadastrar</button>
 </form>
-<a href="lista.php">Voltar à Lista</a>
-</head>
-<body>
+<a href="../index.php">Voltar à Lista</a>
+
+</body>
+</html>
