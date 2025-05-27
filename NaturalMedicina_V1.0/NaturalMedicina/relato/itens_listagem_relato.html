@@ -1,12 +1,12 @@
 <tr>
-    <td></td><a href="index.php?id={id}">{id}</a>>{id_relato}</td>
+    <td></td><a href="../relatos.php">{id}</a>>{id_relato}</td>
     <td>{titulo}</td>
     <td>{data_relato}</td>
     <td>{descricao}</td>
     <td>{id_usuario}</td>
     <td>{id_planta}</td>
     <td>
-        <form action="index.php" method="get">
+        <form action="../relatos.php" method="get">
             <input type="hidden" name="id_relato" value="{id_relato}">
             <button type="submit">Alterar</button>
         </form>
