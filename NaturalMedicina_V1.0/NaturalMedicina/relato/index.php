@@ -19,12 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if ($resultado)
-        header("Location: index.php");
+        header("Location: relatos.php");
     else
         echo "Erro ao salvar dados.";
 }
 elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    $formulario = file_get_contents('relatos.html');
+    $formulario = file_get_contents('relatos.php');
 
     $id_relato = $_GET['id_relato'] ?? 0;
     $resultado = Relato::listar(1, $id_relato);
