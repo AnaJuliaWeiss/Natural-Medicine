@@ -29,28 +29,28 @@
     </header>
 
     <h1>Cadastro de Relatos</h1>
-    <form action="index.php" method="post">
+    <form action="./relato/index.php" method="post">
         <fieldset>
             <legend>Formulário</legend>
 
             <label for="id_relato">Id:</label>
-            <input type="text" name="id_relato" readonly value="{id_relato}">
+            <input type="text" name="id_relato" readonly value="">
 
             <label for="titulo">Título:</label>
-            <input type="text" name="titulo" value="{titulo}">
+            <input type="text" name="titulo" value="">
 
             <label for="data_relato">Data do Relato:</label>
-            <input type="date" name="data_relato" value="{data_relato}">
+            <input type="date" name="data_relato" value="">
             <br>
 
             <label for="descricao">Descrição:</label>
-            <textarea name="descricao" rows="5" cols="30">{descricao}</textarea><br>
+            <textarea name="descricao" rows="5" cols="30"></textarea><br>
 
             <label for="id_usuario">Usuário:</label>
-            <input type="text"  name="id_usuario" readonly value="{id_usuario}">
+            <input type="text"  name="id_usuario" readonly value="}">
             <br>
             <label for="id_planta">Planta:</label>
-            <input type="text"  name="id_planta" readonly value="{id_planta}">
+            <input type="text"  name="id_planta" readonly value="">
 
             <br><br>
             <button type="submit" name="acao" value="salvar">Salvar</button>
