@@ -54,3 +54,4 @@ CREATE TABLE relatos (
     FOREIGN KEY (id_planta) REFERENCES plantas(id_planta)
         ON DELETE CASCADE
 );
+
