@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Relato</title>
-    <link rel="stylesheet" href="css/sintomas.css" />
+    <link rel="stylesheet" href="css/relatos.css" />
     <link
       rel="shortcut icon"
       href="assets/favicon/logo.png"
@@ -29,7 +29,7 @@
     </header>
 
     <h1>Cadastro de Relatos</h1>
-    <form action="./relato/index.php" method="post">
+    <form action="relatos.php" method="post">
         <fieldset>
             <legend>Formulário</legend>
 
@@ -43,11 +43,11 @@
             <input type="date" name="data_relato" value="">
             <br>
 
-            <label for="descricao">Descrição:</label>
+            <label for="descricao">Seu relato:</label>
             <textarea name="descricao" rows="5" cols="30"></textarea><br>
 
             <label for="id_usuario">Usuário:</label>
-            <input type="text"  name="id_usuario" readonly value="}">
+            <input type="text"  name="id_usuario" readonly value="">
             <br>
             <label for="id_planta">Planta:</label>
             <input type="text"  name="id_planta" readonly value="">
