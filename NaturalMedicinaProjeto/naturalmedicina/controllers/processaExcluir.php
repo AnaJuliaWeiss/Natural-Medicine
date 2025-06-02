@@ -2,24 +2,20 @@
 require_once '../config/database.php';
 require_once '../models/Planta.php';
 
-if (isset($_GET['id'])) {
-    $db = new Database();
-    $conn = $db->conectar();
-    $planta = new Planta($conn);
-
-    $id = $_GET['id'];
-
-    // Buscar dados da planta para excluir a imagem
-    $dados = $planta->buscarPorId($id);
-    if ($dados && !empty($dados['imagem_url'])) {
-        $caminhoImagem = '../uploads/' . $dados['imagem_url'];
-        if (file_exists($caminhoImagem)) {
-            unlink($caminhoImagem);
-        }
-    }
-
-    $planta->excluir($id);
+if (!isset($_GET['id'])) {
+    echo "ID da planta não informado.";
+    exit;
 }
 
-header('Location: ../views/lista.php');
-exit;
+$db = new Database();
+$conn = $db->getConnection();
+$plantaModel = new Planta($conn);
+
+$id = $_GET['id'];
+
+if ($plantaModel->excluir($id)) {
+    header("Location: ../index.php");
+    exit;
+} else {
+    echo "Erro ao excluir a planta.";
+}
