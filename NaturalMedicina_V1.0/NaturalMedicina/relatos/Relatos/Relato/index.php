@@ -1,5 +1,5 @@
 <?php
-require_once("Relato.class.php");
+require_once("../Classes/Relato.class.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id_relato = $_POST['id_relato'] ?? 0;
@@ -19,12 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if ($resultado)
-        header("Location: ../relatos.php");
+        header("Location: index.php");
     else
         echo "Erro ao salvar dados.";
 }
 elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    $formulario = file_get_contents('../relatos.php');
+    $formulario = file_get_contents('form_cad_relato.html');
 
     $id_relato = $_GET['id_relato'] ?? 0;
     $resultado = Relato::listar(1, $id_relato);

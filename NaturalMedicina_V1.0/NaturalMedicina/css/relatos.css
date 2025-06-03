@@ -1,159 +1,208 @@
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+ body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f2f8f5;
+      margin: 0;
+      padding: 0;
+    }
 
-/* Corpo da página */
-body {
-  background-color: #f5f7fa;
-  padding: 20px;
-}
+    header.header {
+      background-color: #2c5f2d;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-/* Cabeçalho */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #32620e;
-  padding: 15px 30px;
-  color: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+    .logo img {
+      height: 40px;
+    }
 
-.logo img {
-  height: 100px;
-}
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
 
-.menu {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
 
-.menu a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
+    .menu a:hover {
+      text-decoration: underline;
+    }
 
-.search-form {
-  display: flex;
-  align-items: center;
-}
+    .search-form {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
 
-.search-form input {
-  padding: 6px 10px;
-  border: none;
-  border-radius: 4px 0 0 4px;
-  outline: none;
-}
+    .search-form input {
+      padding: 6px 10px;
+      border: none;
+      border-radius: 4px;
+    }
 
-.search-form button {
-  padding: 6px 10px;
-  background-color: #fff;
-  color: #2e8b57;
-  border: none;
-  border-radius: 0 4px 4px 0;
-  cursor: pointer;
-}
+    .search-form button {
+      background-color: #ffffff;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
 
-h1 {
-  text-align: center;
-  margin: 30px 0 10px;
-  color: #333;
-}
+    h1 {
+      text-align: center;
+      color: #2c5f2d;
+      margin-top: 30px;
+    }
 
-/* Formulário */
-form {
-  max-width: 600px;
-  background-color: #fff;
-  margin: 0 auto;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
+    form {
+      max-width: 900px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 50px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
 
-fieldset {
-  border: none;
-}
+    fieldset {
+      border: none;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
 
-legend {
-  font-size: 1.5em;
-  font-weight: bold;
-  color: #2e8b57;
-  margin-bottom: 20px;
-  text-align: center;
-}
+    legend {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #2c5f2d;
+      margin-bottom: 10px;
+    }
 
-label {
-  display: block;
-  margin-top: 15px;
-  font-weight: 500;
-  color: #444;
-}
+    label {
+      font-weight: 500;
+      color: #333;
+    }
 
-input[type="text"],
-input[type="date"],
-textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 6px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background-color: #f9f9f9;
-  transition: border-color 0.3s ease;
-}
+    input[type="text"],
+    input[type="date"],
+    textarea {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      width: 100%;
+      font-size: 1rem;
+    }
 
-input:focus,
-textarea:focus {
-  border-color: #2e8b57;
-  outline: none;
-}
+    textarea {
+      resize: vertical;
+    }
 
-textarea {
-  resize: vertical;
-}
+    button,
+    input[type="reset"] {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
 
-/* Botões */
-button,
-input[type="reset"] {
-  margin-top: 20px;
-  margin-right: 10px;
-  padding: 10px 20px;
-  background-color: #2e8b57;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
+    button[type="submit"] {
+      background-color: #2c5f2d;
+      color: white;
+      margin-right: 10px;
+    }
 
-button:hover,
-input[type="reset"]:hover {
-  background-color: #246e45;
-}
+    button[type="submit"]:hover {
+      background-color: #3f7f42;
+    }
 
-/* Botão de excluir em vermelho */
-button[name="acao"][value="excluir"] {
-  background-color: #d9534f;
-}
+    input[type="reset"] {
+      background-color: #ccc;
+      color: #222;
+    }
 
-button[name="acao"][value="excluir"]:hover {
-  background-color: #c9302c;
-}
+    input[type="reset"]:hover {
+      background-color: #bbb;
+    }
 
-/* Responsivo */
-@media (max-width: 600px) {
-  form {
-    padding: 20px;
-  }
+    /* Cards (caso vá exibir os relatos com estilo também) */
+    .relato-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
 
-  .menu {
-    flex-direction: column;
-    gap: 10px;
-  }
-}
+    .relato-header {
+      text-align: center;
+      font-size: 2rem;
+      color: #2c5f2d;
+      margin-bottom: 30px;
+    }
+
+    .relato-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+    }
+
+    .relato-card {
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      padding: 24px;
+      width: 300px;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .relato-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .relato-titulo {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #2e4d3b;
+      margin-bottom: 12px;
+    }
+
+    .relato-texto {
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .relato-data {
+      font-size: 0.85rem;
+      color: #777;
+      text-align: right;
+      margin-top: auto;
+    }
+
+    @media (max-width: 600px) {
+      .menu {
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+      }
+
+      .search-form {
+        width: 100%;
+      }
+
+      form {
+        padding: 20px;
+      } 
+    }
