@@ -50,7 +50,7 @@ class Relato {
 
     // getters
     public function getIdRelato(): int{
-        return $this->id_relato;
+        return (int) $this->id_relato;
     }
 
     public function getTitulo(): string{
