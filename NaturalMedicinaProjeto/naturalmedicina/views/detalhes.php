@@ -1,19 +1,21 @@
 <?php
+require_once '../config/Database.php';
 require_once '../models/Planta.php';
-require_once '../config/database.php';
 
 if (!isset($_GET['id'])) {
-    die("ID da planta não fornecido.");
+    echo "ID da planta não informado.";
+    exit;
 }
 
-$id = $_GET['id'];
-$db = new Database();
-$conn = $db->getConnection();
-$plantaObj = new Planta($conn);
-$planta = $plantaObj->buscarPorId($id);
+$database = new Database();
+$conn = $database->getConnection();
+
+$plantaModel = new Planta($conn);
+$planta = $plantaModel->buscarPorId($_GET['id']);
 
 if (!$planta) {
-    die("Planta não encontrada.");
+    echo "Planta não encontrada.";
+    exit;
 }
 ?>
 
@@ -21,59 +23,74 @@ if (!$planta) {
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title><?= $planta['nome_popular'] ?></title>
+    <title>Detalhes da Planta</title>
     <style>
-        .container {
-            max-width: 600px;
-            margin: auto;
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #f9f9f9;
         }
-        img {
-            width: 100%;
-            max-height: 300px;
-            object-fit: cover;
+        h1 { text-align: center; }
+        .imagem {
+            text-align: center;
+            margin-bottom: 20px;
         }
-        .btns {
+        .imagem img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        .info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .info p {
+            margin: 10px 0;
+        }
+        .botoes {
             margin-top: 20px;
+            text-align: center;
         }
-        .btns a {
-            margin-right: 10px;
-            padding: 8px 12px;
-            background-color: #4CAF50;
-            color: white;
-            border-radius: 4px;
+        .botoes a {
+            padding: 10px 20px;
             text-decoration: none;
-        }
-        .btns form {
-            display: inline;
-        }
-        .btns button {
-            background-color: red;
+            border-radius: 5px;
+            margin: 0 10px;
             color: white;
-            padding: 8px 12px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
         }
+        .voltar { background-color: #555; }
+        .excluir { background-color: red; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1><?= $planta['nome_popular'] ?> (<?= $planta['nome_cientifico'] ?>)</h1>
-        <img src="<?= $planta['imagem_url'] ?>" alt="<?= $planta['nome_popular'] ?>">
-        <p><strong>Uso Medicinal:</strong> <?= $planta['uso_medicinal'] ?></p>
-        <p><strong>Modo de Uso:</strong> <?= $planta['modo_uso'] ?></p>
-        <p><strong>Dosagem:</strong> <?= $planta['dosagem'] ?></p>
-        <p><strong>Efeitos Colaterais:</strong> <?= $planta['efeitos_colaterais'] ?></p>
-        <p><strong>Benefícios:</strong> <?= $planta['beneficios'] ?></p>
-        <p><strong>Malefícios:</strong> <?= $planta['maleficios'] ?></p>
 
-        <div class="btns">
-            <a href="../views/pesquisa.php">← Voltar à Lista</a>
-            <form action="../controllers/excluirPlanta.php" method="post" onsubmit="return confirm('Tem certeza que deseja excluir esta planta?');">
-                <input type="hidden" name="id" value="<?= $planta['id'] ?>">
-                <button type="submit">Excluir</button>
-            </form>
-        </div>
-    </div>
+<h1><?= htmlspecialchars($planta['nome_popular']) ?></h1>
+
+<div class="imagem">
+    <?php if (!empty($planta['imagem_url'])): ?>
+        <img src="../<?= htmlspecialchars($planta['imagem_url']) ?>" alt="Imagem da planta">
+    <?php else: ?>
+        <img src="../images/default-plant.jpg" alt="Imagem padrão">
+    <?php endif; ?>
+</div>
+
+<div class="info">
+    <p><strong>Nome Científico:</strong> <?= htmlspecialchars($planta['nome_cientifico']) ?></p>
+    <p><strong>Descrição:</strong> <?= nl2br(htmlspecialchars($planta['descricao'])) ?></p>
+    <p><strong>Uso Medicinal:</strong> <?= nl2br(htmlspecialchars($planta['uso_medicinal'])) ?></p>
+    <p><strong>Efeitos Colaterais:</strong> <?= nl2br(htmlspecialchars($planta['efeitos_colaterais'])) ?></p>
+    <p><strong>Modo de Uso:</strong> <?= nl2br(htmlspecialchars($planta['modo_uso'])) ?></p>
+</div>
+
+<div class="botoes">
+    <a href="../index.php" class="voltar">Voltar à Lista</a>
+    <a href="../controllers/processaExcluir.php?id=<?= $planta['id'] ?>" class="excluir" onclick="return confirm('Tem certeza que deseja excluir esta planta?')">Excluir</a>
+</div>
+
 </body>
 </html>
+

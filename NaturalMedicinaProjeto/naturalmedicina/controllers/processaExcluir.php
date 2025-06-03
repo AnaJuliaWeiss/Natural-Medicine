@@ -14,8 +14,9 @@ $plantaModel = new Planta($conn);
 $id = $_GET['id'];
 
 if ($plantaModel->excluir($id)) {
-    header("Location: ../index.php");
+    header("Location: ../views/pesquisa.php");
     exit;
 } else {
     echo "Erro ao excluir a planta.";
 }
+
