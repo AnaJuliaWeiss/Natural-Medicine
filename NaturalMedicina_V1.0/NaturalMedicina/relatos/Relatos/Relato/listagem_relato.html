@@ -1,0 +1,33 @@
+<form action="index.php" method="GET">
+<fieldset>
+     <legend>Busca</legend>
+            <label for="busca">Busca</label>
+            <input type="text" name="busca">
+            <label for="tipo">Tipo</label>
+            <select name="tipo">
+                <option value="0">Selecione</option>
+                <option value="1">ID</option>
+                <option value="2">Título</option>
+            </select>
+            <button type="submit">Buscar</button>    
+
+    <legend>Lista de Relatos</legend>
+
+    <table border="1" width="100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Título</th>
+                <th>Data do Relato</th>
+                <th>Descrição</th>
+                <th>Id Usuario/th>
+                <th>Id Planta</th>
+                <th>Alterar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {itens}
+        </tbody>
+    </table>
+</fieldset>
+</form>
