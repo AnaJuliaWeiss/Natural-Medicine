@@ -8,17 +8,12 @@ class Database {
 
     public function getConnection() {
         if ($this->conn === null) {
-            try {
-                $this->conn = new PDO(
-                    "mysql:host=" . $this->host . ";dbname=" . $this->db_name,
-                    $this->username,
-                    $this->password
-                );
-                $this->conn->exec("set names utf8");
-                $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            } catch (PDOException $exception) {
-                die("Erro na conexão com o banco de dados: " . $exception->getMessage());
-            }
+            $this->conn = new PDO(
+                "mysql:host={$this->host};dbname={$this->db_name};charset=utf8",
+                $this->username,
+                $this->password
+            );
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         return $this->conn;
     }
