@@ -10,20 +10,36 @@
       href="/assets/favicon/logo.png"
       type="image/x-icon"
     />
+<!-- Bootstrap-->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
       rel="stylesheet"
     />
   </head>
   <body>
+
+   <nav class="menu">
+    <a href="relatos/Relatos/Relato/form_cad_relato.html">Relatos</a>
+        
     <header class="header">
-      <div class="logo"><img src="assets/favicon/logo.png" alt="" /></div>
-      <nav class="menu">
-        <a href="relatos/Relatos/Relato/form_cad_relato.html">Relatos</a>
-        <a href="index.html">Menu</a>
-        <a href="pesquisa.html">Pesquise Plantas</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="login.html">Conta</a>
+  <div class="logo"><img src="assets/favicon/logo.png" alt="" /></div>
+    <div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    Menu
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="index.html">Home</a></li>
+     <li><a class="dropdown-item" href="sobre.html">Sobre</a></li>
+    <li><a class="dropdown-item" href="login.html">conta</a></li>
+    <a class="dropdown-item" href="pesquisa.html">Pesquise Plantas</a>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="#">Sair</a></li>
+  </ul>
+</div>
+      
       </nav>
     </header>
 
@@ -114,7 +130,7 @@
             
 
           </p>
-          <button class="btn-green" onclick="window.location.href='relatos/Relatos/Relato/form_cad_relato.html'">Relatar</button>
+          <button class="btn-green" onclick="window.location.href='./Relatos/Relato/form_cad_relato.html'">Relatar</button>
         </div>
         <img src="assets/img/charelatos.png" alt="Imagem principal" height="590" width="590" />
       </section>
