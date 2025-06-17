@@ -11,3 +11,12 @@ $id = $_GET['id'];
 $planta->excluir($id);
 header("Location: ../views/lista.php");
 ?>
+
+
+
+
+
+
+
+
+
