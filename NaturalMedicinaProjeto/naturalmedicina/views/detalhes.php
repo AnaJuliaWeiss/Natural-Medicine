@@ -1,7 +1,7 @@
 <?php
 require_once '../controllers/PlantaController.php';
-$controller = new PlantaController();
 $id = $_GET['id'] ?? null;
+$controller = new PlantaController();
 $planta = $controller->buscar($id);
 ?>
 <!DOCTYPE html>
@@ -10,41 +10,19 @@ $planta = $controller->buscar($id);
     <meta charset="UTF-8">
     <title>Detalhes da Planta</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2fff2;
-            padding: 30px;
-        }
-        .conteudo {
-            background: #fff;
-            padding: 25px;
-            border-radius: 8px;
-            max-width: 700px;
-            margin: auto;
-        }
-        h2 {
-            color: #2e7d32;
-        }
-        img {
-            max-width: 300px;
-            margin-top: 15px;
-        }
-        p {
-            margin-bottom: 10px;
-        }
-        a {
-            display: block;
-            margin-top: 20px;
-            color: #00796b;
-        }
+        body { font-family: Arial; background: #f0f9f0; padding: 30px; }
+        h2 { color: #1b5e20; }
+        .conteudo { background: #fff; padding: 20px; border-radius: 10px; max-width: 700px; margin: auto; box-shadow: 0 0 10px #ccc; }
+        img { max-width: 100%; border-radius: 8px; margin-bottom: 10px; }
+        p { margin: 8px 0; }
+        strong { color: #2e7d32; }
+        a { color: #2e7d32; display: inline-block; margin-top: 20px; }
     </style>
 </head>
 <body>
     <div class="conteudo">
         <h2><?= htmlspecialchars($planta['nome_popular']) ?></h2>
-        <?php if (!empty($planta['imagem_url'])): ?>
-            <img src="<?= htmlspecialchars($planta['imagem_url']) ?>" alt="Imagem">
-        <?php endif; ?>
+        <img src="../<?= htmlspecialchars($planta['imagem_url']) ?>" alt="Imagem da planta">
         <p><strong>Nome Científico:</strong> <?= htmlspecialchars($planta['nome_cientifico']) ?></p>
         <p><strong>Uso Medicinal:</strong> <?= nl2br(htmlspecialchars($planta['uso_medicinal'])) ?></p>
         <p><strong>Modo de Uso:</strong> <?= nl2br(htmlspecialchars($planta['modo_uso'])) ?></p>
@@ -53,7 +31,8 @@ $planta = $controller->buscar($id);
         <p><strong>Benefícios:</strong> <?= nl2br(htmlspecialchars($planta['beneficios'])) ?></p>
         <p><strong>Malefícios:</strong> <?= nl2br(htmlspecialchars($planta['maleficios'])) ?></p>
         <p><strong>Fonte:</strong> <?= htmlspecialchars($planta['fonte']) ?></p>
-        <a href="pesquisa.php">Voltar para lista</a>
+        <a href="pesquisa.php">← Voltar à lista</a>
     </div>
 </body>
 </html>
+
