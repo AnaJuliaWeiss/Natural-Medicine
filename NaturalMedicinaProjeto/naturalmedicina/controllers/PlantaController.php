@@ -46,4 +46,11 @@ class PlantaController {
         $stmt = $this->conn->prepare($query);
         return $stmt->execute([$id]);
     }
+<<<<<<< HEAD
+=======
+
+    public function excluir($id) {
+        return $this->planta->excluir($id);
+    }
+>>>>>>> 3f7c30c0b693f1cc0ce342b72856554b5df17d07
 }
