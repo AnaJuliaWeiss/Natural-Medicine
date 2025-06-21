@@ -1,35 +1,119 @@
 <?php
-require_once '../controllers/PlantaController.php';
+require_once __DIR__ . '/../controllers/PlantaController.php';
+
 $controller = new PlantaController();
-$plantas = $controller->listar();
+$plantas = $controller->listarPlantas();
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Pesquisa de Plantas</title>
+    <title>Lista de Plantas Medicinais</title>
     <style>
-        body { font-family: Arial; background: #f0f0f0; margin: 30px; }
-        h2 { color: #388e3c; }
-        .planta { background: #fff; padding: 15px; border-radius: 10px; margin: 10px auto; max-width: 600px; box-shadow: 0 0 10px #bbb; }
-        img { max-width: 100px; border-radius: 5px; }
-        a { color: #2e7d32; text-decoration: none; display: inline-block; margin: 5px 10px 0 0; }
-        .acoes { margin-top: 10px; }
-        .btn { background: #2e7d32; color: white; padding: 6px 12px; border: none; border-radius: 4px; text-decoration: none; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f9e6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2e7d32;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .plantas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .planta-card {
+            background-color: #fff;
+            border: 1px solid #c8e6c9;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            padding: 16px;
+            text-align: center;
+            transition: 0.3s ease;
+        }
+
+        .planta-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .planta-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .planta-card h3 {
+            margin: 10px 0 5px;
+            color: #388e3c;
+        }
+
+        .btn-cadastrar {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #43a047;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-cadastrar:hover {
+            background-color: #2e7d32;
+        }
+
+        .top-bar {
+            text-align: right;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
-    <h2>Plantas Medicinais Cadastradas</h2>
-    <a href="cadastro.php" class="btn">+ Nova Planta</a>
-    <?php foreach ($plantas as $planta): ?>
-        <div class="planta">
-            <h3><?= htmlspecialchars($planta['nome_popular']) ?></h3>
-            <img src="../<?= htmlspecialchars($planta['imagem_url']) ?>" alt="Imagem da Planta">
-            <div class="acoes">
-                <a href="detalhes.php?id=<?= $planta['id'] ?>" class="btn">Ver Detalhes</a>
-                <a href="../processos/processaExcluir.php?id=<?= $planta['id'] ?>" class="btn" onclick="return confirm('Deseja excluir esta planta?');">Excluir</a>
-            </div>
+
+<div class="container">
+    <h2>Lista de Plantas Medicinais</h2>
+
+    <div class="top-bar">
+        <a href="cadastro.php" class="btn-cadastrar">Cadastrar nova planta</a>
+    </div>
+
+    <?php if (!isset($plantas)) $plantas = []; ?>
+
+    <?php if (count($plantas) > 0): ?>
+        <div class="plantas-grid">
+            <?php foreach ($plantas as $planta): ?>
+                <div class="planta-card">
+                    <?php if (!empty($planta['imagem_url'])): ?>
+                        <img src="../uploads/<?= htmlspecialchars($planta['imagem_url']) ?>" alt="<?= htmlspecialchars($planta['nome_popular']) ?>">
+                    <?php else: ?>
+                        <img src="https://via.placeholder.com/240x180?text=Sem+Imagem" alt="Sem imagem">
+                    <?php endif; ?>
+                    <h3><?= htmlspecialchars($planta['nome_popular']) ?></h3>
+                    <p><em><?= htmlspecialchars($planta['nome_cientifico']) ?></em></p>
+                </div>
+            <?php endforeach; ?>
         </div>
-    <?php endforeach; ?>
+    <?php else: ?>
+        <p style="text-align: center; margin-top: 30px;">Nenhuma planta cadastrada ainda.</p>
+    <?php endif; ?>
+</div>
+
 </body>
 </html>

@@ -1,32 +1,49 @@
 <?php
-require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../config/database.php'; // Corrigido!
 require_once __DIR__ . '/../classes/PlantaClass.php';
 
 class PlantaController {
-    private $planta;
+    private $conn;
 
     public function __construct() {
-        $db = new Database();
-        $this->planta = new Planta($db->getConnection());
+        $this->conn = conectarBanco();
     }
 
-    public function listar() {
-        return $this->planta->listarTodas();
+    public function listarPlantas() {
+        $query = "SELECT * FROM plantas";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function buscar($id) {
-        return $this->planta->buscarPorId($id);
+    public function cadastrarPlanta($planta) {
+        $query = "INSERT INTO plantas (nome_popular, nome_cientifico, descricao, uso_medicinal, efeitos_colaterais, modo_uso, imagem_url, fonte)
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->conn->prepare($query);
+
+        return $stmt->execute([
+            $planta->getNomePopular(),
+            $planta->getNomeCientifico(),
+            $planta->getDescricao(),
+            $planta->getUsoMedicinal(),
+            $planta->getEfeitosColaterais(),
+            $planta->getModoUso(),
+            $planta->getImagemUrl(),
+            $planta->getFonte()
+        ]);
     }
 
-    public function cadastrar($dados) {
-        return $this->planta->salvar($dados);
+    public function buscarPlantaPorId($id) {
+        $query = "SELECT * FROM plantas WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function editar($id, $dados) {
-        return $this->planta->atualizar($id, $dados);
-    }
-
-    public function excluir($id) {
-        return $this->planta->excluir($id);
+    public function excluirPlanta($id) {
+        $query = "DELETE FROM plantas WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        return $stmt->execute([$id]);
     }
 }
