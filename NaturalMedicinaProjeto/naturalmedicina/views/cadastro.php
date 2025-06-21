@@ -23,7 +23,11 @@
         <textarea name="efeitos_colaterais" placeholder="Efeitos Colaterais"></textarea>
         <textarea name="beneficios" placeholder="Benefícios"></textarea>
         <textarea name="maleficios" placeholder="Malefícios"></textarea>
+        
+        <!-- Upload de imagem -->
+        <label>Escolha uma imagem:</label>
         <input type="file" name="imagem" accept="image/*" required>
+
         <input type="text" name="fonte" placeholder="Fonte da Informação">
         <button type="submit">Cadastrar</button>
     </form>

@@ -18,15 +18,28 @@ class Planta {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function salvar($dados) {
-        $sql = "INSERT INTO " . $this->tabela . " (nome_popular, nome_cientifico, uso_medicinal, modo_uso, dosagem, efeitos_colaterais, beneficios, maleficios, imagem_url, fonte)
-                VALUES (:nome_popular, :nome_cientifico, :uso_medicinal, :modo_uso, :dosagem, :efeitos_colaterais, :beneficios, :maleficios, :imagem_url, :fonte)";
-        $stmt = $this->conn->prepare($sql);
-        return $stmt->execute($dados);
-    }
+   public function salvar($dados) {
+    $sql = "INSERT INTO " . $this->tabela . " (nome_popular, nome_cientifico, uso_medicinal, modo_uso, dosagem, efeitos_colaterais, beneficios, maleficios, imagem_url, fonte)
+            VALUES (:nome_popular, :nome_cientifico, :uso_medicinal, :modo_uso, :dosagem, :efeitos_colaterais, :beneficios, :maleficios, :imagem_url, :fonte)";
+    $stmt = $this->conn->prepare($sql);
+    return $stmt->execute($dados);
+}
+
 
     public function atualizar($id, $dados) {
-        $sql = "UPDATE " . $this->tabela . " SET nome_popular = :nome_popular, nome_cientifico = :nome_cientifico, uso_medicinal = :uso_medicinal, modo_uso = :modo_uso, dosagem = :dosagem, efeitos_colaterais = :efeitos_colaterais, beneficios = :beneficios, maleficios = :maleficios, imagem_url = :imagem_url, fonte = :fonte WHERE id = :id";
+        $sql = "UPDATE " . $this->tabela . " SET 
+            nome_popular = :nome_popular,
+            nome_cientifico = :nome_cientifico,
+            uso_medicinal = :uso_medicinal,
+            modo_uso = :modo_uso,
+            dosagem = :dosagem,
+            efeitos_colaterais = :efeitos_colaterais,
+            beneficios = :beneficios,
+            maleficios = :maleficios,
+            imagem_url = :imagem_url,
+            fonte = :fonte
+            WHERE id = :id";
+
         $dados['id'] = $id;
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute($dados);

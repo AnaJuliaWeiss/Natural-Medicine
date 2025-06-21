@@ -7,6 +7,7 @@ $imagemPath = '';
 if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
     $nomeImagem = basename($_FILES['imagem']['name']);
     $caminhoDestino = '../uploads/' . $nomeImagem;
+    
     if (move_uploaded_file($_FILES['imagem']['tmp_name'], $caminhoDestino)) {
         $imagemPath = 'uploads/' . $nomeImagem;
     }
