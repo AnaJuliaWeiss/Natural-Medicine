@@ -46,3 +46,4 @@ class PlantaController {
         $stmt = $this->conn->prepare($query);
         return $stmt->execute([$id]);
     }
+}
