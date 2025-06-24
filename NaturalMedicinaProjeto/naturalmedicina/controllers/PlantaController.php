@@ -1,19 +1,19 @@
 <?php
-require_once __DIR__ . '/../config/database.php'; // Corrigido!
+require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../classes/PlantaClass.php';
 
 class PlantaController {
     private $conn;
 
     public function __construct() {
-        $this->conn = conectarBanco();
+        $db = new Database();
+        $this->conn = $db->getConnection();
     }
 
     public function listarPlantas() {
         $query = "SELECT * FROM plantas";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
-
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
