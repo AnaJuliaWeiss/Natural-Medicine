@@ -66,7 +66,7 @@
 <body>
     <h2>Cadastro de Planta Medicinal</h2>
     <form action="../processos/processaCadastro.php" method="post" enctype="multipart/form-data">
-<<<<<<< HEAD
+
         <label>Nome Popular</label>
         <input type="text" name="nome_popular" required>
 
@@ -97,22 +97,8 @@
         <label>Fonte</label>
         <input type="text" name="fonte">
 
-=======
-        <input type="text" name="nome_popular" placeholder="Nome Popular" required>
-        <input type="text" name="nome_cientifico" placeholder="Nome Científico" required>
-        <textarea name="uso_medicinal" placeholder="Uso Medicinal" required></textarea>
-        <textarea name="modo_uso" placeholder="Modo de Uso" required></textarea>
-        <input type="text" name="dosagem" placeholder="Dosagem">
-        <textarea name="efeitos_colaterais" placeholder="Efeitos Colaterais"></textarea>
-        <textarea name="beneficios" placeholder="Benefícios"></textarea>
-        <textarea name="maleficios" placeholder="Malefícios"></textarea>
-        
-        <!-- Upload de imagem -->
-        <label>Escolha uma imagem:</label>
-        <input type="file" name="imagem" accept="image/*" required>
 
-        <input type="text" name="fonte" placeholder="Fonte da Informação">
->>>>>>> 3f7c30c0b693f1cc0ce342b72856554b5df17d07
+       
         <button type="submit">Cadastrar</button>
     </form>
     <a href="pesquisa.php">← Voltar para a pesquisa</a>
