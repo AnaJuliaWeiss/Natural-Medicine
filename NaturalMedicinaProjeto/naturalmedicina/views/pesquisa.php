@@ -17,24 +17,20 @@ $plantas = $controller->listarPlantas();
             margin: 0;
             padding: 20px;
         }
-
         h2 {
             text-align: center;
             color: #2e7d32;
         }
-
         .container {
             max-width: 1000px;
             margin: 0 auto;
         }
-
         .plantas-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 20px;
             margin-top: 30px;
         }
-
         .planta-card {
             background-color: #fff;
             border: 1px solid #c8e6c9;
@@ -44,12 +40,10 @@ $plantas = $controller->listarPlantas();
             text-align: center;
             transition: 0.3s ease;
         }
-
         .planta-card:hover {
             transform: scale(1.02);
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-
         .planta-card img {
             width: 100%;
             height: 180px;
@@ -57,12 +51,10 @@ $plantas = $controller->listarPlantas();
             border-radius: 8px;
             margin-bottom: 10px;
         }
-
         .planta-card h3 {
             margin: 10px 0 5px;
             color: #388e3c;
         }
-
         .btn-cadastrar {
             display: inline-block;
             padding: 10px 20px;
@@ -74,14 +66,17 @@ $plantas = $controller->listarPlantas();
             margin-top: 20px;
             transition: background-color 0.3s ease;
         }
-
         .btn-cadastrar:hover {
             background-color: #2e7d32;
         }
-
         .top-bar {
             text-align: right;
             margin-bottom: 10px;
+        }
+        a.planta-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
     </style>
 </head>
@@ -91,7 +86,7 @@ $plantas = $controller->listarPlantas();
     <h2>Lista de Plantas Medicinais</h2>
 
     <div class="top-bar">
-        <a href="cadastro.php" class="btn-cadastrar">Cadastrar nova planta</a>
+        <center><a href="cadastro.php" class="btn-cadastrar">Cadastrar nova planta</a></center>
     </div>
 
     <?php if (!isset($plantas)) $plantas = []; ?>
@@ -100,13 +95,15 @@ $plantas = $controller->listarPlantas();
         <div class="plantas-grid">
             <?php foreach ($plantas as $planta): ?>
                 <div class="planta-card">
-                    <?php if (!empty($planta['imagem_url'])): ?>
-                        <img src="../uploads/<?= htmlspecialchars($planta['imagem_url']) ?>" alt="<?= htmlspecialchars($planta['nome_popular']) ?>">
-                    <?php else: ?>
-                        <img src="https://via.placeholder.com/240x180?text=Sem+Imagem" alt="Sem imagem">
-                    <?php endif; ?>
-                    <h3><?= htmlspecialchars($planta['nome_popular']) ?></h3>
-                    <p><em><?= htmlspecialchars($planta['nome_cientifico']) ?></em></p>
+                    <a href="detalhes.php?id=<?= $planta['id'] ?>" class="planta-link">
+                        <?php if (!empty($planta['imagem_url'])): ?>
+                            <img src="../uploads/<?= htmlspecialchars($planta['imagem_url']) ?>" alt="<?= htmlspecialchars($planta['nome_popular']) ?>">
+                        <?php else: ?>
+                            <img src="https://via.placeholder.com/240x180?text=Sem+Imagem" alt="Sem imagem">
+                        <?php endif; ?>
+                        <h3><?= htmlspecialchars($planta['nome_popular']) ?></h3>
+                        <p><em><?= htmlspecialchars($planta['nome_cientifico']) ?></em></p>
+                    </a>
                 </div>
             <?php endforeach; ?>
         </div>

@@ -18,13 +18,30 @@ class Planta {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-   public function salvar($dados) {
-    $sql = "INSERT INTO " . $this->tabela . " (nome_popular, nome_cientifico, uso_medicinal, modo_uso, dosagem, efeitos_colaterais, beneficios, maleficios, imagem_url, fonte)
-            VALUES (:nome_popular, :nome_cientifico, :uso_medicinal, :modo_uso, :dosagem, :efeitos_colaterais, :beneficios, :maleficios, :imagem_url, :fonte)";
-    $stmt = $this->conn->prepare($sql);
-    return $stmt->execute($dados);
-}
+    public function salvar($dados) {
+        $sql = "INSERT INTO " . $this->tabela . " (
+            nome_popular, nome_cientifico, uso_medicinal, modo_uso,
+            dosagem, efeitos_colaterais, beneficios, maleficios, imagem_url, fonte
+        ) VALUES (
+            :nome_popular, :nome_cientifico, :uso_medicinal, :modo_uso,
+            :dosagem, :efeitos_colaterais, :beneficios, :maleficios, :imagem_url, :fonte
+        )";
 
+        $stmt = $this->conn->prepare($sql);
+
+        $stmt->bindValue(':nome_popular', $dados['nome_popular']);
+        $stmt->bindValue(':nome_cientifico', $dados['nome_cientifico']);
+        $stmt->bindValue(':uso_medicinal', $dados['uso_medicinal']);
+        $stmt->bindValue(':modo_uso', $dados['modo_uso']);
+        $stmt->bindValue(':dosagem', $dados['dosagem']);
+        $stmt->bindValue(':efeitos_colaterais', $dados['efeitos_colaterais']);
+        $stmt->bindValue(':beneficios', $dados['beneficios']);
+        $stmt->bindValue(':maleficios', $dados['maleficios']);
+        $stmt->bindValue(':imagem_url', $dados['imagem_url']);
+        $stmt->bindValue(':fonte', $dados['fonte']);
+
+        return $stmt->execute();
+    }
 
     public function atualizar($id, $dados) {
         $sql = "UPDATE " . $this->tabela . " SET 
@@ -40,9 +57,21 @@ class Planta {
             fonte = :fonte
             WHERE id = :id";
 
-        $dados['id'] = $id;
         $stmt = $this->conn->prepare($sql);
-        return $stmt->execute($dados);
+
+        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':nome_popular', $dados['nome_popular']);
+        $stmt->bindValue(':nome_cientifico', $dados['nome_cientifico']);
+        $stmt->bindValue(':uso_medicinal', $dados['uso_medicinal']);
+        $stmt->bindValue(':modo_uso', $dados['modo_uso']);
+        $stmt->bindValue(':dosagem', $dados['dosagem']);
+        $stmt->bindValue(':efeitos_colaterais', $dados['efeitos_colaterais']);
+        $stmt->bindValue(':beneficios', $dados['beneficios']);
+        $stmt->bindValue(':maleficios', $dados['maleficios']);
+        $stmt->bindValue(':imagem_url', $dados['imagem_url']);
+        $stmt->bindValue(':fonte', $dados['fonte']);
+
+        return $stmt->execute();
     }
 
     public function excluir($id) {
@@ -50,3 +79,4 @@ class Planta {
         return $stmt->execute([$id]);
     }
 }
+    

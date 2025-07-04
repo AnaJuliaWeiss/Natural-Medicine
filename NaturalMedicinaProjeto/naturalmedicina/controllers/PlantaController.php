@@ -31,3 +31,4 @@ class PlantaController {
     public function excluirPlanta($id) {
         return $this->planta->excluir($id);
     }
+}
