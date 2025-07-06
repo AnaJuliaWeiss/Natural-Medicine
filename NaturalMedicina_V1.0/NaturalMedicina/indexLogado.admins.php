@@ -1,36 +1,44 @@
+<?php
+session_start();
+
+// Verifica se está logado e é admin
+if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'admin') {
+    header("Location: login.html");
+    exit;
+
+if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'admin') {
+    header("Location: login.html");
+    exit;
+}
+
+}
+?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Natural Medicine</title>
-    <link rel="stylesheet" href="css/index.css" />
-    <link
-      rel="shortcut icon"
-      href="/assets/favicon/logo.png"
-      type="image/x-icon"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <header class="header">
-      <div class="logo"><img src="assets/favicon/logo.png" alt="" /></div>
-      <div class="buscar"><input type="text" name="" id=""></div>
-      <nav class="menu">
-        <a href="./Relatos/Relato/form_cad_relato.html">Relatos</a>
-        <a href="index.html">Menu</a>
-        <a href="pesquisa.html">Pesquise Plantas</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="login.php">Conta</a>
-      </nav>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Natural Medicine</title>
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="shortcut icon" href="assets/favicon/logo.png" type="image/x-icon" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+  <!-- todo o seu conteúdo HTML que você enviou aqui -->
+  <header class="header">
+    <div class="logo"><img src="assets/favicon/logo.png" alt="" /></div>
+    <nav class="menu">
+      <a href="relatosindex.php">Relatos</a>
+      <a href="index.html">Menu</a>
+      <a href="./cadplantas/naturalmedicina/views/pesquisa.php"> Plantas</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="./logout.php">Sair</a>
+    </nav>
+  </header>
 
-    <main>
-      <section class="hero">
+  <main>
+     <section class="hero">
         <div class="hero-content">
           <h1>Natural Medicina</h1>
           <p>
@@ -41,7 +49,7 @@
           </p>
           <button class="btn-green">Saiba mais</button>
         </div>
-        <img src="assets/img/plntchat.png" alt="Imagem principal" />
+        <img src="assets/img/ImagemPrincipal.jpg" alt="Imagem principal" />
       </section>
 
       <section class="curiosidades">
@@ -99,12 +107,14 @@
             <p>
               Acredita-se que o alecrim melhora a memória e a concentração.
               Usado em óleos essenciais ou infusões, ele é uma escolha popular
-              para quem busca aumentar o foco mental
+              para quem busca aumentar o foco mental.
             </p>
           </div>
           <img src="assets/img/historias.webp" alt="História das plantas" />
         </div>
-        <section class="hero">
+      </section>
+
+      <section class="hero">
         <div class="hero-content">
           <h1>Nossos relatos</h1>
           <p>
@@ -115,22 +125,23 @@
             
 
           </p>
-          <button class="btn-green" onclick="window.location.href='./Relatos/Relato/form_cad_relato.html'">Relatar</button>
+          <button class="btn-green" onclick="window.location.href='relatosindex.php'">Relatar</button>
         </div>
         <img src="assets/img/charelatos.png" alt="Imagem principal" height="590" width="590" />
       </section>
-    </main>
+  </main>
 
-    <footer>
-      <div class="footer">
-        <p>Natural Medicina</p>
-        <div class="links">
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#"><i class="fab fa-whatsapp"></i></a>
-        </div>
+  <footer>
+    <div class="footer">
+      <p>Natural Medicina</p>
+      <div class="links">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
       </div>
-    </footer>
-  </body>
+    </div>
+  </footer>
+</body>
 </html>
+

@@ -57,4 +57,6 @@ CREATE TABLE relatos (
 
 ALTER TABLE relatos DROP FOREIGN KEY relatos_ibfk_1; -- id_usuario FK
 ALTER TABLE relatos DROP FOREIGN KEY relatos_ibfk_2; -- id_planta FK (supondo nome)
+ALTER TABLE relatos ADD descricao TEXT;
+
 
