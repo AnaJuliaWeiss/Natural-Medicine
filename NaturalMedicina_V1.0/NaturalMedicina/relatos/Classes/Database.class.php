@@ -1,5 +1,6 @@
 <?php
-include "../config/config.inc.php";
+include_once(__DIR__ . '/../../config/config.inc.php');
+
 
 class Database{
     private static function abrirConexao(){
