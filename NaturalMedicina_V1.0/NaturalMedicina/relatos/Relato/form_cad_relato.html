@@ -1,63 +1,151 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Cadastro de Relatos</title>
-        <link
-      rel="shortcut icon"
-      href="assets/favicon/logo.png"
-      type="image/x-icon"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      rel="stylesheet"
-    />
-    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Natural Medicine</title>
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="shortcut icon" href="/assets/favicon/logo.png" type="image/x-icon" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 
-  </head>
-  <body>    
-   
-    <header class="header">
-      <div class="logo"><img src="assets/favicon/logo.png" alt="" /></div>
-      <nav class="menu">
-        <a href="">Menu</a>
-        <a href="cadastroPlanta.html">Cadastrar Planta</a>
-        <form class="search-form">
-          <input id="search-input" type="text" placeholder="Buscar..." />
-          <button type="submit"><i class="fas fa-search"></i></button>
-        </form>
-      </nav>
-    </header>
+  <style>
+    body {
+      background-color: #daddd3;
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+
+    .form-container {
+      background: #ffffff;
+      padding: 3rem;
+      max-width: 600px;
+      margin: 4rem auto;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .form-container h1 {
+      text-align: center;
+      color: #32620e;
+      margin-bottom: 2rem;
+    }
+
+    form fieldset {
+      border: none;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #32620e;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    textarea {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    button,
+    input[type="reset"] {
+      flex: 1;
+      padding: 0.7rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button[type="submit"][value="salvar"] {
+      background-color: #32620e;
+      color: white;
+    }
+
+    button[type="submit"][value="excluir"] {
+      background-color: #d9534f;
+      color: white;
+    }
+
+    input[type="reset"] {
+      background-color: #ccc;
+      color: #333;
+    }
+
+    button:hover,
+    input[type="reset"]:hover {
+      opacity: 0.9;
+    }
+  </style>
 </head>
+
+<body>
+  <header class="header">
+    <div class="logo"><img src="assets/favicon/logo.png" alt="Logo" /></div>
+    <nav class="menu">
+      <a href="./Relatos/Relato/form_cad_relato.html">Relatos</a>
+      <a href="index.html">Menu</a>
+      <a href="pesquisa.html">Pesquise Plantas</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="login.php">Conta</a>
+    </nav>
+  </header>
+
+  <main class="form-container">
     <h1>Cadastro de Relatos</h1>
     <form action="index.php" method="post">
-        <fieldset>
-            <legend>Formulário</legend>
+      <fieldset>
+        <label for="id_relato">Id:</label>
+        <input type="text" name="id_relato" readonly value="{id_relato}">
 
-            <label for="id_relato">Id:</label>
-            <input type="text" name="id_relato" readonly value="{id_relato}">
+        <label for="titulo">Título:</label>
+        <input type="text" name="titulo" value="{titulo}">
 
-            <label for="titulo">Título:</label>
-            <input type="text" name="titulo" value="{titulo}">
+        <label for="data_relato">Data do Relato:</label>
+        <input type="date" name="data_relato" value="{data_relato}">
 
-            <label for="data_relato">Data do Relato:</label>
-            <input type="date" name="data_relato" value="{data_relato}">
-            <br>
+        <label for="descricao">Descrição:</label>
+        <textarea name="descricao" rows="5" cols="30">{descricao}</textarea>
 
-            <label for="descricao">Descrição:</label>
-            <textarea name="descricao" rows="5" cols="30">{descricao}</textarea><br>
+        <label for="id_usuario">Usuário:</label>
+        <input type="text" name="id_usuario" readonly value="{id_usuario}">
 
-            <label for="id_usuario">Usuário:</label>
-            <input type="text"  name="id_usuario" readonly value="{id_usuario}">
-            <br>
-            <label for="id_planta">Planta:</label>
-            <input type="text"  name="id_planta" readonly value="{id_planta}">
+        <label for="id_planta">Planta:</label>
+        <input type="text" name="id_planta" readonly value="{id_planta}">
 
-            <br><br>
-            <button type="submit" name="acao" value="salvar">Salvar</button>
-            <button type="submit" name="acao" value="excluir">Excluir</button>
-            <input type="reset" value="Cancelar">
-        </fieldset>
+        <div class="button-group">
+          <button type="submit" name="acao" value="salvar">Salvar</button>
+          <button type="submit" name="acao" value="excluir">Excluir</button>
+          <input type="reset" value="Cancelar">
+        </div>
+      </fieldset>
     </form>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Natural Medicine</p>
+    <div class="links">
+      <a href="#"><i class="fab fa-facebook-square"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </footer>
 </body>
 </html>

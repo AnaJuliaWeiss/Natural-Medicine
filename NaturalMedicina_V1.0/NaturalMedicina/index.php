@@ -19,7 +19,6 @@
   <body>
     <header class="header">
       <div class="logo"><img src="assets/favicon/logo.png" alt="" /></div>
-      <div class="buscar"><input type="text" name="" id=""></div>
       <nav class="menu">
         <a href="./Relatos/Relato/form_cad_relato.html">Relatos</a>
         <a href="index.html">Menu</a>
