@@ -39,7 +39,7 @@ if (!$planta) {
 <h2>Editar Planta: <?= htmlspecialchars($planta['nome_popular']) ?></h2>
 
 <form action="../processos/processaEditar.php" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="id" value="<?= htmlspecialchars($planta['id']) ?>">
+    <input type="hidden" name="id" value="<?= htmlspecialchars($planta['id_planta']) ?>">
 
     <label for="nome_popular">Nome Popular:</label>
     <input type="text" id="nome_popular" name="nome_popular" required value="<?= htmlspecialchars($planta['nome_popular']) ?>">
@@ -83,7 +83,7 @@ if (!$planta) {
     <button type="submit">Salvar alterações</button>
 </form>
 
-<a href="detalhes.php?id=<?= $planta['id'] ?>">← Voltar aos detalhes</a>
+<a href="detalhes.php?id=<?= $planta['id_planta'] ?>">← Voltar aos detalhes</a>
 
 </body>
 </html>

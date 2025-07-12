@@ -59,4 +59,14 @@ ALTER TABLE relatos DROP FOREIGN KEY relatos_ibfk_1; -- id_usuario FK
 ALTER TABLE relatos DROP FOREIGN KEY relatos_ibfk_2; -- id_planta FK (supondo nome)
 ALTER TABLE relatos ADD descricao TEXT;
 
+ALTER TABLE plantas
+  ADD COLUMN dosagem TEXT AFTER modo_uso,
+  ADD COLUMN beneficios TEXT AFTER efeitos_colaterais,
+  ADD COLUMN maleficios TEXT AFTER beneficios,
+  ADD COLUMN fonte TEXT AFTER imagem_url,
+  ADD COLUMN criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP AFTER criado_por;
+
+
+
+
 

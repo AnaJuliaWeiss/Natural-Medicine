@@ -95,7 +95,7 @@ $plantas = $controller->listarPlantas();
         <div class="plantas-grid">
             <?php foreach ($plantas as $planta): ?>
                 <div class="planta-card">
-                    <a href="detalhes.php?id=<?= $planta['id'] ?>" class="planta-link">
+                    <a href="detalhes.php?id=<?= $planta['id_planta'] ?>" class="planta-link">
                         <?php if (!empty($planta['imagem_url'])): ?>
                             <img src="../uploads/<?= htmlspecialchars($planta['imagem_url']) ?>" alt="<?= htmlspecialchars($planta['nome_popular']) ?>">
                         <?php else: ?>
@@ -114,3 +114,4 @@ $plantas = $controller->listarPlantas();
 
 </body>
 </html>
+

@@ -12,9 +12,9 @@ class Planta {
         return $this->conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function buscarPorId($id) {
-        $stmt = $this->conn->prepare("SELECT * FROM " . $this->tabela . " WHERE id = ?");
-        $stmt->execute([$id]);
+    public function buscarPorId($id_planta) {
+        $stmt = $this->conn->prepare("SELECT * FROM " . $this->tabela . " WHERE id_planta = ?");
+        $stmt->execute([$id_planta]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -43,7 +43,7 @@ class Planta {
         return $stmt->execute();
     }
 
-    public function atualizar($id, $dados) {
+    public function atualizar($id_planta, $dados) {
         $sql = "UPDATE " . $this->tabela . " SET 
             nome_popular = :nome_popular,
             nome_cientifico = :nome_cientifico,
@@ -55,11 +55,11 @@ class Planta {
             maleficios = :maleficios,
             imagem_url = :imagem_url,
             fonte = :fonte
-            WHERE id = :id";
+            WHERE id_planta = :id_planta";
 
         $stmt = $this->conn->prepare($sql);
 
-        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':id_planta', $id_planta);
         $stmt->bindValue(':nome_popular', $dados['nome_popular']);
         $stmt->bindValue(':nome_cientifico', $dados['nome_cientifico']);
         $stmt->bindValue(':uso_medicinal', $dados['uso_medicinal']);
@@ -74,9 +74,9 @@ class Planta {
         return $stmt->execute();
     }
 
-    public function excluir($id) {
-        $stmt = $this->conn->prepare("DELETE FROM " . $this->tabela . " WHERE id = ?");
-        return $stmt->execute([$id]);
+    public function excluir($id_planta) {
+        $stmt = $this->conn->prepare("DELETE FROM " . $this->tabela . " WHERE id_planta = ?");
+        return $stmt->execute([$id_planta]);
     }
 }
-    
+?>

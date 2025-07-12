@@ -70,8 +70,8 @@ if (!$planta) {
         <p><strong>Fonte:</strong> <?= htmlspecialchars($planta['fonte']) ?></p>
 
         <div class="botoes">
-            <a href="editar.php?id=<?= $planta['id'] ?>" class="btn btn-editar">Editar</a>
-            <a href="../processos/processaExcluir.php?id=<?= $planta['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir esta planta?');" class="btn btn-excluir">Excluir</a>
+            <a href="editar.php?id=<?= $planta['id_planta'] ?>" class="btn btn-editar">Editar</a>
+            <a href="../processos/processaExcluir.php?id=<?= $planta['id_planta'] ?>" onclick="return confirm('Tem certeza que deseja excluir esta planta?');" class="btn btn-excluir">Excluir</a>
             <a href="pesquisa.php" class="btn btn-voltar">← Voltar à lista</a>
         </div>
     </div>
