@@ -31,11 +31,12 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'usuario') {
     <div class="logo"><img src="assets/favicon/logo.png" alt="" /></div>
     <nav class="menu">
       <a href="./Relatos/Relato/form_cad_relato.html">Relatos</a>
-      <a href="index.html">Menu</a>
-      <a href="pesquisa.html">Pesquise Plantas</a>
+      <a href="./cadplantas/naturalmedicina/views/ver_plantas.php"> Plantas</a>
+      <a href="./ContaAdmin/indexusu.php">Conta</a>
       <a href="sobre.html">Sobre</a>
       <a href="./logout.php">Sair</a>
     </nav>
+  
   </header>
 
   <main>

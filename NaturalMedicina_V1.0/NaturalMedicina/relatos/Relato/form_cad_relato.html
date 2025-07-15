@@ -4,30 +4,66 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Natural Medicine</title>
-  <link rel="stylesheet" href="css/index.css" />
   <link rel="shortcut icon" href="/assets/favicon/logo.png" type="image/x-icon" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       background-color: #daddd3;
       font-family: Arial, sans-serif;
       margin: 0;
     }
 
+    header.header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #c9d7be;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    nav.menu {
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav.menu a {
+      color: #2e7d32;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav.menu a:hover {
+      color: #1a4f1b;
+    }
+
     .form-container {
       background: #ffffff;
       padding: 3rem;
-      max-width: 600px;
+      max-width: 700px;
       margin: 4rem auto;
       border-radius: 15px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     .form-container h1 {
       text-align: center;
       color: #32620e;
       margin-bottom: 2rem;
+      font-size: 2rem;
     }
 
     form fieldset {
@@ -39,39 +75,44 @@
       margin-bottom: 0.5rem;
       color: #32620e;
       font-weight: bold;
+      margin-top: 1rem;
     }
 
     input[type="text"],
     input[type="date"],
     textarea {
       width: 100%;
-      padding: 0.7rem;
-      margin-bottom: 1.5rem;
-      border: 1px solid #ccc;
+      padding: 0.75rem;
+      margin-top: 0.3rem;
+      border: 1px solid #b5c1aa;
       border-radius: 8px;
       font-size: 1rem;
+      background-color: #f5f9f4;
     }
 
     textarea {
       resize: vertical;
+      min-height: 120px;
     }
 
     .button-group {
       display: flex;
       justify-content: space-between;
-      flex-wrap: wrap;
       gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
     }
 
     button,
     input[type="reset"] {
       flex: 1;
-      padding: 0.7rem;
+      padding: 0.8rem;
       font-size: 1rem;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      font-weight: bold;
+      transition: background 0.3s ease, transform 0.2s;
     }
 
     button[type="submit"][value="salvar"] {
@@ -80,31 +121,58 @@
     }
 
     button[type="submit"][value="excluir"] {
-      background-color: #d9534f;
+      background-color: #d32f2f;
       color: white;
     }
 
     input[type="reset"] {
-      background-color: #ccc;
-      color: #333;
+      background-color: #b0b0b0;
+      color: #fff;
     }
 
     button:hover,
     input[type="reset"]:hover {
-      opacity: 0.9;
+      transform: scale(1.02);
+      opacity: 0.95;
+    }
+
+    footer.footer {
+      background-color: #fff;
+      padding: 1.5rem;
+      text-align: center;
+      margin-top: 3rem;
+      border-top: 1px solid #cfcfcf;
+    }
+
+    footer.footer p {
+      color: #555;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .footer .links a {
+      margin: 0 10px;
+      font-size: 1.5rem;
+      color: #32620e;
+      transition: color 0.3s;
+    }
+
+    .footer .links a:hover {
+      color: #1a4f1b;
     }
   </style>
 </head>
 
 <body>
+
   <header class="header">
-    <div class="logo"><img src="assets/favicon/logo.png" alt="Logo" /></div>
+    <div class="logo">
+      <img src="../../assets/favicon/logo.png" alt="Logo" />
+    </div>
     <nav class="menu">
-      <a href="./Relatos/Relato/form_cad_relato.html">Relatos</a>
-      <a href="index.html">Menu</a>
-      <a href="pesquisa.html">Pesquise Plantas</a>
-      <a href="sobre.html">Sobre</a>
-      <a href="login.php">Conta</a>
+      <a href="../../index.php">Home</a>
+      <a href="../../ContaUsuario/">Conta</a>
+      <a href="../../sobre.html">Sobre</a>
     </nav>
   </header>
 
@@ -112,7 +180,7 @@
     <h1>Cadastro de Relatos</h1>
     <form action="index.php" method="post">
       <fieldset>
-        <label for="id_relato">Id:</label>
+        <label for="id_relato">ID:</label>
         <input type="text" name="id_relato" readonly value="{id_relato}">
 
         <label for="titulo">Título:</label>
@@ -122,7 +190,7 @@
         <input type="date" name="data_relato" value="{data_relato}">
 
         <label for="descricao">Descrição:</label>
-        <textarea name="descricao" rows="5" cols="30">{descricao}</textarea>
+        <textarea name="descricao" rows="5">{descricao}</textarea>
 
         <label for="id_usuario">Usuário:</label>
         <input type="text" name="id_usuario" readonly value="{id_usuario}">
@@ -147,5 +215,6 @@
       <a href="#"><i class="fab fa-whatsapp"></i></a>
     </div>
   </footer>
+
 </body>
 </html>

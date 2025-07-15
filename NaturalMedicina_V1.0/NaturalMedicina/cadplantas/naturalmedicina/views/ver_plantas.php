@@ -9,35 +9,22 @@ $plantas = $controller->listarPlantas();
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Lista de Plantas Medicinais</title>
-  <link rel="shortcut icon" href="assets/favicon/logo.png" type="image/x-icon" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../../../css/cadplant.css">
-  <style>
-    
-  </style>
+  <title>Ver Plantas Medicinais</title>
+  <link rel="stylesheet" href="../../../css/cadplant.css"> <!-- você pode criar um CSS separado pra estilizar -->
 </head>
 <body>
 
 <header class="header">
   <div class="logo"><img src="../../../assets/favicon/logo.png" alt="Logo" /></div>
   <nav class="menu">
-   <nav class="menu">
-   <a href="../../../indexLogado.admins.php">Home</a>
-  <a href="../../../Relatos/Relato/form_cad_relato.html">Relatos</a>
-  <a href="../../../ContaAdmin/indexadmin.php">Conta</a>
-
-</nav>
-
+    <a href="../../../indexLogado.php">Home</a>
+    <a href="../../../Relatos/Relato/form_cad_relato.html">Relatos</a>
+    <a href="../../../ContaAdmin/index.php">Conta</a>
   </nav>
 </header>
 
 <div class="container">
-  <h2>Lista de Plantas Medicinais</h2>
-
-  <div class="top-bar">
-    <a href="cadastro.php" class="btn-cadastrar">Cadastrar nova planta</a>
-  </div>
+  <h2>Plantas Medicinais</h2>
 
   <?php if (!isset($plantas)) $plantas = []; ?>
 

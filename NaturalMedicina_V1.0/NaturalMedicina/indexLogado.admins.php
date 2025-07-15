@@ -29,10 +29,9 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'admin') {
   <header class="header">
     <div class="logo"><img src="assets/favicon/logo.png" alt="" /></div>
     <nav class="menu">
-      <a href="relatosindex.php">Relatos</a>
+      <a href="../../../relatos/Relatos/Relato/form_cad_relato.html">Relatos</a>
       <a href="./cadplantas/naturalmedicina/views/pesquisa.php"> Plantas</a>
        <a href="./ContaAdmin/indexadmin.php">Conta</a>
-      <a href="sobre.html">Sobre</a>
       <a href="./logout.php">Sair</a>
 
     </nav>
@@ -126,7 +125,7 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'admin') {
             
 
           </p>
-          <button class="btn-green" onclick="window.location.href='relatosindex.php'">Relatar</button>
+          <button class="btn-green" onclick="window.location.href='../../../relatos/Relatos/Relato/index.php'">Relatar</button>
         </div>
         <img src="assets/img/charelatos.png" alt="Imagem principal" height="590" width="590" />
       </section>
