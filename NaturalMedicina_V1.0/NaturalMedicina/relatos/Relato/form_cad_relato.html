@@ -4,40 +4,42 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cadastro de Relatos - Natural Medicine</title>
-  <link rel="shortcut icon" href="../../assets/favicon/logo.png" type="image/x-icon" />
+
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
   <style>
     /* Reset básico */
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f2f6f4; /* fundo da página */
-      color: #2e5c15;
-      line-height: 1.5;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
+    .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #daddd3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 40px;         /* antes era 10px */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  height: 120px;              /* altura fixa maior */
+}
 
-    /* Header com mesma cor do fundo da página */
-    header.header {
-      background-color: #f2f6f4;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: none; /* sem sombra para ficar mais clean */
-    }
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color:  #ffffff;
+  color: #333;
+  padding-top: 130px;        /* aumentamos esse valor para empurrar tudo pra baixo */
+}
 
     .logo img {
-      height: 50px;
-      filter: drop-shadow(0 0 2px rgba(0,0,0,0.1)); /* leve sombra para destaque */
+      height: 110px;
+    
     }
 
     nav.menu {
@@ -48,7 +50,7 @@
     nav.menu a {
       color: #2e5c15;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 1.1rem;
       padding: 0.3rem 0.5rem;
       border-radius: 6px;
@@ -71,7 +73,7 @@
     }
 
     form {
-      background-color: #ffffff;
+      background-color: #d3e2c7;
       padding: 2.5rem 3rem;
       border-radius: 20px;
       box-shadow: 0 15px 30px rgba(46, 92, 21, 0.15);
@@ -258,9 +260,8 @@
       <img src="../../assets/favicon/logo.png" alt="Logo Natural Medicine" />
     </div>
     <nav class="menu" role="navigation" aria-label="Menu principal">
-      <a href="../../index.php">Home</a>
-      <a href="../../ContaUsuario/">Conta</a>
-      <a href="../../sobre.html">Sobre</a>
+      <a href="../../ContaAdmin/indexadmin.php">Home</a>
+
     </nav>
   </header>
 

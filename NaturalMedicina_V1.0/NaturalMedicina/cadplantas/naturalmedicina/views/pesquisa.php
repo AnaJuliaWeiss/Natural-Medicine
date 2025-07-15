@@ -10,12 +10,8 @@ $plantas = $controller->listarPlantas();
 <head>
   <meta charset="UTF-8">
   <title>Lista de Plantas Medicinais</title>
-  <link rel="shortcut icon" href="assets/favicon/logo.png" type="image/x-icon" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="../../../css/cadplant.css">
-  <style>
-    
-  </style>
+ 
 </head>
 <body>
 

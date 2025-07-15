@@ -18,26 +18,40 @@ require_once("../Relatos/Classes/Database.class.php");
 <head>
     <meta charset="UTF-8">
     <title>Perfil do Administrador</title>
-    <link rel="stylesheet" href="../css/perfils.css" />
+<!--<link rel="stylesheet" href="../css/perfils.css" /> -->
     <style>
-        body {
-            background-color: #f4f9f4;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+        body* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .header {
-            background-color: #daddd3;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 17px 1px;
-        }
+    .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #daddd3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;         /* antes era 10px */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  height: 100px;              /* altura fixa maior */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #ffffff;
+  color: #333;
+  padding-top: 130px;        /* aumentamos esse valor para empurrar tudo pra baixo */
+}
 
         .logo img {
-            height: 145px;
-            width: auto;
+            height: 150px;
+           
         }
 
         .menu a {
@@ -112,6 +126,7 @@ require_once("../Relatos/Classes/Database.class.php");
         <nav class="menu">
             <a href="../Relatos/Relato/form_cad_relato.html">Relatos</a>
             <a href="../cadplantas/naturalmedicina/views/pesquisa.php">Plantas</a>
+            <a href="../indexLogado.admins.php">Home</a>
             <a href="../sobre.html">Sobre</a>
             <a href="../logout.php">Sair</a>
         </nav>
@@ -129,13 +144,12 @@ require_once("../Relatos/Classes/Database.class.php");
            </section>
 
     <section class="relatos">
-        <h2>Relatos enviados pelos usuários</h2>
+        <h2>Planatas cadastradas pelo o Admin </h2>
         <table>
             <tr>
-                <th>Título</th>
-                <th>Descrição</th>
+                <th>Planta</th>
                 <th>Data</th>
-                <th>Usuário</th>
+                <th>Nome do admin</th>
             </tr>
             <?php
             $sql = "SELECT r.titulo, r.descricao, r.data_relato, u.nome 

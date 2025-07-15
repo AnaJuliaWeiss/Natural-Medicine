@@ -55,7 +55,7 @@ if (!empty($termoBusca)) {
   <nav class="menu">
     <a href="../../../indexLogado.php">Home</a>
     <a href="../../../Relatos/Relato/form_cad_relato.html">Relatos</a>
-    <a href="../../../ContaAdmin/index.php">Conta</a>
+    <a href="../../../ContaUsuario/indexusuario.php">Conta</a>
   </nav>
 </header>
 

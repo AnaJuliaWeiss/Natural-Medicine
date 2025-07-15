@@ -1,4 +1,4 @@
-* {
+*{
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -16,21 +16,21 @@
   padding: 20px 40px;         /* antes era 10px */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   z-index: 999;
-  height: 100px;              /* altura fixa maior */
+  height: 120px;              /* altura fixa maior */
 }
 
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  background-color: #daddd3;
+  background-color: #ffffff;
   color: #333;
-  padding-top: 130px;        /* aumentamos esse valor para empurrar tudo pra baixo */
+  padding-top: 130px;       
 }
-
-
-    .logo img {
-      width: 230px;
+  .logo img {
+    width: 60;
+      height: 100px ;
     }
+
 
     .header .menu a {
       margin: 0 10px;

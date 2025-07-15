@@ -125,7 +125,7 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'admin') {
             
 
           </p>
-          <button class="btn-green" onclick="window.location.href='../../../relatos/Relatos/Relato/index.php'">Relatar</button>
+          <button class="btn-green" onclick="window.location.href='./Relatos/Relato/form_cad_relato.html'">Relatar</button>
         </div>
         <img src="assets/img/charelatos.png" alt="Imagem principal" height="590" width="590" />
       </section>
