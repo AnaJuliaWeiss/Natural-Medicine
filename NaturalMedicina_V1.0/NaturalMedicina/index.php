@@ -39,7 +39,7 @@
           </p>
           <button class="btn-green">Saiba mais</button>
         </div>
-        <img src="assets/img/plntchat.png" alt="Imagem principal" />
+        <img src="./assets/img/charelatos.png" alt="Imagem principal" />
       </section>
 
       <section class="curiosidades">
@@ -115,7 +115,7 @@
           </p>
           <button class="btn-green" onclick="window.location.href='./Relatos/Relato/form_cad_relato.html'">Relatar</button>
         </div>
-        <img src="assets/img/charelatos.png" alt="Imagem principal" height="590" width="590" />
+        <img src="assets/img/plantas-Brasil-cha.webp" alt="Imagem principal" height="590" width="590" />
       </section>
     </main>
 
