@@ -2,11 +2,12 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cadastro de Relatos - Natural Medicine</title>
-  <link rel="shortcut icon" href="/assets/favicon/logo.png" type="image/x-icon" />
+  <link rel="shortcut icon" href="../../assets/favicon/logo.png" type="image/x-icon" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
   <style>
+    /* Reset básico */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -15,20 +16,28 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f2f6f4;
+      background-color: #f2f6f4; /* fundo da página */
+      color: #2e5c15;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
+    /* Header com mesma cor do fundo da página */
     header.header {
+      background-color: #f2f6f4;
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #c9d7be;
-      padding: 1rem 2rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: none; /* sem sombra para ficar mais clean */
     }
 
     .logo img {
       height: 50px;
+      filter: drop-shadow(0 0 2px rgba(0,0,0,0.1)); /* leve sombra para destaque */
     }
 
     nav.menu {
@@ -37,47 +46,62 @@
     }
 
     nav.menu a {
-      color: #2e7d32;
+      color: #2e5c15;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
       font-size: 1.1rem;
-      transition: color 0.3s ease;
+      padding: 0.3rem 0.5rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    nav.menu a:hover {
+    nav.menu a:hover,
+    nav.menu a:focus {
+      background-color: #d3e2c7;
       color: #1a4f1b;
+      outline: none;
     }
 
     main {
+      flex-grow: 1;
       display: flex;
       justify-content: center;
-      align-items: center;
-      padding: 3rem 1rem;
-      min-height: 100vh;
+      align-items: flex-start;
+      padding: 3rem 1rem 4rem;
     }
 
     form {
       background-color: #ffffff;
-      padding: 2.5rem;
-      border-radius: 18px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      padding: 2.5rem 3rem;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(46, 92, 21, 0.15);
       max-width: 700px;
       width: 100%;
+      transition: box-shadow 0.3s ease;
+    }
+
+    form:hover {
+      box-shadow: 0 25px 40px rgba(46, 92, 21, 0.25);
     }
 
     h1 {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
+      font-weight: 700;
+      font-size: 2.4rem;
+      letter-spacing: 1.5px;
       color: #2e5c15;
-      font-size: 2rem;
+      text-transform: uppercase;
+      user-select: none;
     }
 
     label {
-      font-weight: 600;
-      color: #2e5c15;
       display: block;
-      margin-bottom: 6px;
-      margin-top: 20px;
+      font-weight: 600;
+      color: #3b6c18;
+      margin-bottom: 0.4rem;
+      margin-top: 1.8rem;
+      user-select: none;
     }
 
     .input-group {
@@ -86,90 +110,144 @@
 
     .input-group i {
       position: absolute;
-      left: 10px;
+      left: 12px;
       top: 50%;
       transform: translateY(-50%);
-      color: #999;
+      color: #9caf88;
+      font-size: 1.2rem;
+      pointer-events: none;
+      transition: color 0.3s ease;
     }
 
     .input-group input,
     .input-group textarea {
       width: 100%;
-      padding: 10px 12px 10px 36px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
+      padding: 12px 15px 12px 40px;
+      border: 1.8px solid #bcd4a7;
+      border-radius: 12px;
       font-size: 1rem;
-      background-color: #f9f9f9;
-    }
-
-    textarea {
+      background-color: #f9fdf8;
+      color: #3a5f0b;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      font-weight: 500;
       resize: vertical;
       min-height: 120px;
+    }
+
+    .input-group input:focus,
+    .input-group textarea:focus {
+      border-color: #4caf50;
+      box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+      outline: none;
+    }
+
+    .input-group input:focus + i,
+    .input-group textarea:focus + i {
+      color: #4caf50;
     }
 
     .button-group {
       display: flex;
       gap: 1rem;
-      margin-top: 2rem;
+      margin-top: 2.5rem;
       flex-wrap: wrap;
     }
 
     button,
     input[type="reset"] {
-      flex: 1;
-      padding: 0.9rem;
-      font-size: 1rem;
+      flex: 1 1 30%;
+      padding: 1rem 0;
+      font-size: 1.1rem;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
       cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s ease, transform 0.2s;
+      font-weight: 700;
+      transition: background-color 0.3s ease, transform 0.15s ease;
+      color: white;
+      user-select: none;
+      box-shadow: 0 6px 12px rgba(46, 92, 21, 0.18);
     }
 
     button[name="acao"][value="salvar"] {
       background-color: #4caf50;
-      color: white;
+    }
+
+    button[name="acao"][value="salvar"]:hover,
+    button[name="acao"][value="salvar"]:focus {
+      background-color: #3b8e40;
+      transform: translateY(-2px);
+      outline: none;
+      box-shadow: 0 10px 18px rgba(46, 92, 21, 0.4);
     }
 
     button[name="acao"][value="excluir"] {
       background-color: #e74c3c;
-      color: white;
+    }
+
+    button[name="acao"][value="excluir"]:hover,
+    button[name="acao"][value="excluir"]:focus {
+      background-color: #c0392b;
+      transform: translateY(-2px);
+      outline: none;
+      box-shadow: 0 10px 18px rgba(196, 39, 29, 0.4);
     }
 
     input[type="reset"] {
-      background-color: #bbb;
-      color: white;
+      background-color: #9e9e9e;
+      color: #eee;
+      box-shadow: none;
     }
 
-    button:hover,
-    input[type="reset"]:hover {
-      transform: scale(1.02);
-      opacity: 0.95;
+    input[type="reset"]:hover,
+    input[type="reset"]:focus {
+      background-color: #7b7b7b;
+      transform: translateY(-2px);
+      outline: none;
     }
 
+    /* Footer */
     footer.footer {
-      background-color: #fff;
+      background-color: #ffffff;
       padding: 1.5rem;
       text-align: center;
-      margin-top: 3rem;
       border-top: 1px solid #cfcfcf;
+      box-shadow: 0 -5px 10px rgba(0,0,0,0.03);
+      user-select: none;
     }
 
     footer.footer p {
-      color: #555;
-      font-weight: bold;
+      color: #4a7c4a;
+      font-weight: 700;
       margin-bottom: 1rem;
     }
 
     .footer .links a {
       margin: 0 10px;
-      font-size: 1.5rem;
-      color: #32620e;
-      transition: color 0.3s;
+      font-size: 1.8rem;
+      color: #4caf50;
+      transition: color 0.3s ease;
     }
 
-    .footer .links a:hover {
-      color: #1a4f1b;
+    .footer .links a:hover,
+    .footer .links a:focus {
+      color: #2e5c15;
+      outline: none;
+    }
+
+    /* Responsividade simples */
+    @media (max-width: 480px) {
+      form {
+        padding: 2rem 1.5rem;
+      }
+
+      .button-group {
+        flex-direction: column;
+      }
+
+      button,
+      input[type="reset"] {
+        flex: 1 1 100%;
+      }
     }
   </style>
 </head>
@@ -179,7 +257,7 @@
     <div class="logo">
       <img src="../../assets/favicon/logo.png" alt="Logo Natural Medicine" />
     </div>
-    <nav class="menu">
+    <nav class="menu" role="navigation" aria-label="Menu principal">
       <a href="../../index.php">Home</a>
       <a href="../../ContaUsuario/">Conta</a>
       <a href="../../sobre.html">Sobre</a>
@@ -187,61 +265,62 @@
   </header>
 
   <main>
-    <form action="index.php" method="post">
+    <form action="index.php" method="post" aria-label="Formulário de cadastro de relatos">
       <h1>Cadastro de Relatos</h1>
 
       <label for="id_relato">ID do Relato:</label>
       <div class="input-group">
-        <i class="fas fa-id-badge"></i>
-        <input type="text" name="id_relato" readonly value="{id_relato}">
+        <input type="text" id="id_relato" name="id_relato" readonly value="" aria-readonly="true" />
+        <i class="fas fa-id-badge" aria-hidden="true"></i>
       </div>
 
       <label for="titulo">Título:</label>
       <div class="input-group">
-        <i class="fas fa-heading"></i>
-        <input type="text" name="titulo" value="{titulo}" required>
+        <input type="text" id="titulo" name="titulo" required value="" />
+        <i class="fas fa-heading" aria-hidden="true"></i>
       </div>
 
       <label for="data_relato">Data do Relato:</label>
       <div class="input-group">
-        <i class="fas fa-calendar-alt"></i>
-        <input type="date" name="data_relato" value="{data_relato}" required>
+        <input type="date" id="data_relato" name="data_relato" required value="" />
+        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
       </div>
 
       <label for="descricao">Descrição:</label>
       <div class="input-group">
-        <i class="fas fa-align-left"></i>
-        <textarea name="descricao" rows="4" required>{descricao}</textarea>
+        <textarea id="descricao" name="descricao" rows="4" required></textarea>
+        <i class="fas fa-align-left" aria-hidden="true"></i>
       </div>
 
       <label for="id_usuario">ID do Usuário:</label>
       <div class="input-group">
-        <i class="fas fa-user"></i>
-        <input type="text" name="id_usuario" readonly value="{id_usuario}">
+        <input type="text" id="id_usuario" name="id_usuario" readonly value="" aria-readonly="true" />
+        <i class="fas fa-user" aria-hidden="true"></i>
       </div>
 
       <label for="id_planta">ID da Planta:</label>
       <div class="input-group">
-        <i class="fas fa-seedling"></i>
-        <input type="text" name="id_planta" readonly value="{id_planta}">
+        <input type="text" id="id_planta" name="id_planta" readonly value="" aria-readonly="true" />
+        <i class="fas fa-seedling" aria-hidden="true"></i>
       </div>
 
       <div class="button-group">
-        <button type="submit" name="acao" value="salvar">Salvar</button>
-        <button type="submit" name="acao" value="excluir">Excluir</button>
-        <input type="reset" value="Cancelar">
+        <button type="submit" name="acao" value="salvar" aria-label="Salvar relato">Salvar</button>
+        <button type="submit" name="acao" value="excluir" aria-label="Excluir relato">Excluir</button>
+        <input type="reset" value="Cancelar" aria-label="Cancelar preenchimento" />
       </div>
     </form>
   </main>
 
-  <footer class="footer">
+  <footer class="footer" role="contentinfo">
     <p>&copy; 2025 Natural Medicine</p>
-    <div class="links">
-      <a href="#"><i class="fab fa-facebook-square"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-whatsapp"></i></a>
+    <div class="links" aria-label="Redes sociais">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
     </div>
   </footer>
 
 </body>
 </html>
+
