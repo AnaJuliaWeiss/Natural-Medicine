@@ -16,8 +16,9 @@ $planta = $controller->buscarPlanta($id);
       margin: 0;
       padding: 0;
       font-family: 'Arial', sans-serif;
-      background-color: #f1fff1;
+      background-color: #ffffffff;
       color: #2e7d32;
+      
     }
 
     .planta-detalhe {
@@ -37,6 +38,7 @@ $planta = $controller->buscarPlanta($id);
       max-width: 600px;
       border-radius: 12px;
       box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+      
     }
 
     .info {
@@ -56,6 +58,7 @@ $planta = $controller->buscarPlanta($id);
       font-style: italic;
       margin-top: 0;
       color: #388e3c;
+      
     }
 
     .campo {
@@ -125,13 +128,13 @@ $planta = $controller->buscarPlanta($id);
       <h1><?= htmlspecialchars($planta['nome_popular']) ?></h1>
       <h2><em><?= htmlspecialchars($planta['nome_cientifico']) ?></em></h2>
 
-      <div class="campo"><strong>Uso medicinal:</strong> <?= nl2br($planta['uso_medicinal']) ?></div>
-      <div class="campo"><strong>Modo de uso:</strong> <?= nl2br($planta['modo_uso']) ?></div>
-      <div class="campo"><strong>Dosagem:</strong> <?= nl2br($planta['dosagem']) ?></div>
-      <div class="campo"><strong>Efeitos colaterais:</strong> <?= nl2br($planta['efeitos_colaterais']) ?></div>
-      <div class="campo"><strong>Benefícios:</strong> <?= nl2br($planta['beneficios']) ?></div>
-      <div class="campo"><strong>Malefícios:</strong> <?= nl2br($planta['maleficios']) ?></div>
-      <div class="campo"><strong>Fonte:</strong> <?= nl2br($planta['fonte']) ?></div>
+       <div class="campo"><strong>Uso medicinal:</strong> <?= nl2br($planta['uso_medicinal']) ?></div>
+       <div class="campo"><strong>Modo de uso:</strong> <?= nl2br($planta['modo_uso']) ?></div>
+       <div class="campo"><strong>Dosagem:</strong> <?= nl2br($planta['dosagem']) ?></div>
+       <div class="campo"><strong>Efeitos colaterais:</strong> <?= nl2br($planta['efeitos_colaterais']) ?></div>
+       <div class="campo"><strong>Benefícios:</strong> <?= nl2br($planta['beneficios']) ?></div>
+       <div class="campo"><strong>Malefícios:</strong> <?= nl2br($planta['maleficios']) ?></div>
+       <div class="campo"><strong>Fonte:</strong> <?= nl2br($planta['fonte']) ?></div>
 
       <div class="botoes">
         <a href="editar.php?id=<?= $planta['id_planta'] ?>" class="btn editar">Editar</a>
