@@ -76,7 +76,7 @@ body {
 .container h2 {
   text-align: center;
   font-size: 32px;
-  color: #1b5e20;
+  color: #32620e;
   margin-bottom: 30px;
 }
 
@@ -190,7 +190,7 @@ body {
   </style>
 
 <header class="header">
-  <div class="logo"><img src="../../../assets/favicon/logo.png" alt="Logo" /></div>
+  <div class="logo"><img src="../../../assets/favicon/A-removebg-preview (1).png" alt="Logo" /></div>
   <nav class="menu">
     <a href="../../../indexLogado.php">Home</a>
     <a href="../../../Relatos/Relato/form_cad_relato.html">Relatos</a>
