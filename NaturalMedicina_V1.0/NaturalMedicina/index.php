@@ -14,16 +14,308 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
       rel="stylesheet"
     />
-  </head>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> <!--Logo-->
+  <link href="https://fonts.googleapis.com/css2?family=Caladea:wght@600&display=swap" rel="stylesheet"> <!--Texto-->
 
+
+  </head>
+<style>
+  /* Reset geral */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Caladea', serif;
+  background-color: #ffffff;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3a763a;
+  padding: 1rem 2rem;
+  height: 150px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 42px;
+  color: #ffffff;
+}
+
+.header .menu a {
+  margin: 0 1rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.header .menu a:hover {
+  color: #e0f3dd;
+}
+
+/* HERO SECTION */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4% 8%;
+  gap: 2rem;
+}
+
+.hero-content {
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
+}
+
+.hero h1 {
+  color: #32620e;
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  color: #000000bf;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.hero .btn-green {
+  background-color: #32620e;
+  border: none;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.hero .btn-green:hover {
+  background-color: #204a0a;
+}
+
+.hero img {
+  flex: 1;
+  max-width: 450px;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* CURIOSIDADES */
+.curiosidades {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+}
+
+.curiosidades h2 {
+  color: #040f0f;
+  font-size: 36px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.cards article {
+  background: white;
+  border: 2px solid #daddd3;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  text-align: center;
+  width: 340px;
+  transition: transform 0.3s ease;
+}
+
+.cards article:hover {
+  transform: translateY(-5px);
+}
+
+.cards img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.cards h3 {
+  font-size: 24px;
+  color: #040f0f;
+  margin-bottom: 10px;
+}
+
+.cards p {
+  font-size: 18px;
+  color: #000000bf;
+  font-weight: bold;
+  text-align: justify;
+}
+
+/* HISTÓRIAS */
+.historias {
+  padding: 4% 8%;
+  background-color: #daddd3;
+}
+
+.historias h2 {
+  color: #040f0f;
+  font-size: 40px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.historias .content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 2rem;
+}
+
+.historias .text {
+  max-width: 600px;
+  padding: 1rem;
+  color: #000000;
+  font-size: 18px;
+  text-align: justify;
+}
+
+.historias .text h3 {
+  font-size: 22px;
+  color: #32620e;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.historias img {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Rodapé */
+.footer {
+  text-align: center;
+  background: white;
+  color: #040f0f;
+  padding: 2rem 1rem;
+}
+
+.footer p {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.footer .links a {
+  margin: 0 1rem;
+  color: #040f0f;
+  text-decoration: none;
+  font-size: 2rem;
+  transition: color 0.3s ease;
+}
+
+.footer .links a:hover {
+  color: #32620e;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .hero,
+  .historias .content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero img,
+  .historias img {
+    max-width: 100%;
+  }
+
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header {
+    flex-direction: column;
+    height: auto;
+    gap: 1rem;
+  }
+
+  .header .menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header .menu a {
+    margin: 0.5rem 0;
+  }
+.historia-imagens {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 20px;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.escada {
+  border-radius: 10px;
+  object-fit: cover;
+  width: 100%;
+  max-width: 200px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Alturas diferentes para o efeito escada */
+.escada1 {
+  height: 220px;
+} 
+
+.escada2 {
+  height: 180px;
+}
+
+.escada3 {
+  height: 140px;
+}
+
+
+}
+
+  
+</style>
   <body>
     <header class="header">
-      <div class="logo"><img src="assets/favicon/logo.png" alt="Logo" /></div>
+      <div class="logo">Natural Medicina</div>
+     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
       <nav class="menu">
-        <a href="./Relatos/Relato/form_cad_relato.html">Relatos</a>
-        <a href="./cadplantas/naturalmedicina/views/pesquisa.php">Plantas</a>
-        <a href="sobre.html">Sobre</a>
         <a href="login.php">Conta</a>
+        <a href="sobre.html">Sobre</a>
       </nav>
     </header>
 
@@ -37,7 +329,7 @@
             entender como cada planta pode contribuir para a saúde e o
             bem-estar.
           </p>
-          <button class="btn-green">Saiba mais</button>
+         
         </div>
         <img src="./assets/img/charelatos.png" alt="Imagem principal" />
       </section>
@@ -68,46 +360,12 @@
             <h3>A Magia das Ervas</h3>
             <p>Entenda como as ervas podem melhorar sua saúde.</p>
           </article>
+           
+           
         </div>
       </section>
 
-      <section class="historias">
-        <h2>Histórias de Cura com Plantas Medicinais</h2>
-        <div class="content">
-          <div class="text">
-            <h3>Como a Camomila Ajudou na Insônia</h3>
-            <p>
-              A camomila, conhecida por suas propriedades relaxantes, tem sido
-              usada por gerações para tratar a insônia e promover uma boa noite
-              de sono. Estudos indicam que o consumo regular do chá de camomila
-              pode ajudar a reduzir o estresse.
-            </p>
-            <br />
-            <h3>O Poder do Gengibre Contra Náuseas</h3>
-            <p>
-              O gengibre é amplamente reconhecido por suas propriedades
-              anti-inflamatórias e sua eficácia no alívio de náuseas,
-              especialmente durante viagens ou tratamentos médicos como
-              quimioterapia.
-            </p>
-            <br />
-            <h3>Lavanda: Relaxamento em Forma de Planta</h3>
-            <p>
-              O aroma calmante da lavanda é utilizado em óleos essenciais e chás
-              para promover relaxamento, aliviar dores de cabeça e melhorar a
-              qualidade do sono de forma natural.
-            </p>
-            <br />
-            <h3>O Segredo do Alecrim para a Memória</h3>
-            <p>
-              Acredita-se que o alecrim melhora a memória e a concentração.
-              Usado em óleos essenciais ou infusões, ele é uma escolha popular
-              para quem busca aumentar o foco mental.
-            </p>
-          </div>
-          <div>
-            <img src="assets/img/historias.webp" alt="História das plantas" />
-          </div>
+          
         </div>
 
         <section class="hero">
@@ -120,12 +378,7 @@
               dados científicos enriquece o aprendizado. Por isso, seu relato pode
               fazer a diferença para muitas outras pessoas.
             </p>
-            <button
-              class="btn-green"
-              onclick="window.location.href='./Relatos/Relato/form_cad_relato.html'"
-            >
-              Relatar
-            </button>
+          
           </div>
           <img
             src="assets/img/plantas-Brasil-cha.webp"

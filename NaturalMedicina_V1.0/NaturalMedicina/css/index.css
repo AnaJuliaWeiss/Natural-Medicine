@@ -1,3 +1,4 @@
+ /* Reset geral */
 * {
   margin: 0;
   padding: 0;
@@ -5,38 +6,44 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
+  font-family: 'Caladea', serif;
   background-color: #ffffff;
   color: #333;
+  line-height: 1.6;
 }
 
-/* Header */
+/* HEADER */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #daddd3;
-  padding: 0.5rem 1rem;
+  background-color: #3a763a;
+  padding: 1rem 2rem;
+  height: 150px;
   flex-wrap: wrap;
-  height: 80px;
 }
 
-.logo img {
-  width: 120px;
-  max-width: 100%;
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 42px;
+  color: #ffffff;
 }
 
 .header .menu a {
-  margin: 0 0.8rem;
-  color: #32620e;
+  margin: 0 1rem;
+  color: #ffffff;
   text-decoration: none;
   font-weight: bold;
   font-size: 18px;
   transition: color 0.3s ease;
 }
 
-/* Hero */
+.header .menu a:hover {
+  color: #e0f3dd;
+}
+
+/* HERO SECTION */
 .hero {
   display: flex;
   flex-wrap: wrap;
@@ -49,6 +56,7 @@ body {
 .hero-content {
   flex: 1;
   min-width: 300px;
+  text-align: left;
 }
 
 .hero h1 {
@@ -81,19 +89,20 @@ body {
 
 .hero img {
   flex: 1;
-  max-width: 400px;
+  max-width: 450px;
   height: auto;
   border-radius: 10px;
 }
 
-/* Curiosidades */
+/* CURIOSIDADES */
 .curiosidades {
   padding: 4rem 2rem;
+  background-color: #f9f9f9;
 }
 
 .curiosidades h2 {
   color: #040f0f;
-  font-size: 32px;
+  font-size: 36px;
   margin-bottom: 2rem;
   text-align: center;
 }
@@ -107,12 +116,12 @@ body {
 
 .cards article {
   background: white;
+  border: 2px solid #daddd3;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   padding: 1.5rem;
   text-align: center;
-  width: 350px;
-  max-width: 100%;
+  width: 340px;
   transition: transform 0.3s ease;
 }
 
@@ -122,12 +131,14 @@ body {
 
 .cards img {
   width: 100%;
+  height: 200px;
+  object-fit: cover;
   border-radius: 10px;
   margin-bottom: 1rem;
 }
 
 .cards h3 {
-  font-size: 22px;
+  font-size: 24px;
   color: #040f0f;
   margin-bottom: 10px;
 }
@@ -139,7 +150,7 @@ body {
   text-align: justify;
 }
 
-/* Histórias */
+/* HISTÓRIAS */
 .historias {
   padding: 4% 8%;
   background-color: #daddd3;
@@ -155,26 +166,33 @@ body {
 .historias .content {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   gap: 2rem;
-}
-
-.historias img {
-  max-width: 500px;
-  border-radius: 10px;
-  width: 100%;
-  height: auto;
 }
 
 .historias .text {
   max-width: 600px;
   padding: 1rem;
-  color: #000000bf;
+  color: #000000;
   font-size: 18px;
   text-align: justify;
 }
 
-/* Footer */
+.historias .text h3 {
+  font-size: 22px;
+  color: #32620e;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.historias img {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Rodapé */
 .footer {
   text-align: center;
   background: white;
@@ -200,7 +218,7 @@ body {
   color: #32620e;
 }
 
-/* Responsivo */
+/* RESPONSIVO */
 @media (max-width: 768px) {
   .hero,
   .historias .content {
@@ -220,17 +238,50 @@ body {
 
   .header {
     flex-direction: column;
-    align-items: flex-start;
+    height: auto;
     gap: 1rem;
   }
 
   .header .menu {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .header .menu a {
     margin: 0.5rem 0;
   }
+.historia-imagens {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 20px;
+  margin-top: 2rem;
+  flex-wrap: wrap;
 }
-  
+
+.escada {
+  border-radius: 10px;
+  object-fit: cover;
+  width: 100%;
+  max-width: 200px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Alturas diferentes para o efeito escada */
+.escada1 {
+  height: 220px;
+}
+
+.escada2 {
+  height: 180px;
+}
+
+.escada3 {
+  height: 140px;
+}
+
+
+
+
+}
