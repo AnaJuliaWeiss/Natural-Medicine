@@ -1,4 +1,3 @@
-/* Reset e base */
 * {
   margin: 0;
   padding: 0;
@@ -18,40 +17,23 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: #daddd3;
-  padding: 1rem 2rem;
+  padding: 0.5rem 1rem;
   flex-wrap: wrap;
+  height: 80px;
 }
 
 .logo img {
-  width: 200px;
+  width: 120px;
   max-width: 100%;
 }
 
 .header .menu a {
-  margin: 0 1rem;
+  margin: 0 0.8rem;
   color: #32620e;
   text-decoration: none;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
   transition: color 0.3s ease;
-}
-
-.header .menu a:hover {
-  color: #204a0a;
-}
-
-.header .button {
-  background-color: #82b084;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
-
-.header .button:hover {
-  background-color: #6d9e6f;
 }
 
 /* Hero */
@@ -131,7 +113,6 @@ body {
   text-align: center;
   width: 350px;
   max-width: 100%;
-  height: auto;
   transition: transform 0.3s ease;
 }
 
@@ -219,7 +200,7 @@ body {
   color: #32620e;
 }
 
-/* Responsividade geral */
+/* Responsivo */
 @media (max-width: 768px) {
   .hero,
   .historias .content {
@@ -252,3 +233,4 @@ body {
     margin: 0.5rem 0;
   }
 }
+  
