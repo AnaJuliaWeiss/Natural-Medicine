@@ -39,16 +39,16 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #3a763a;
+  background-color: #4caf50;
   padding: 1rem 2rem;
-  height: 150px;
+  height: 100px;
   flex-wrap: wrap;
 }
 
 .logo {
   font-family: 'Playfair Display', serif;
   font-weight: 600;
-  font-size: 42px;
+  font-size: 35px;
   color: #ffffff;
 }
 
@@ -82,7 +82,7 @@ body {
 }
 
 .hero h1 {
-  color: #32620e;
+  color: #4caf50;
   font-size: 48px;
   font-weight: bold;
   margin-bottom: 1rem;
@@ -96,7 +96,7 @@ body {
 }
 
 .hero .btn-green {
-  background-color: #32620e;
+  background-color: #4caf50;
   border: none;
   color: white;
   padding: 1rem 2rem;
@@ -106,7 +106,7 @@ body {
 }
 
 .hero .btn-green:hover {
-  background-color: #204a0a;
+  background-color: #4caf50;
 }
 
 .hero img {
@@ -202,7 +202,7 @@ body {
 
 .historias .text h3 {
   font-size: 22px;
-  color: #32620e;
+  color: #4caf50;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
@@ -237,7 +237,7 @@ body {
 }
 
 .footer .links a:hover {
-  color: #32620e;
+  color: #4caf50;
 }
 
 /* RESPONSIVO */

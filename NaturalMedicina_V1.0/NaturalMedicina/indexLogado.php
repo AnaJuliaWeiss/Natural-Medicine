@@ -22,13 +22,15 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'usuario') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Natural Medicine</title>
   <link rel="stylesheet" href="css/index.css" />
-  <link rel="shortcut icon" href="assets/favicon/logo.png" type="image/x-icon" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+   <div class="logo">Natural Medicina</div>
+     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
 </head>
 <body>
-  <!-- todo o seu conteúdo HTML que você enviou aqui -->
-  <header class="header">
-    <div class="logo"><img src="assets/favicon/logo.png" alt="" /></div>
+  
+   <div class="logo">Natural Medicina</div>
+     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
     <nav class="menu">
       <a href="./Relatos/Relato/form_cad_relato.html">Relatos</a>
       <a href="./cadplantas/naturalmedicina/views/ver_plantas.php"> Plantas</a>
