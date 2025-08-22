@@ -91,14 +91,23 @@
         <label>Malefícios</label>
         <textarea name="maleficios" rows="2"></textarea>
 
+         <label>Categoria</label>
+         <select name="categoria" id="categoria">
+        <option value="1">Flor</option>
+        <option value="2">Fruto</option>
+        <option value="3">Folha</option>
+        <option value="4">Sementes</option>
+        <option value="5">Raízes</option>
+        <option value="6">Casca do caule</option>
+        <option value="1">Caule</option>
+         </select>
+
         <label>Escolher Imagem</label>
         <input type="file" name="imagem" accept="image/*" required>
 
         <label>Fonte</label>
         <input type="text" name="fonte">
-
-
-       
+        
         <button type="submit">Cadastrar</button>
     </form>
     <a href="pesquisa.php">← Voltar para a pesquisa</a>

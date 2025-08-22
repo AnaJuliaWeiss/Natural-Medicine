@@ -1,405 +1,420 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Natural Medicine</title>
-    <link rel="stylesheet" href="css/index.css" />
-    <link
-      rel="shortcut icon"
-      href="/assets/favicon/logo.png"
-      type="image/x-icon"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      rel="stylesheet"
-    />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> <!--Logo-->
-  <link href="https://fonts.googleapis.com/css2?family=Caladea:wght@600&display=swap" rel="stylesheet"> <!--Texto-->
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Natural Medicina</title>
 
+  <!-- Fonts & icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Caladea:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
 
-  </head>
-<style>
-  /* Reset geral */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  <style>
+    /* ========= Reset básico ========= */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height: 100%; }
+    img { max-width: 100%; height: auto; display: block; }
 
-body {
-  font-family: 'Caladea', serif;
-  background-color: #ffffff;
-  color: #333;
-  line-height: 1.6;
-}
+    /* ========= Tipografia & container ========= */
+    body {
+      font-family: 'Caladea', serif;
+      background: #ffffff;
+      color: #333;
+      line-height: 1.6;
+    }
 
-/* HEADER */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #4caf50;
-  padding: 1rem 2rem;
-  height: 100px;
-  flex-wrap: wrap;
-}
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      width: 100%;
+    }
 
-.logo {
-  font-family: 'Playfair Display', serif;
-  font-weight: 600;
-  font-size: 35px;
-  color: #ffffff;
-}
+    /* ========= HEADER ========= */
+    header.header {
+      background: linear-gradient(90deg, #3a7d44, #4caf50);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
 
-.header .menu a {
-  margin: 0 1rem;
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 18px;
-  transition: color 0.3s ease;
-}
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      height: 80px;
+      padding: 0 0;
+    }
 
-.header .menu a:hover {
-  color: #e0f3dd;
-}
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
 
-/* HERO SECTION */
-.hero {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  padding: 4% 8%;
-  gap: 2rem;
-}
+    nav.menu {
+      display: flex;
+      gap: 2rem;
+      align-items:center;
+    }
 
-.hero-content {
-  flex: 1;
-  min-width: 300px;
-  text-align: left;
-}
+    nav.menu a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      padding: .25rem .35rem;
+      transition: color .2s ease;
+    }
+    nav.menu a:hover { color: #d9f7d9; }
 
-.hero h1 {
-  color: #4caf50;
-  font-size: 48px;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
+    .btn-header {
+      background: #fff;
+      color: #3a7d44;
+      padding: .6rem 1rem;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      transition: background .2s ease, transform .15s ease;
+    }
+    .btn-header:hover { background: #d9f7d9; transform: translateY(-2px); }
 
-.hero p {
-  color: #000000bf;
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 2rem;
-}
+    /* ========= HERO ========= */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+                  url("assets/img/camomila.jpg") center/cover no-repeat;
+      color: #fff;
+      min-height: 45vh;
+      display: flex;
+      align-items: center;
+    }
 
-.hero .btn-green {
-  background-color: #4caf50;
-  border: none;
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
+    .hero .hero-inner { display:flex; align-items:center; gap:2rem; width:100%; padding: 3rem 0; }
+    .hero-content { max-width: 64%; }
+    .hero h1 { font-size: 2.6rem; line-height:1.05; margin-bottom:.6rem; font-weight:700; }
+    .hero p { font-size: 1.05rem; margin-bottom:1rem; color:#f3f6f3; }
+    .btn-green {
+      background-color: #4caf50;
+      color: #fff;
+      padding: .9rem 1.4rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight:700;
+      display: inline-block;
+    }
+    .btn-green:hover { background-color: #3a7d44; }
 
-.hero .btn-green:hover {
-  background-color: #4caf50;
-}
+    /* ========= CURIOSIDADES ========= */
+    .curiosidades { padding: 2rem 0; }
+    .curiosidades h2 { text-align:center; margin-bottom:1rem; color:#2c3e50; }
+    .curiosidades-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+    .curiosidade-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      padding: 1rem;
+      text-align: center;
+    }
+    .curiosidade-card img { height: 150px; object-fit: cover; border-radius: 8px; margin-bottom:.6rem; }
+    .curiosidade-card h3 { margin-bottom:.4rem; color:#2c3e50; font-size:1.05rem; }
+    .curiosidade-card p { color:#556; font-size:.95rem; }
 
-.hero img {
-  flex: 1;
-  max-width: 450px;
-  height: auto;
-  border-radius: 10px;
-}
+    /* ========= HISTÓRIAS ========= */
+    .historias { padding: 2rem 0; }
+    .historias h2 { text-align:center; margin-bottom:1rem; color:#2c3e50; }
 
-/* CURIOSIDADES */
-.curiosidades {
-  padding: 4rem 2rem;
-  background-color: #f9f9f9;
-}
+    .historias .content {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      padding: 1rem 0;
+      background: transparent;
+    }
 
-.curiosidades h2 {
-  color: #040f0f;
-  font-size: 36px;
-  margin-bottom: 2rem;
-  text-align: center;
-}
+    .historias .content img {
+      flex: 0 0 360px;
+      max-width: 360px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+    }
 
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-}
+    .historias .content .text { flex: 1 1 auto; }
+    .historias .content .text h3 { margin-bottom:.5rem; color:#2c3e50; }
+    .historias .content .text p { margin-bottom:1rem; color:#444; line-height:1.6; }
 
-.cards article {
-  background: white;
-  border: 2px solid #daddd3;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  padding: 1.5rem;
-  text-align: center;
-  width: 340px;
-  transition: transform 0.3s ease;
-}
+    /* História pequena separada (caso queira usar vários itens) */
+    .historia-planta {
+      display:flex;
+      gap:1rem;
+      align-items:flex-start;
+      padding: 1rem;
+      background: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+    }
+    .historia-planta .historia-planta-foto { flex: 0 0 220px; max-width:220px; }
+    .historia-planta .foto-historia { width:100%; border-radius:10px; object-fit:cover; }
+    .historia-planta .historia-planta-texto { flex:1; padding-left:.25rem; }
+    .historia-planta .historia-planta-texto p { color:#333; line-height:1.5; }
 
-.cards article:hover {
-  transform: translateY(-5px);
-}
+    /* ========= RELATOS ========= */
+    .relatos-section { padding: 2rem 0; }
+    .relatos-section h1 { text-align:center; margin-bottom:1rem; color:#2c3e50; }
 
-.cards img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-}
+    .relatos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 1rem 0;
+    }
 
-.cards h3 {
-  font-size: 24px;
-  color: #040f0f;
-  margin-bottom: 10px;
-}
+    .relato-card {
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+      transition: transform .18s ease, box-shadow .18s ease;
+      min-height: 140px;
+    }
+    .relato-card:hover { transform: translateY(-6px); box-shadow: 0 16px 36px rgba(0,0,0,0.10); }
 
-.cards p {
-  font-size: 18px;
-  color: #000000bf;
-  font-weight: bold;
-  text-align: justify;
-}
+    .relato-header { display:flex; align-items:center; gap:.8rem; }
+    .relato-img { width:56px; height:56px; border-radius:50%; object-fit:cover; border:2px solid #eee; }
+    .relato-nome { font-weight:700; color:#2c3e50; }
+    .relato-card p { color:#333; font-size:.98rem; margin:0; }
+    .relato-card span { color:#777; font-size:.88rem; font-style:italic; margin-top:.35rem; }
 
-/* HISTÓRIAS */
-.historias {
-  padding: 4% 8%;
-  background-color: #daddd3;
-}
+    /* ========= RODAPÉ ========= */
+    footer .footer {
+      background:#f3f3f3;
+      padding: 1.25rem 0;
+      margin-top: 2rem;
+    }
+    footer .footer p { text-align:center; margin-bottom:.5rem; font-weight:600; color:#2c3e50; }
+    footer .links { display:flex; gap:.8rem; justify-content:center; }
+    footer .links a { color:#2c3e50; font-size:1.15rem; text-decoration:none; }
 
-.historias h2 {
-  color: #040f0f;
-  font-size: 40px;
-  margin-bottom: 2rem;
-  text-align: center;
-}
+    /* ========= RESPONSIVO ========= */
+    @media (max-width: 992px) {
+      .hero h1 { font-size: 2.2rem; }
+      .historias .content img { flex: 0 0 300px; max-width:300px; }
+    }
 
-.historias .content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 2rem;
-}
+    @media (max-width: 768px) {
+      .header-inner { flex-direction: column; height: auto; padding: .6rem 0; gap:.6rem; }
+      nav.menu { flex-wrap: wrap; justify-content:center; gap:.6rem; }
+      .hero { padding: 2rem 0; text-align:center; }
+      .hero-content { margin: 0 auto; max-width: 100%; }
 
-.historias .text {
-  max-width: 600px;
-  padding: 1rem;
-  color: #000000;
-  font-size: 18px;
-  text-align: justify;
-}
+      /* empilha história: imagem em cima, texto embaixo */
+      .historias .content { flex-direction: column; padding: 0; }
+      .historias .content img { width: 100%; max-width: 100%; flex: 0 0 auto; }
 
-.historias .text h3 {
-  font-size: 22px;
-  color: #4caf50;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-}
+      /* relatos: cards fluem naturalmente pelo grid */
+      .relato-card { min-height: auto; }
+      .historia-planta { flex-direction: column; align-items:center; text-align:center; }
+      .historia-planta .historia-planta-foto { max-width: 100%; flex:0 0 auto; }
+      .historia-planta .historia-planta-texto { padding-left:0; }
+    }
+  </style>
+</head>
+<body>
 
-.historias img {
-  max-width: 500px;
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">🌿 Natural Medicina</div>
 
-/* Rodapé */
-.footer {
-  text-align: center;
-  background: white;
-  color: #040f0f;
-  padding: 2rem 1rem;
-}
-
-.footer p {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-.footer .links a {
-  margin: 0 1rem;
-  color: #040f0f;
-  text-decoration: none;
-  font-size: 2rem;
-  transition: color 0.3s ease;
-}
-
-.footer .links a:hover {
-  color: #4caf50;
-}
-
-/* RESPONSIVO */
-@media (max-width: 768px) {
-  .hero,
-  .historias .content {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .hero img,
-  .historias img {
-    max-width: 100%;
-  }
-
-  .cards {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .header {
-    flex-direction: column;
-    height: auto;
-    gap: 1rem;
-  }
-
-  .header .menu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .header .menu a {
-    margin: 0.5rem 0;
-  }
-.historia-imagens {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 20px;
-  margin-top: 2rem;
-  flex-wrap: wrap;
-}
-
-.escada {
-  border-radius: 10px;
-  object-fit: cover;
-  width: 100%;
-  max-width: 200px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Alturas diferentes para o efeito escada */
-.escada1 {
-  height: 220px;
-} 
-
-.escada2 {
-  height: 180px;
-}
-
-.escada3 {
-  height: 140px;
-}
-
-
-}
-
-  
-</style>
-  <body>
-    <header class="header">
-      <div class="logo">Natural Medicina</div>
-     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
-
-      <nav class="menu">
-        <a href="login.php">Conta</a>
-        <a href="sobre.html">Sobre</a>
+      <nav class="menu" role="navigation" aria-label="Menu principal">
+        <a href="#curiosidades">Curiosidades</a>
+        <a href="#historias">Histórias</a>
+        <a href="#relatos">Relatos</a>
+        <a href="#sobre">Sobre</a>
       </nav>
-    </header>
 
-    <main>
-      <section class="hero">
-        <div class="hero-content">
-          <h1>Natural Medicina</h1>
-          <p>
-            Natural Medicine é uma plataforma que oferece dados científicos
-            sobre as espécies de plantas medicinais, ajudando usuários a
-            entender como cada planta pode contribuir para a saúde e o
-            bem-estar.
-          </p>
-         
+      <a href="login.php" class="btn-header">Comece agora</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <h1>Descubra o poder<br>das plantas medicinais</h1>
+        <p>Explore propriedades, usos e relatos de quem já sentiu os benefícios das plantas.</p>
+        <a href="#curiosidades" class="btn-green">Explorar plantas</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURIOSIDADES -->
+  <section id="curiosidades" class="curiosidades">
+    <div class="container">
+      <h2>Curiosidades das plantas</h2>
+      <div class="curiosidades-container">
+        <div class="curiosidade-card">
+          <img src="assets/img/camomila.jpg" alt="Camomila">
+          <h3>Os Segredos das Plantas Medicinais</h3>
+          <p>Como diversas culturas usam plantas para promoção da saúde.</p>
         </div>
-        <img src="./assets/img/charelatos.png" alt="Imagem principal" />
-      </section>
-
-      <section class="curiosidades">
-        <h2>Curiosidades das plantas</h2>
-        <div class="cards">
-          <article>
-            <img src="assets/img/ImagemC1.jpg" alt="Imagem 1" />
-            <h3>Os Segredos das Plantas Medicinais</h3>
-            <p>
-              Explore como diversas culturas tradicionais utilizam plantas
-              medicinais para curar.
-            </p>
-          </article>
-          <article>
-            <img src="assets/img/ImagemC2.webp" alt="Imagem 2" />
-            <h3>Alecrim: Muito Além do Tempero</h3>
-            <p>Descubra as propriedades medicinais do alecrim.</p>
-          </article>
-          <article>
-            <img src="assets/img/ImagemC2.webp" alt="Imagem 2" />
-            <h3>Alecrim: Muito Além do Tempero</h3>
-            <p>Descubra as propriedades medicinais do alecrim.</p>
-          </article>
-          <article>
-            <img src="assets/img/ImagemC3.jpg" alt="Imagem 3" />
-            <h3>A Magia das Ervas</h3>
-            <p>Entenda como as ervas podem melhorar sua saúde.</p>
-          </article>
-           
-           
+        <div class="curiosidade-card">
+          <img src="assets/img/camomila.jpg" alt="Alecrim">
+          <h3>Alecrim: Muito Além do Tempero</h3>
+          <p>Propriedades do alecrim para memória e circulação.</p>
         </div>
-      </section>
+        <div class="curiosidade-card">
+          <img src="assets/img/camomila.jpg" alt="Ervas">
+          <h3>A Magia das Ervas</h3>
+          <p>Ervas e infusões populares em remédios caseiros.</p>
+        </div>
+        <div class="curiosidade-card">
+          <img src="assets/img/camomila.jpg" alt="Camomila">
+          <h3>Camomila Relaxante</h3>
+          <p>Efeitos calmantes e terapêuticos da camomila.</p>
+        </div>
+        <div class="curiosidade-card">
+          <img src="assets/img/camomila.jpg" alt="Hortelã">
+          <h3>Hortelã Refrescante</h3>
+          <p>Alívio digestivo e aroma revigorante.</p>
+        </div>
+       <div class="curiosidade-card">
+          <img src="assets/img/camomila.jpg" alt="Hortelã">
+          <h3>Hortelã Refrescante</h3>
+          <p>Alívio digestivo e aroma revigorante.</p>
+        </div>
+         <div class="curiosidade-card">
+          <img src="assets/img/camomila.jpg" alt="Hortelã">
+          <h3>Hortelã Refrescante</h3>
+          <p>Alívio digestivo e aroma revigorante.</p>
+        </div>
+       <div class="curiosidade-card">
+          <img src="assets/img/camomila.jpg" alt="Hortelã">
+          <h3>Hortelã Refrescante</h3>
+          <p>Alívio digestivo e aroma revigorante.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          
+  <!-- HISTÓRIAS -->
+  <section id="historias" class="historias">
+    <div class="container">
+      <h2>Histórias de Cura com Plantas Medicinais</h2>
+
+      <!-- bloco principal com imagem + text -->
+      <div class="content">
+        <div class="text">
+          <h3>Como a Camomila Ajudou na Insônia</h3>
+          <p>A camomila, conhecida por suas propriedades relaxantes, tem sido usada por gerações para tratar a insônia e promover uma boa noite de sono. Estudos indicam que o consumo regular do chá de camomila pode ajudar a reduzir o estresse.</p>
+
+          <h3>O Poder do Gengibre Contra Náuseas</h3>
+          <p>O gengibre é amplamente reconhecido por suas propriedades anti-inflamatórias e sua eficácia no alívio de náuseas, especialmente durante viagens ou tratamentos médicos.</p>
+
+          <h3>Lavanda: Relaxamento em Forma de Planta</h3>
+          <p>O aroma calmante da lavanda é utilizado em óleos essenciais e chás para promover relaxamento, aliviar dores de cabeça e melhorar a qualidade do sono.</p>
+
+          <h3>O Segredo do Alecrim para a Memória</h3>
+          <p>Acredita-se que o alecrim melhora a memória e a concentração. Usado em óleos essenciais ou infusões, ele é popular para aumentar o foco mental.</p>
         </div>
 
-        <section class="hero">
-          <div class="hero-content">
-            <h1>Nossos relatos</h1>
-            <p>
-              Compartilhar relatos sobre o uso de plantas medicinais é uma forma
-              valiosa de transmitir saberes. Relatos reais inspiram curiosidade
-              em quem busca alternativas naturais. Unir experiências pessoais com
-              dados científicos enriquece o aprendizado. Por isso, seu relato pode
-              fazer a diferença para muitas outras pessoas.
-            </p>
-          
+        <img src="assets/img/historias.webp" alt="História das plantas">
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- RELATOS -->
+  <section id="relatos" class="relatos-section">
+    <div class="container">
+      <h1>Relatos dos familiares</h1>
+
+      <div class="relatos-grid">
+        <div class="relato-card">
+          <div class="relato-header">
+            <img src="assets/img/Ramo de camomila sobre mesa rústica.png" alt="Pessoa 1" class="relato-img">
+            <div class="relato-nome">Pessoa 1</div>
           </div>
-          <img
-            src="assets/img/plantas-Brasil-cha.webp"
-            alt="Imagem principal"
-            height="590"
-            width="590"
-          />
-        </section>
-      </section>
-    </main>
+          <p>O chá de camomila me ajudou a dormir melhor em noites de insônia. Usei por duas semanas e senti diferença.</p>
+          <span>12/06/2025</span>
+        </div>
 
-    <footer>
+        <div class="relato-card">
+          <div class="relato-header">
+            <img src="assets/img/images.jpeg" alt="Pessoa 2" class="relato-img">
+            <div class="relato-nome">Pessoa 2</div>
+          </div>
+          <p>O gengibre em cápsulas diminuiu minhas náuseas ao viajar — recomendo procurar orientação antes de usar.</p>
+          <span>03/05/2025</span>
+        </div>
+
+        <div class="relato-card">
+          <div class="relato-header">
+            <img src="assets/img/foto3.jpg" alt="Pessoa 3" class="relato-img">
+            <div class="relato-nome">Pessoa 3</div>
+          </div>
+          <p>Usei compressa de lavanda para dor de cabeça e senti alívio leve. Ótimo como complemento.</p>
+          <span>21/04/2025</span>
+        </div>
+
+        <div class="relato-card">
+          <div class="relato-header">
+            <img src="assets/img/foto4.jpg" alt="Pessoa 4" class="relato-img">
+            <div class="relato-nome">Pessoa 4</div>
+          </div>
+          <p>O óleo de alecrim me ajudou em momentos de concentração para estudar. Aroma estimulante.</p>
+          <span>18/03/2025</span>
+        </div>
+
+        <div class="relato-card">
+          <div class="relato-header">
+            <img src="assets/img/foto5.jpg" alt="Pessoa 5" class="relato-img">
+            <div class="relato-nome">Pessoa 5</div>
+          </div>
+          <p>Hortelã em chá, após refeições, diminuiu desconforto digestivo na família.</p>
+          <span>09/02/2025</span>
+        </div>
+
+        <div class="relato-card">
+          <div class="relato-header">
+            <img src="assets/img/foto6.jpg" alt="Pessoa 6" class="relato-img">
+            <div class="relato-nome">Pessoa 6</div>
+          </div>
+          <p>Compressas de camomila reduziram inflamação leve na pele em poucos dias.</p>
+          <span>27/01/2025</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer id="sobre">
+    <div class="container">
       <div class="footer">
         <p>Natural Medicina</p>
-        <div class="links">
+        <div class="links" aria-label="Redes sociais">
           <a href="#"><i class="fab fa-instagram"></i></a>
           <a href="#"><i class="fab fa-facebook-f"></i></a>
           <a href="#"><i class="fab fa-linkedin-in"></i></a>
           <a href="#"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
-    </footer>
-  </body>
+    </div>
+  </footer>
+
+</body>
 </html>
