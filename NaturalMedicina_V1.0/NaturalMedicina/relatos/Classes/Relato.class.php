@@ -3,20 +3,14 @@ require_once ("Database.class.php");
 
 class Relato {
     private $id_relato;
-    private $titulo;
     private $descricao; 
     private $data_relato;
-    private $id_usuario;
-    private $id_planta;
 
     // construtor da classe
-    public function __construct($id_relato, $titulo, $descricao, $data_relato, $id_usuario, $id_planta) {
+    public function __construct($id_relato,$descricao, $data_relato) {
         $this->id_relato = $id_relato;
-        $this->titulo = $titulo;
         $this->descricao = $descricao;
         $this->data_relato = $data_relato;
-        $this->id_usuario = $id_usuario;
-        $this->id_planta = $id_planta;
     }
 
     // setters
@@ -26,11 +20,6 @@ class Relato {
         $this->id_relato = $id_relato;
     }
 
-    public function setTitulo($titulo){
-        if ($titulo == "")
-            throw new Exception("Erro, o título deve ser informado!");
-        $this->titulo = $titulo;
-    }
 
     public function setDescricao($descricao){
         $this->descricao = $descricao;
@@ -40,22 +29,12 @@ class Relato {
         $this->data_relato = $data_relato;
     }
 
-    public function setIdUsuario($id_usuario){
-        $this->id_usuario = $id_usuario;
-    }
-
-    public function setIdPlanta($id_planta){
-        $this->id_planta = $id_planta;
-    }
-
     // getters
     public function getIdRelato(): int{
         return (int) $this->id_relato;
     }
 
-    public function getTitulo(): string{
-        return $this->titulo;
-    }
+  
 
     public function getDescricao(): string{
         return $this->descricao;
@@ -65,33 +44,21 @@ class Relato {
         return $this->data_relato;
     }
 
-    public function getIdUsuario(): int{
-        return (int) $this->id_usuario;
-    }
-
-    public function getIdPlanta(): int{
-        return (int) $this->id_planta;
-    }
-
+   
     // método mágico para imprimir um relato
     public function __toString(): string {
-        return "Relato: $this->id_relato - $this->titulo
+        return "Relato: $this->id_relato
                 - Data: $this->data_relato
-                - Descrição: $this->descricao
-                - Usuário: $this->id_usuario
-                - Planta: $this->id_planta";
+                - Descrição: $this->descricao";
     }
 
     // insere um relato no banco
     public function inserir(): bool {
-        $sql = "INSERT INTO relatos (titulo, descricao, data_relato, id_usuario, id_planta)
-                VALUES (:titulo, :descricao, :data_relato, :id_usuario, :id_planta)";
+        $sql = "INSERT INTO relatos (descricao, data_relato)
+                VALUES (:descricao, :data_relato)";
         $parametros = array(
-            ':titulo' => $this->getTitulo(),
             ':descricao' => $this->getDescricao(),
-            ':data_relato' => $this->getDataRelato(),
-            ':id_usuario' => $this->getIdUsuario(),
-            ':id_planta' => $this->getIdPlanta()
+            ':data_relato' => $this->getDataRelato()
         );
         return Database::executar($sql, $parametros) == true;
     }
@@ -112,11 +79,8 @@ class Relato {
         while ($registro = $comando->fetch()) {
             $relato = new Relato(
                 $registro['id_relato'],
-                $registro['titulo'],
                 $registro['descricao'],
-                $registro['data_relato'],
-                $registro['id_usuario'],
-                $registro['id_planta']
+                $registro['data_relato']
             );
             array_push($relatos, $relato);
         }
@@ -125,20 +89,14 @@ class Relato {
 
     public function alterar(): bool {
         $sql = "UPDATE relatos SET 
-                    titulo = :titulo, 
                     descricao = :descricao, 
-                    data_relato = :data_relato,
-                    id_usuario = :id_usuario,
-                    id_planta = :id_planta
+                    data_relato = :data_relato
                 WHERE id_relato = :id_relato";
         $parametros = array(
             ':id_relato' => $this->getIdRelato(),
-            ':titulo' => $this->getTitulo(),
             ':descricao' => $this->getDescricao(),
-            ':data_relato' => $this->getDataRelato(),
-            ':id_usuario' => $this->getIdUsuario(),
-            ':id_planta' => $this->getIdPlanta()
-        );
+            ':data_relato' => $this->getDataRelato()
+         );
         return Database::executar($sql, $parametros) == true;
     }
 

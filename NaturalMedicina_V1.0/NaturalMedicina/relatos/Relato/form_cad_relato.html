@@ -269,17 +269,14 @@ body {
     <form action="index.php" method="post" aria-label="Formulário de cadastro de relatos">
       <h1>Cadastro de Relatos</h1>
 
+      <h3>Conte para nós o que as plantas ja ajudaram ou uma experiencia com plantas </h3>
+
       <label for="id_relato">ID do Relato:</label>
       <div class="input-group">
         <input type="text" id="id_relato" name="id_relato" readonly value="" aria-readonly="true" />
         <i class="fas fa-id-badge" aria-hidden="true"></i>
       </div>
 
-      <label for="titulo">Título:</label>
-      <div class="input-group">
-        <input type="text" id="titulo" name="titulo" required value="" />
-        <i class="fas fa-heading" aria-hidden="true"></i>
-      </div>
 
       <label for="data_relato">Data do Relato:</label>
       <div class="input-group">
@@ -287,23 +284,13 @@ body {
         <i class="fas fa-calendar-alt" aria-hidden="true"></i>
       </div>
 
-      <label for="descricao">Descrição:</label>
+      <label for="descricao">Seu Relato:</label>
       <div class="input-group">
         <textarea id="descricao" name="descricao" rows="4" required></textarea>
         <i class="fas fa-align-left" aria-hidden="true"></i>
       </div>
 
-      <label for="id_usuario">ID do Usuário:</label>
-      <div class="input-group">
-        <input type="text" id="id_usuario" name="id_usuario" readonly value="" aria-readonly="true" />
-        <i class="fas fa-user" aria-hidden="true"></i>
-      </div>
-
-      <label for="id_planta">ID da Planta:</label>
-      <div class="input-group">
-        <input type="text" id="id_planta" name="id_planta" readonly value="" aria-readonly="true" />
-        <i class="fas fa-seedling" aria-hidden="true"></i>
-      </div>
+      
 
       <div class="button-group">
         <button type="submit" name="acao" value="salvar" aria-label="Salvar relato">Salvar</button>
@@ -316,9 +303,8 @@ body {
   <footer class="footer" role="contentinfo">
     <p>&copy; 2025 Natural Medicine</p>
     <div class="links" aria-label="Redes sociais">
-      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
       <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+     
     </div>
   </footer>
 

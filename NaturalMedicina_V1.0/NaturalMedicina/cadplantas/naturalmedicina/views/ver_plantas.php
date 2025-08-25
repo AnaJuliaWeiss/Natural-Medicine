@@ -22,7 +22,8 @@ if (!empty($termoBusca)) {
   <meta charset="UTF-8">
   <title>Ver Plantas Medicinais</title>
   <link rel="stylesheet" href="../../../css/cadplant.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Caladea&display=swap" rel="stylesheet">
+
   <style>
     * {
       margin: 0;
@@ -30,30 +31,84 @@ if (!empty($termoBusca)) {
       box-sizing: border-box;
     }
 
+    /* ========= CSS novo que você pediu ========= */
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: white;
-      color: #2e7d32;
+      font-family: 'Caladea', serif;
+      background: #ffffff;
+      color: #333;
+      line-height: 1.6;
       min-height: 100vh;
     }
 
-    .header {
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 1.5rem;
+      width: 100%;
+    }
+
+    header.header {
+      background: linear-gradient(90deg, #3a7d44, #4caf50);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #4caf50;
       padding: 15px 30px;
       flex-wrap: wrap;
       gap: 20px;
     }
 
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      font-size: 32px;
-      color: #ffffff;
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      height: 80px;
+      padding: 0;
     }
 
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    nav.menu {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    nav.menu a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      padding: .25rem .35rem;
+      transition: color .2s ease;
+    }
+    nav.menu a:hover { color: #d9f7d9; }
+
+    .btn-header {
+      background: #fff;
+      color: #3a7d44;
+      padding: .6rem 1rem;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      transition: background .2s ease, transform .15s ease;
+    }
+    .btn-header:hover { background: #d9f7d9; transform: translateY(-2px); }
+
+    /* ========= CSS antigo (mantido) ========= */
     .busca-form {
       display: flex;
       align-items: center;
@@ -83,24 +138,6 @@ if (!empty($termoBusca)) {
       background-color: #4caf50;
     }
 
-    .menu a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    .menu a:hover {
-      color: #c8e6c9;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
     .container h2 {
       text-align: center;
       font-size: 32px;
@@ -115,20 +152,20 @@ if (!empty($termoBusca)) {
     }
 
     .planta-card {
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
-  max-width: 350px;
-  width: 100%;
-  margin: 0 auto;
-}
-.planta-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      max-width: 350px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .planta-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
 
     .planta-card:hover {
       transform: translateY(-5px);
@@ -140,12 +177,6 @@ if (!empty($termoBusca)) {
       color: inherit;
       display: block;
       height: 100%;
-    }
-
-    .planta-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
     }
 
     .planta-card h3 {
@@ -161,13 +192,12 @@ if (!empty($termoBusca)) {
     }
 
     @media (max-width: 768px) {
-      .header {
+      header.header {
         flex-direction: column;
         align-items: center;
       }
 
-      .menu {
-        display: flex;
+      nav.menu {
         flex-direction: column;
         align-items: center;
         gap: 10px;

@@ -1,17 +1,10 @@
 <div class="comment">
-    <div class="comment-header">{titulo}</div>
-    <div class="comment-meta">
-        Relato #{id_relato} - {data_relato}  
-        | Usuário: {id_usuario} | Planta: {id_planta}
+  <div class="comment-header">
+    <div>
+      <span class="comment-name">{nome}</span>
+      <span class="comment-meta">{data_relato}</span>
     </div>
-    <div class="comment-body">{descricao}</div>
-    <div class="comment-footer">
-        <form action="cadastrar.php" method="post">
-            <button type="submit" class="btn-green">Cadastrar</button>
-        </form>
-        <form action="apagar.php" method="post">
-            <input type="hidden" name="id_relato" value="{id_relato}">
-            <button type="submit" class="btn-red">Apagar</button>
-        </form>
-    </div>
+  </div>
+
+  <div class="comment-body">{descricao}</div>
 </div>

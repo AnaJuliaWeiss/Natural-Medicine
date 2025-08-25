@@ -2,222 +2,255 @@
 require_once __DIR__ . '/../controllers/PlantaController.php';
 
 $controller = new PlantaController();
+
+$termoBusca = isset($_GET['busca']) ? trim($_GET['busca']) : '';
 $plantas = $controller->listarPlantas();
+
+// Filtra resultados se houver termo de busca
+if (!empty($termoBusca)) {
+    $plantas = array_filter($plantas, function ($planta) use ($termoBusca) {
+        $termo = mb_strtolower($termoBusca);
+        return mb_strpos(mb_strtolower($planta['nome_popular']), $termo) !== false ||
+               mb_strpos(mb_strtolower($planta['nome_cientifico']), $termo) !== false;
+    });
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Lista de Plantas Medicinais</title>
+  <title>Ver Plantas Medicinais</title>
   <link rel="stylesheet" href="../../../css/cadplant.css">
-<style>
-    /* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Caladea&display=swap" rel="stylesheet">
 
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: white;
-  color: #2e7d32;
-  min-height: 100vh;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* Header com logo e menu */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #4caf50;
-  padding: 15px 30px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
+    /* ========= CSS novo que você pediu ========= */
+    body {
+      font-family: 'Caladea', serif;
+      background: #ffffff;
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
 
-.header .logo img {
-  height: 50px;
-}
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 1.5rem;
+      width: 100%;
+    }
 
-.header .menu a {
-  color: white;
-  text-decoration: none;
-  margin-left: 20px;
-  font-weight: bold;
-  transition: color 0.3s;
-}
+    header.header {
+      background: linear-gradient(90deg, #3a7d44, #4caf50);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
 
-.header .menu a:hover {
-  color: #c8e6c9;
-}
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      height: 80px;
+      padding: 0;
+    }
 
-/* Container principal */
-.container {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
 
-.container h2 {
-  text-align: center;
-  font-size: 32px;
-  color: #1b5e20;
-  margin-bottom: 30px;
-}
+    nav.menu {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
 
-/* Botão cadastrar */
-.top-bar {
-  display: flex;
-  justify-content: center; /* ← centraliza horizontalmente */
-  margin-bottom: 20px;
-}
+    nav.menu a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      padding: .25rem .35rem;
+      transition: color .2s ease;
+    }
+    nav.menu a:hover { color: #d9f7d9; }
 
-.btn-cadastrar {
-  background-color: #4caf50;
-  color: white;
-  padding: 12px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s;
-}
+    .btn-header {
+      background: #fff;
+      color: #3a7d44;
+      padding: .6rem 1rem;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      transition: background .2s ease, transform .15s ease;
+    }
+    .btn-header:hover { background: #d9f7d9; transform: translateY(-2px); }
 
-.btn-cadastrar:hover {
-  background-color: #388e3c;
-}
+    /* ========= CSS antigo (mantido) ========= */
+    .busca-form {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-/* Grid de cards */
-.plantas-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-}
+    .busca-form input[type="text"] {
+      padding: 8px 12px;
+      font-size: 20px;
+      border-radius: 6px;
+      border: none;
+      width: 400px;
+      outline: none;
+    }
 
-/* Cada card de planta */
-.planta-card {
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
+    .busca-form button {
+      padding: 8px 16px;
+      background-color: #2e7d32;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
 
-.planta-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
-}
+    .busca-form button:hover {
+      background-color: #4caf50;
+    }
 
-.planta-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  height: 100%;
-}
+    .container h2 {
+      text-align: center;
+      font-size: 32px;
+      color: #4caf50;
+      margin-bottom: 30px;
+    }
 
-.planta-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
+    .plantas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
 
-.planta-card h3 {
-  font-size: 20px;
-  color: #1b5e20;
-  margin: 12px;
-}
+    .planta-card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      max-width: 350px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .planta-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
 
-.planta-card p {
-  font-size: 16px;
-  color: #4caf50;
-  margin: 0 12px 16px 12px;
-}
-/* Estilo para a barra de busca */
-.busca-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 30px;
-  gap: 10px;
-  flex-wrap: wrap;
-}
+    .planta-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+    }
 
-.busca-wrapper input[type="text"] {
-  padding: 10px 15px;
-  font-size: 16px;
-  border: 2px solid #c8e6c9;
-  border-radius: 8px;
-  outline: none;
-  width: 250px;
-  max-width: 90%;
-  transition: border-color 0.3s;
-}
+    .planta-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      height: 100%;
+    }
 
-.busca-wrapper input[type="text"]:focus {
-  border-color: #66bb6a;
-}
+    .planta-card h3 {
+      font-size: 20px;
+      color: #1b5e20;
+      margin: 12px;
+    }
 
-.busca-wrapper button {
-  padding: 10px 20px;
-  background-color: #4caf50;
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
+    .planta-card p {
+      font-size: 16px;
+      color: #4caf50;
+      margin: 0 12px 16px 12px;
+    }
 
-.busca-wrapper button:hover {
-  background-color: #388e3c;
-}
+    @media (max-width: 768px) {
+      header.header {
+        flex-direction: column;
+        align-items: center;
+      }
 
+      nav.menu {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .busca-form {
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
 
-<header class="header">
-  <div class="logo"><img src="../../../assets/favicon/logo.png" alt="Logo" /></div>
-  <nav class="menu">
-   <nav class="menu">
-   <a href="../../../indexLogado.admins.php">Home</a>
-  <a href="../../../Relatos/Relato/form_cad_relato.html">Relatos</a>
-  <a href="../../../ContaAdmin/indexadmin.php">Conta</a>
+  <header class="header">
+    <div class="logo">Natural Medicina</div>
 
-</nav>
+    <form method="GET" action="" class="busca-form">
+      <input type="text" name="busca" placeholder="Buscar planta..." value="<?= htmlspecialchars($termoBusca) ?>">
+      <button type="submit">Buscar</button>
+    </form>
 
-  </nav>
-</header>
+    <nav class="menu">
+      <a href="../../../indexLogado.php">Home</a>
+      <a href="../../../Relatos/Relato/form_cad_relato.html">Relatos</a>
+      <a href="../../../ContaUsuario/indexusuario.php">Conta</a>
+    </nav>
+  </header>
 
-<div class="container">
-  <h2>Lista de Plantas Medicinais</h2>
+  <div class="container">
+    <h2>Plantas Medicinais</h2>
 
-  <div class="top-bar">
-    <a href="cadastro.php" class="btn-cadastrar">Cadastrar nova planta</a>
+    <?php if (!isset($plantas)) $plantas = []; ?>
+
+    <?php if (count($plantas) > 0): ?>
+      <div class="plantas-grid">
+        <?php foreach ($plantas as $planta): ?>
+          <div class="planta-card">
+            <a href="detalhes.php?id=<?= $planta['id_planta'] ?>" class="planta-link">
+              <?php if (!empty($planta['imagem_url'])): ?>
+                <img src="../uploads/<?= htmlspecialchars($planta['imagem_url']) ?>" alt="<?= htmlspecialchars($planta['nome_popular']) ?>">
+              <?php else: ?>
+                <img src="https://via.placeholder.com/240x180?text=Sem+Imagem" alt="Sem imagem">
+              <?php endif; ?>
+              <h3><?= htmlspecialchars($planta['nome_popular']) ?></h3>
+              <p><?= htmlspecialchars($planta['nome_cientifico']) ?></p>
+            </a>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    <?php else: ?>
+      <p style="text-align: center; margin-top: 30px;">Nenhuma planta encontrada com esse nome.</p>
+    <?php endif; ?>
   </div>
-
-  <?php if (!isset($plantas)) $plantas = []; ?>
-
-  <?php if (count($plantas) > 0): ?>
-    <div class="plantas-grid">
-      <?php foreach ($plantas as $planta): ?>
-        <div class="planta-card">
-          <a href="detalhes.php?id=<?= $planta['id_planta'] ?>" class="planta-link">
-            <?php if (!empty($planta['imagem_url'])): ?>
-              <img src="../uploads/<?= htmlspecialchars($planta['imagem_url']) ?>" alt="<?= htmlspecialchars($planta['nome_popular']) ?>">
-            <?php else: ?>
-              <img src="https://via.placeholder.com/240x180?text=Sem+Imagem" alt="Sem imagem">
-            <?php endif; ?>
-            <h3><?= htmlspecialchars($planta['nome_popular']) ?></h3>
-            <p><?= htmlspecialchars($planta['nome_cientifico']) ?></p>
-          </a>
-        </div>
-      <?php endforeach; ?>
-    </div>
-  <?php else: ?>
-    <p style="text-align: center; margin-top: 30px;">Nenhuma planta cadastrada ainda.</p>
-  <?php endif; ?>
-</div>
 
 </body>
 </html>
