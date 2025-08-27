@@ -21,10 +21,12 @@ class Planta {
     public function salvar($dados) {
         $sql = "INSERT INTO " . $this->tabela . " (
             nome_popular, nome_cientifico, uso_medicinal, modo_uso,
-            dosagem, efeitos_colaterais, beneficios, maleficios, imagem_url, fonte
+            dosagem, efeitos_colaterais, beneficios, maleficios,
+            imagem_url, fonte, categoria
         ) VALUES (
             :nome_popular, :nome_cientifico, :uso_medicinal, :modo_uso,
-            :dosagem, :efeitos_colaterais, :beneficios, :maleficios, :imagem_url, :fonte
+            :dosagem, :efeitos_colaterais, :beneficios, :maleficios,
+            :imagem_url, :fonte, :categoria
         )";
 
         $stmt = $this->conn->prepare($sql);
@@ -39,6 +41,7 @@ class Planta {
         $stmt->bindValue(':maleficios', $dados['maleficios']);
         $stmt->bindValue(':imagem_url', $dados['imagem_url']);
         $stmt->bindValue(':fonte', $dados['fonte']);
+        $stmt->bindValue(':categoria', $dados['categoria']); // <<<< categoria adicionada
 
         return $stmt->execute();
     }
@@ -54,7 +57,8 @@ class Planta {
             beneficios = :beneficios,
             maleficios = :maleficios,
             imagem_url = :imagem_url,
-            fonte = :fonte
+            fonte = :fonte,
+            categoria = :categoria
             WHERE id_planta = :id_planta";
 
         $stmt = $this->conn->prepare($sql);
@@ -70,6 +74,7 @@ class Planta {
         $stmt->bindValue(':maleficios', $dados['maleficios']);
         $stmt->bindValue(':imagem_url', $dados['imagem_url']);
         $stmt->bindValue(':fonte', $dados['fonte']);
+        $stmt->bindValue(':categoria', $dados['categoria']); // <<<< categoria adicionada
 
         return $stmt->execute();
     }

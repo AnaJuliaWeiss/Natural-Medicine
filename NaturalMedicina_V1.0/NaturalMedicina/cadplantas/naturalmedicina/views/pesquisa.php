@@ -4,6 +4,8 @@ require_once __DIR__ . '/../controllers/PlantaController.php';
 $controller = new PlantaController();
 
 $termoBusca = isset($_GET['busca']) ? trim($_GET['busca']) : '';
+$categoria = isset($_GET['categoria']) ? trim($_GET['categoria']) : '';
+
 $plantas = $controller->listarPlantas();
 
 // Filtra resultados se houver termo de busca
@@ -12,6 +14,13 @@ if (!empty($termoBusca)) {
         $termo = mb_strtolower($termoBusca);
         return mb_strpos(mb_strtolower($planta['nome_popular']), $termo) !== false ||
                mb_strpos(mb_strtolower($planta['nome_cientifico']), $termo) !== false;
+    });
+}
+
+// Filtra por categoria se houver
+if (!empty($categoria)) {
+    $plantas = array_filter($plantas, function ($planta) use ($categoria) {
+        return isset($planta['categoria']) && mb_strtolower($planta['categoria']) === mb_strtolower($categoria);
     });
 }
 ?>
@@ -23,7 +32,6 @@ if (!empty($termoBusca)) {
   <title>Ver Plantas Medicinais</title>
   <link rel="stylesheet" href="../../../css/cadplant.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Caladea&display=swap" rel="stylesheet">
-
   <style>
     * {
       margin: 0;
@@ -31,7 +39,6 @@ if (!empty($termoBusca)) {
       box-sizing: border-box;
     }
 
-    /* ========= CSS novo que você pediu ========= */
     body {
       font-family: 'Caladea', serif;
       background: #ffffff;
@@ -61,15 +68,6 @@ if (!empty($termoBusca)) {
       gap: 20px;
     }
 
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      height: 80px;
-      padding: 0;
-    }
-
     .logo {
       font-family: 'Playfair Display', serif;
       font-size: 26px;
@@ -96,19 +94,6 @@ if (!empty($termoBusca)) {
     }
     nav.menu a:hover { color: #d9f7d9; }
 
-    .btn-header {
-      background: #fff;
-      color: #3a7d44;
-      padding: .6rem 1rem;
-      border-radius: 8px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-block;
-      transition: background .2s ease, transform .15s ease;
-    }
-    .btn-header:hover { background: #d9f7d9; transform: translateY(-2px); }
-
-    /* ========= CSS antigo (mantido) ========= */
     .busca-form {
       display: flex;
       align-items: center;
@@ -143,6 +128,28 @@ if (!empty($termoBusca)) {
       font-size: 32px;
       color: #4caf50;
       margin-bottom: 30px;
+    }
+
+    .filtros {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .filtros a {
+      display: inline-block;
+      margin: 5px;
+      padding: 8px 14px;
+      background: #4caf50;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.3s;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .filtros a:hover {
+      background: #2e7d32;
     }
 
     .plantas-grid {
@@ -190,23 +197,6 @@ if (!empty($termoBusca)) {
       color: #4caf50;
       margin: 0 12px 16px 12px;
     }
-
-    @media (max-width: 768px) {
-      header.header {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      nav.menu {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .busca-form {
-        justify-content: center;
-      }
-    }
   </style>
 </head>
 <body>
@@ -229,6 +219,17 @@ if (!empty($termoBusca)) {
   <div class="container">
     <h2>Plantas Medicinais</h2>
 
+    <!-- Filtros -->
+    <div class="filtros">
+      <a href="pesquisa.php">Todas</a>
+      <a href="pesquisa.php?categoria=raiz">Raiz</a>
+      <a href="pesquisa.php?categoria=caule">Caule</a>
+      <a href="pesquisa.php?categoria=folha">Folha</a>
+      <a href="pesquisa.php?categoria=flor">Flor</a>
+      <a href="pesquisa.php?categoria=fruto">Fruto</a>
+      <a href="pesquisa.php?categoria=semente">Semente</a>
+    </div>
+
     <?php if (!isset($plantas)) $plantas = []; ?>
 
     <?php if (count($plantas) > 0): ?>
@@ -243,12 +244,18 @@ if (!empty($termoBusca)) {
               <?php endif; ?>
               <h3><?= htmlspecialchars($planta['nome_popular']) ?></h3>
               <p><?= htmlspecialchars($planta['nome_cientifico']) ?></p>
+
+              <?php if (!empty($planta['categoria'])): ?>
+                <a href="pesquisa.php?categoria=<?= urlencode($planta['categoria']) ?>" class="categoria-btn">
+                  <?= ucfirst(htmlspecialchars($planta['categoria'])) ?>
+                </a>
+              <?php endif; ?>
             </a>
           </div>
         <?php endforeach; ?>
       </div>
     <?php else: ?>
-      <p style="text-align: center; margin-top: 30px;">Nenhuma planta encontrada com esse nome.</p>
+      <p style="text-align:center; margin-top:30px;">Nenhuma planta encontrada com esse filtro.</p>
     <?php endif; ?>
   </div>
 

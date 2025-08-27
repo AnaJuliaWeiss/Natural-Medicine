@@ -10,12 +10,10 @@ $controller = new PlantaController();
 $imagemPath = '';
 
 if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
-    // Gera nome único para evitar sobrescrever
     $nomeImagem = time() . '_' . basename($_FILES['imagem']['name']);
     $caminhoDestino = '../uploads/' . $nomeImagem;
 
     if (move_uploaded_file($_FILES['imagem']['tmp_name'], $caminhoDestino)) {
-        // Salva só o nome da imagem no banco
         $imagemPath = $nomeImagem;
     }
 }
@@ -30,10 +28,12 @@ $dados = [
     'beneficios' => $_POST['beneficios'] ?? '',
     'maleficios' => $_POST['maleficios'] ?? '',
     'imagem_url' => $imagemPath,
-    'fonte' => $_POST['fonte'] ?? ''
+    'fonte' => $_POST['fonte'] ?? '',
+    'categoria' => $_POST['categoria'] ?? '' // <<<< campo categoria
 ];
 
 $controller->cadastrarPlanta($dados);
 
 header('Location: ../views/pesquisa.php');
 exit;
+?>
