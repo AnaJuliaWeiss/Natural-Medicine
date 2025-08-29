@@ -271,23 +271,24 @@ body {
 
       <h3>Conte para nós o que as plantas ja ajudaram ou uma experiencia com plantas </h3>
 
-      <label for="id_relato">ID do Relato:</label>
-      <div class="input-group">
-        <input type="text" id="id_relato" name="id_relato" readonly value="" aria-readonly="true" />
-        <i class="fas fa-id-badge" aria-hidden="true"></i>
-      </div>
+     <input type="hidden" id="id_relato" name="id_relato" value="{id_relato}">
 
+     <label for="nome">Seu Nome:</label>
+<div class="input-group">
+  <input type="text" id="nome" name="nome" required value="{nome}">
+  <i class="fas fa-user" aria-hidden="true"></i>
+</div>
 
       <label for="data_relato">Data do Relato:</label>
       <div class="input-group">
-        <input type="date" id="data_relato" name="data_relato" required value="" />
-        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+      <input type="date" id="data_relato" name="data_relato" required value="{data_relato}" />
+       <i class="fas fa-calendar-alt" aria-hidden="true"></i>
       </div>
 
       <label for="descricao">Seu Relato:</label>
       <div class="input-group">
-        <textarea id="descricao" name="descricao" rows="4" required></textarea>
-        <i class="fas fa-align-left" aria-hidden="true"></i>
+        <textarea id="descricao" name="descricao" rows="4" required>{descricao}</textarea>
+         <i class="fas fa-align-left" aria-hidden="true"></i>
       </div>
 
       

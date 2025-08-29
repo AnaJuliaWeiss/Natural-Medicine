@@ -9,6 +9,8 @@ $itens  = '';
 foreach ($lista as $relato) {
     $linha = str_replace('{data_relato}', $relato->getDataRelato(), $item);
     $linha = str_replace('{descricao}', nl2br(htmlspecialchars($relato->getDescricao())), $linha);
+    $linha = str_replace('{nome}', htmlspecialchars($relato->getNome()), $linha);
+
 
     // Se você já tiver nome de usuário no objeto Relato:
     if (method_exists($relato, 'getNomeUsuario') && $relato->getNomeUsuario()) {
