@@ -49,10 +49,7 @@ if ($resultado) {
 // mostra formulário
 echo $formulario;
 
-// mostra mensagem
-if (!empty($mensagem)) {
-    echo "<div style='margin:20px 0;'>$mensagem</div>";
-}
+
 
 // mostra lista de relatos em cards
 echo "<h2 style='text-align:center; color:#2e7d32; margin:30px 0;'>Relatos enviados</h2>";

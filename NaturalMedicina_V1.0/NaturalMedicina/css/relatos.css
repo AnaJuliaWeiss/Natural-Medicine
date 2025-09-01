@@ -1,159 +1,245 @@
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* ========= Reset básico ========= */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+img { max-width: 100%; height: auto; display: block; }
 
-/* Estilo do corpo */
+/* ========= Tipografia & container ========= */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f1f9f1;
-  color: #2e4d2e;
-  padding: 20px;
+  font-family: 'Caladea', serif;
+  background: #ffffff;
+  color: #333;
+  line-height: 1.6;
 }
 
-/* Header */
-.header {
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+}
+
+/* ========= HEADER ========= */
+header.header {
+  background: linear-gradient(90deg, #3a7d44, #4caf50);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.header-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #cfe9cf;
-  padding: 15px 30px;
-  border-radius: 0 0 10px 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 80px;
+  padding: 0 40px;
 }
 
-.header .logo img {
-  height: 50px;
-}
-
-.menu {
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  color: #fff;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: .5rem;
 }
 
-.menu a {
-  text-decoration: none;
-  color: #2e4d2e;
-  font-weight: bold;
-  transition: color 0.3s;
+.logo img {
+  height: 40px; /* ajuste conforme necessário */
 }
 
-.menu a:hover {
-  color: #4a7c4a;
-}
-
-.search-form {
+nav.menu {
   display: flex;
-  gap: 5px;
+  gap: 2rem;
+  align-items: center;
 }
 
-.search-form input {
-  padding: 8px;
-  border: 1px solid #a8d5a8;
-  border-radius: 6px;
+nav.menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: color .2s ease;
+}
+
+nav.menu a:hover {
+  color: #d9f7d9;
+}
+
+/* ========= MAIN ========= */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+form {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* ========= TIPOGRAFIA ========= */
+h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2e5c15;
+  margin-bottom: 0.5rem;
+}
+
+h3 {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #4a7c4a;
+  margin-bottom: 2rem;
+}
+
+label {
+  font-weight: 600;
+  color: #3b6c18;
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+/* ========= FORM INPUTS ========= */
+input,
+textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 2px solid #4caf50;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: #ffffff;
+  margin-bottom: 1.2rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #2e5c15;
+  box-shadow: 0 0 6px rgba(46, 92, 21, 0.25);
   outline: none;
 }
 
-.search-form button {
-  padding: 8px 10px;
-  background-color: #6bb96b;
-  border: none;
-  border-radius: 6px;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.search-form button:hover {
-  background-color: #4e9c4e;
-}
-
-/* Título */
-h1 {
-  text-align: center;
-  margin: 30px 0;
-  color: #3e6b3e;
-}
-
-/* Formulário */
-form {
-  max-width: 700px;
-  margin: 0 auto;
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-fieldset {
-  border: none;
-}
-
-legend {
-  font-size: 1.4em;
-  font-weight: bold;
-  color: #3e6b3e;
-  margin-bottom: 20px;
-}
-
-/* Labels e campos */
-label {
-  display: block;
-  margin-top: 15px;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-input[type="text"],
-input[type="date"],
 textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #c2d8c2;
-  border-radius: 8px;
-  background-color: #f9fef9;
-  font-size: 1em;
+  min-height: 120px;
+  resize: vertical;
 }
 
-/* Botões */
+/* ========= BOTÕES ========= */
+.button-group {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 button,
 input[type="reset"] {
-  margin-top: 20px;
-  padding: 10px 20px;
+  flex: 0 1 30%;
+  padding: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 600;
   border: none;
   border-radius: 8px;
-  font-size: 1em;
   cursor: pointer;
-  margin-right: 10px;
-  transition: background-color 0.3s;
+  transition: background 0.3s ease, transform 0.15s ease;
+  color: #fff;
+}
+
+/* BOTÃO RELATAR - AUMENTADO */
+button[name="acao"][value="relatar"],
+button[type="submit"] {
+  background: #4caf50;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  min-width: 140px;
+  text-align: center;
+}
+
+button[name="acao"][value="relatar"]:hover,
+button[type="submit"]:hover {
+  background: #3b8e40;
+  transform: translateY(-2px);
 }
 
 button[name="acao"][value="salvar"] {
-  background-color: #6bb96b;
-  color: white;
+  background: #4caf50;
 }
 
 button[name="acao"][value="salvar"]:hover {
-  background-color: #4e9c4e;
+  background: #3b8e40;
+  transform: translateY(-2px);
 }
 
 button[name="acao"][value="excluir"] {
-  background-color: #e76c6c;
-  color: white;
+  background: #e74c3c;
 }
 
 button[name="acao"][value="excluir"]:hover {
-  background-color: #c24d4d;
+  background: #c0392b;
+  transform: translateY(-2px);
 }
 
 input[type="reset"] {
-  background-color: #cccccc;
-  color: #333;
+  background: #9e9e9e;
 }
 
 input[type="reset"]:hover {
-  background-color: #aaaaaa;
+  background: #7b7b7b;
+  transform: translateY(-2px);
+}
+
+/* ========= FOOTER ========= */
+footer.footer {
+  background: #ffffff;
+  padding: 1.5rem;
+  text-align: center;
+  border-top: 1px solid #e0e0e0;
+}
+
+footer.footer p {
+  color: #4a7c4a;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.footer .links a {
+  margin: 0 10px;
+  font-size: 1.6rem;
+  color: #4caf50;
+  transition: color 0.3s ease;
+}
+
+.footer .links a:hover {
+  color: #2e5c15;
+}
+
+/* ========= RESPONSIVO ========= */
+@media (max-width: 600px) {
+  .header-inner {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+  }
+
+  nav.menu {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  button,
+  input[type="reset"] {
+    flex: 1 1 100%;
+  }
 }

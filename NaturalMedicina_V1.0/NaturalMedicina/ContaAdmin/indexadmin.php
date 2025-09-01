@@ -18,87 +18,10 @@ require_once("../Relatos/Classes/Database.class.php");
 <head>
     <meta charset="UTF-8">
     <title>Perfil do Administrador</title>
+
+    <link rel="stylesheet" href="../css/index_usu_adm.css">
     <style>
-    /* ========= Reset básico ========= */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html, body {
-  height: 100%;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ========= Tipografia & Container ========= */
-body {
-  font-family: 'Caladea', serif;
-  background: #f6faf7;
-  color: #333;
-  line-height: 1.6;
-  padding-top: 120px; /* espaço para header fixo */
-}
-
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  width: 100%;
-}
-
-/* ========= HEADER ========= */
-header.header {
-  background: linear-gradient(90deg, #2d5e2d, #3e8b45);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 999;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  height: 90px;
-}
-
-.header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  padding: 0 20px;
-}
-
-.logo img {
-  height: 70px;
-  transition: transform 0.2s ease;
-}
-.logo img:hover {
-  transform: scale(1.06);
-}
-
-nav.menu {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-}
-
-nav.menu a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 16px;
-  padding: .25rem .5rem;
-  border-radius: 6px;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-nav.menu a:hover { 
-  background: rgba(255,255,255,0.1);
-  transform: translateY(-1px);
-}
+  
 
 /* ========= Títulos ========= */
 h1, h2 {
@@ -201,11 +124,10 @@ tr:hover td {
     </style>
 </head>
 <body>
-    <header class="header">
-      <div class="container header-inner">
-        <div class="logo">
-          <img src="../assets/favicon/logo.png" alt="Logo Natural Medicina">
-        </div>
+     <header class="header">
+    <div class="container header-inner">
+      <div class="logo">🌿 Natural Medicina</div>
+
         <nav class="menu">
           <a href="../Relatos/Relato/form_cad_relato.html">Relatos</a>
           <a href="../cadplantas/naturalmedicina/views/pesquisa.php">Plantas</a>

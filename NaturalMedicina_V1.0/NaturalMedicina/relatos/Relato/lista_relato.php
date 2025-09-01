@@ -9,16 +9,13 @@ $itens  = '';
 foreach ($lista as $relato) {
     $linha = str_replace('{data_relato}', $relato->getDataRelato(), $item);
     $linha = str_replace('{descricao}', nl2br(htmlspecialchars($relato->getDescricao())), $linha);
-    $linha = str_replace('{nome}', htmlspecialchars($relato->getNome()), $linha);
 
-
-    // Se você já tiver nome de usuário no objeto Relato:
-    if (method_exists($relato, 'getNomeUsuario') && $relato->getNomeUsuario()) {
-        $nome = $relato->getNomeUsuario();
-    } else {
-        $nome = "Pessoa " . $relato->getIdRelato();
-    }
-    $linha = str_replace('{nome}', $nome, $linha);
+if (method_exists($relato, 'getNomeUsuario') && $relato->getNomeUsuario()) {
+    $nome = htmlspecialchars($relato->getNomeUsuario());
+} else {
+    $nome = htmlspecialchars($relato->getNome());
+}
+$linha = str_replace('{nome}', $nome, $linha);
 
     $itens .= $linha;
 }

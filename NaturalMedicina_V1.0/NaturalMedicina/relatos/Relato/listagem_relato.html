@@ -2,44 +2,61 @@
 /* Container dos cards */
 .comments-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr); /* agora sempre duas colunas */
+  gap: 30px; /* mais espaço entre os cards */
+  max-width: 900px; /* largura máxima centralizada */
+  margin: 0 auto; /* centraliza o grid */
 }
 
 /* Card */
 .comment {
   background: #fff;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
+  border-radius: 16px; /* bordas mais suaves */
+  padding: 25px; /* mais espaço interno */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12); /* sombra mais evidente */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.comment:hover { transform: translateY(-4px); }
+.comment:hover { 
+  transform: translateY(-6px); 
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
 
 /* Cabeçalho */
 .comment-header {
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }
 .comment-name {
   font-weight: bold;
   color: #2e7d32;
-  font-size: 15px;
+  font-size: 16px;
   display: block;
 }
 .comment-meta {
-  font-size: 12px;
-  color: #777;
+  font-size: 13px;
+  color: #666;
   display: block;
 }
 
 /* Corpo */
 .comment-body {
-  font-size: 14px;
+  font-size: 15px;
   color: #333;
-  line-height: 1.4;
+  line-height: 1.6; /* maior espaçamento para legibilidade */
 }
+
 </style>
 
 <div class="comments-container">
   {itens}
+</div>
+
+
+<div>
+  <br>
+  <footer class="footer">
+    <p>&copy; 2025 Natural Medicine</p>
+    <div class="links">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </footer>
 </div>
