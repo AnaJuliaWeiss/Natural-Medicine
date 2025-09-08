@@ -46,6 +46,7 @@ if (!empty($categoria)) {
 
     <nav class="menu">
       <a href="../../../indexLogado.admins.php">Home</a>
+      <a href="../views/cadastro.php">Cadastro de Plantas </a>
        </nav>
   </header>
 
