@@ -23,8 +23,6 @@ $planta = $controller->buscarPlanta($id);
       <div class="logo">🌿 Natural Medicina</div>
 
       <a href="../../../indexLogado.admins.php" class="btn-header">Home</a>
-      <a href="../../../cadplantas/naturalmedicina/views/cadastro.php" class="btn-header">Cad</a>
-     
     </div>
   </header>
 
@@ -51,11 +49,6 @@ $planta = $controller->buscarPlanta($id);
       
       <div class="campo2"><strong>Fonte:</strong> <?= nl2br($planta['fonte']) ?></div>
 
-      <div class="botoes">
-        <a href="editar.php?id=<?= $planta['id_planta'] ?>" class="btn editar">Editar</a>
-        <a href="../processos/processaExcluir.php?id=<?= $planta['id_planta'] ?>" class="btn excluir" onclick="return confirm('Tem certeza que deseja excluir esta planta?');">Excluir</a>
-        <a href="ver_plantas.php" class="btn voltar">⬅ Voltar para a Lista</a>
-      </div>
     </section>
   </main>
 </body>

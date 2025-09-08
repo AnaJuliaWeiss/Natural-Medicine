@@ -110,6 +110,6 @@
         
         <button type="submit">Cadastrar</button>
     </form>
-    <a href="pesquisa.php">← Voltar para a pesquisa</a>
+    <a href="ver_plantas.php">← Voltar para a pesquisa</a>
 </body>
 </html>

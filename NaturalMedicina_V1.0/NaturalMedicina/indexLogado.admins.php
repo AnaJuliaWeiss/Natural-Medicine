@@ -61,24 +61,26 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'admin') {
       <h2>Curiosidades das plantas</h2>
       <div class="curiosidades-container">
         <div class="curiosidade-card">
-          <img src="assets/img/camomila.jpg" alt="Camomila">
-          <h3>Os Segredos das Plantas Medicinais</h3>
-          <p>Como diversas culturas usam plantas para promoção da saúde.</p>
+        <a href="http://nazareuniluz.org.br/curiosidades-sobre-as-plantas-medicinais/" target="_blank">
+        <img src="assets/img/plantas.jpg" alt="Camomila">
+      </a>  
+          <h3>Curiosidades sobre Plantas</h3>
+          <p>Este cantinho está reservado para apresentar um breve e sucinto histórico das plantas medicinais mesmo antes da Era Cristã.</p>
         </div>
         <div class="curiosidade-card">
-          <img src="assets/img/camomila.jpg" alt="Alecrim">
-          <h3>Alecrim: Muito Além do Tempero</h3>
-          <p>Propriedades do alecrim para memória e circulação.</p>
+        <a href="http://www.acaatinga.org.br/plantas-da-caatinga-e-suas-propriedades-medicinais/?gad_source=1&gad_campaignid=22839069055&gbraid=0AAAAAC8sT9xtO3ifWuXxCxManNSaJwzi1&gclid=CjwKCAjw2vTFBhAuEiwAFaScwiVv_0rQpFjB5YUfqjCgviwVDx2eizN04KBqt8BcBgleIb4P2F0BuRoC-hQQAvD_BwE" target="_blank"> <img src="assets/img/caatinga.jpeg" alt="Alecrim"></a>
+          <h3>Plantas da Caatinga</h3>
+          <p>Suas propriedades medicinais, saberes e propriedades terapêuticas.</p>
         </div>
         <div class="curiosidade-card">
-          <img src="assets/img/camomila.jpg" alt="Ervas">
-          <h3>A Magia das Ervas</h3>
-          <p>Ervas e infusões populares em remédios caseiros.</p>
+          <a href="https://super.abril.com.br/mundo-estranho/quais-sao-as-plantas-medicinais-mais-utilizadas/#google_vignette" target="_blank"> <img src="assets/img/aos.jpeg" alt="Ervas"></a>
+          <h3>Quais são as plantas medicinais mais utilizadas no Brasil?</h3>
+          <p>Conheça seis das plantas mais populares no país - aprovadas pela ciência e pelas nossas avós.</p>
         </div>
         <div class="curiosidade-card">
-          <img src="assets/img/camomila.jpg" alt="Camomila">
-          <h3>Camomila Relaxante</h3>
-          <p>Efeitos calmantes e terapêuticos da camomila.</p>
+          <a href="https://revistacasaejardim.globo.com/paisagismo/noticia/2023/07/9-plantas-medicinais-indigenas-e-suas-propriedades-curativas.ghtml" target="_blank"> <img src="assets/img/indigenas.png" alt="Ervas"></a>
+          <h3>Plantas medicinais indígenas</h3>
+          <p>O conhecimento tradicional indígena ensina como utilizar espécies nativas ou de fácil acesso no Brasil para o tratamento e a prevenção de doenças</p>
         </div>
         
       

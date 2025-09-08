@@ -111,7 +111,7 @@ require_once("../Relatos/Classes/Database.class.php");
         </div>
         <nav class="menu">
             <a href="../Relatos/Relato/form_cad_relato.html">Relatos</a>
-            <a href="../cadplantas/naturalmedicina/views/ver_plantas.php">Plantas</a>
+            <a href="../cadplantas/naturalmedicina/views/pesquisa.php">Plantas</a>
             <a href="../indexLogado.php">Home</a>
             <a href="../logout.php">Sair</a>
         </nav>

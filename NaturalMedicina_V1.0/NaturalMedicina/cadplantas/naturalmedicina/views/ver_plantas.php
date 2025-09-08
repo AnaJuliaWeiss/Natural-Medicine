@@ -4,6 +4,8 @@ require_once __DIR__ . '/../controllers/PlantaController.php';
 $controller = new PlantaController();
 
 $termoBusca = isset($_GET['busca']) ? trim($_GET['busca']) : '';
+$categoria = isset($_GET['categoria']) ? trim($_GET['categoria']) : '';
+
 $plantas = $controller->listarPlantas();
 
 // Filtra resultados se houver termo de busca
@@ -14,6 +16,13 @@ if (!empty($termoBusca)) {
                mb_strpos(mb_strtolower($planta['nome_cientifico']), $termo) !== false;
     });
 }
+
+// Filtra por categoria se houver
+if (!empty($categoria)) {
+    $plantas = array_filter($plantas, function ($planta) use ($categoria) {
+        return isset($planta['categoria']) && mb_strtolower($planta['categoria']) === mb_strtolower($categoria);
+    });
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,198 +30,14 @@ if (!empty($termoBusca)) {
 <head>
   <meta charset="UTF-8">
   <title>Ver Plantas Medicinais</title>
-  <link rel="stylesheet" href="../../../css/cadplant.css">
+  <link rel="stylesheet" href="../../../css/plantaspesquisa.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Caladea&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* ========= CSS novo que você pediu ========= */
-    body {
-      font-family: 'Caladea', serif;
-      background: #ffffff;
-      color: #333;
-      line-height: 1.6;
-      min-height: 100vh;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 40px auto;
-      padding: 0 1.5rem;
-      width: 100%;
-    }
-
-    header.header {
-      background: linear-gradient(90deg, #3a7d44, #4caf50);
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      height: 80px;
-      padding: 0;
-    }
-
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 26px;
-      font-weight: 600;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-    }
-
-    nav.menu {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    nav.menu a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 16px;
-      padding: .25rem .35rem;
-      transition: color .2s ease;
-    }
-    nav.menu a:hover { color: #d9f7d9; }
-
-    .btn-header {
-      background: #fff;
-      color: #3a7d44;
-      padding: .6rem 1rem;
-      border-radius: 8px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-block;
-      transition: background .2s ease, transform .15s ease;
-    }
-    .btn-header:hover { background: #d9f7d9; transform: translateY(-2px); }
-
-    /* ========= CSS antigo (mantido) ========= */
-    .busca-form {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .busca-form input[type="text"] {
-      padding: 8px 12px;
-      font-size: 20px;
-      border-radius: 6px;
-      border: none;
-      width: 400px;
-      outline: none;
-    }
-
-    .busca-form button {
-      padding: 8px 16px;
-      background-color: #2e7d32;
-      border: none;
-      color: white;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .busca-form button:hover {
-      background-color: #4caf50;
-    }
-
-    .container h2 {
-      text-align: center;
-      font-size: 32px;
-      color: #4caf50;
-      margin-bottom: 30px;
-    }
-
-    .plantas-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-    }
-
-    .planta-card {
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-      max-width: 350px;
-      width: 100%;
-      margin: 0 auto;
-    }
-    .planta-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .planta-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
-    }
-
-    .planta-link {
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      height: 100%;
-    }
-
-    .planta-card h3 {
-      font-size: 20px;
-      color: #1b5e20;
-      margin: 12px;
-    }
-
-    .planta-card p {
-      font-size: 16px;
-      color: #4caf50;
-      margin: 0 12px 16px 12px;
-    }
-
-    @media (max-width: 768px) {
-      header.header {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      nav.menu {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .busca-form {
-        justify-content: center;
-      }
-    }
-  </style>
+  
 </head>
 <body>
 
   <header class="header">
-    <div class="logo">Natural Medicina</div>
+    <div class="logo">🌿 Natural Medicina</div>
 
     <form method="GET" action="" class="busca-form">
       <input type="text" name="busca" placeholder="Buscar planta..." value="<?= htmlspecialchars($termoBusca) ?>">
@@ -220,14 +45,23 @@ if (!empty($termoBusca)) {
     </form>
 
     <nav class="menu">
-      <a href="../../../indexLogado.php">Home</a>
-      <a href="../../../Relatos/Relato/form_cad_relato.html">Relatos</a>
-      <a href="../../../ContaUsuario/indexusuario.php">Conta</a>
-    </nav>
+      <a href="../../../indexLogado.admins.php">Home</a>
+       </nav>
   </header>
 
   <div class="container">
     <h2>Plantas Medicinais</h2>
+
+    <!-- Filtros -->
+    <div class="filtros">
+      <a href="pesquisa.php">Todas</a>
+      <a href="pesquisa.php?categoria=raiz">Raiz</a>
+      <a href="pesquisa.php?categoria=caule">Caule</a>
+      <a href="pesquisa.php?categoria=folha">Folha</a>
+      <a href="pesquisa.php?categoria=flor">Flor</a>
+      <a href="pesquisa.php?categoria=fruto">Fruto</a>
+      <a href="pesquisa.php?categoria=semente">Semente</a>
+    </div>
 
     <?php if (!isset($plantas)) $plantas = []; ?>
 
@@ -243,12 +77,18 @@ if (!empty($termoBusca)) {
               <?php endif; ?>
               <h3><?= htmlspecialchars($planta['nome_popular']) ?></h3>
               <p><?= htmlspecialchars($planta['nome_cientifico']) ?></p>
+
+              <?php if (!empty($planta['categoria'])): ?>
+                <a href="pesquisa.php?categoria=<?= urlencode($planta['categoria']) ?>" class="categoria-btn">
+                  <?= ucfirst(htmlspecialchars($planta['categoria'])) ?>
+                </a>
+              <?php endif; ?>
             </a>
           </div>
         <?php endforeach; ?>
       </div>
     <?php else: ?>
-      <p style="text-align: center; margin-top: 30px;">Nenhuma planta encontrada com esse nome.</p>
+      <p style="text-align:center; margin-top:30px;">Nenhuma planta encontrada com esse filtro.</p>
     <?php endif; ?>
   </div>
 
