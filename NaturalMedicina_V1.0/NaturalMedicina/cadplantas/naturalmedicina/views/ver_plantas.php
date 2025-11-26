@@ -8,7 +8,7 @@ $categoria = isset($_GET['categoria']) ? trim($_GET['categoria']) : '';
 
 $plantas = $controller->listarPlantas();
 
-// Filtra resultados se houver termo de busca
+// Filtra  busca
 if (!empty($termoBusca)) {
     $plantas = array_filter($plantas, function ($planta) use ($termoBusca) {
         $termo = mb_strtolower($termoBusca);
@@ -17,7 +17,7 @@ if (!empty($termoBusca)) {
     });
 }
 
-// Filtra por categoria se houver
+// Filtra categoria 
 if (!empty($categoria)) {
     $plantas = array_filter($plantas, function ($planta) use ($categoria) {
         return isset($planta['categoria']) && mb_strtolower($planta['categoria']) === mb_strtolower($categoria);

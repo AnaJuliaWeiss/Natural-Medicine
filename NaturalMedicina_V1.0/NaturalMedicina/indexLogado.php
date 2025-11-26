@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-// Verifica se está logado e é usuário
+
 if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'usuario') {
     header("Location: login.php");
     exit;
 }
 
-// Verifica se está logado e é admin
+
 if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'usuario') {
     header("Location: login.php");
     exit;
@@ -29,6 +29,80 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'usuario') {
 </head>
 <body>
 
+<style>
+  /* ======== SOBRE (Versão Modernizada) ======== */
+.sobre {
+  background: linear-gradient(to right, #f4f8f4, #e8f0eb);
+  padding: 80px 20px;
+}
+
+.sobre-inner {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.sobre-content {
+  flex: 1 1 450px;
+}
+
+.sobre-content h2 {
+  font-size: 2.8rem;
+  margin-bottom: 25px;
+  color: #2f4f2f;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 1px;
+}
+
+.sobre-content p {
+  margin-bottom: 18px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #2d2d2d;
+  font-family: "Caladea", serif;
+}
+
+/* Imagem */
+.sobre-img {
+  flex: 1 1 420px;
+  display: flex;
+  justify-content: center;
+}
+
+.sobre-img img {
+  max-width: 100%;
+  width: 470px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+/* Efeito hover suave na imagem */
+.sobre-img img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .sobre-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .sobre-content h2 {
+    font-size: 2.4rem;
+  }
+
+  .sobre-img img {
+    width: 90%;
+  }
+}
+</style>
+
   <!-- HEADER -->
   <header class="header">
     <div class="container header-inner">
@@ -36,8 +110,7 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'usuario') {
 
       <nav class="menu" role="navigation" aria-label="Menu principal">
         <a href="#curiosidades">Curiosidades</a>
-        <a href="#historias">Histórias</a>
-        <a href="#relatos">Relatos</a>
+        <a href="./Relatos/Relato/form_cad_relato.html">Relatos</a>
         <a href="#sobre">Sobre</a>
       </nav>
 
@@ -51,7 +124,7 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'usuario') {
       <div class="hero-content">
         <h1>Descubra o poder<br>das plantas medicinais</h1>
         <p>Explore propriedades, usos e relatos de quem já sentiu os benefícios das plantas.</p>
-        <a href="./cadplantas/naturalmedicina/views/ver_plantas.php" class="btn-green">Explorar plantas</a>
+        <a href="./cadplantas/naturalmedicina/views/pesquisa.php" class="btn-green">Explorar plantas</a>
       </div>
     </div>
   </section>
@@ -62,55 +135,29 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'usuario') {
       <h2>Curiosidades das plantas</h2>
       <div class="curiosidades-container">
         <div class="curiosidade-card">
-          <img src="assets/img/camomila.jpg" alt="Camomila">
-          <h3>Os Segredos das Plantas Medicinais</h3>
-          <p>Como diversas culturas usam plantas para promoção da saúde.</p>
+        <a href="http://nazareuniluz.org.br/curiosidades-sobre-as-plantas-medicinais/" target="_blank">
+        <img src="assets/img/plantas.jpg" alt="Camomila">
+      </a>  
+          <h3>Curiosidades sobre Plantas</h3>
+          <p>Este cantinho está reservado para apresentar um breve e sucinto histórico das plantas medicinais mesmo antes da Era Cristã.</p>
         </div>
         <div class="curiosidade-card">
-          <img src="assets/img/camomila.jpg" alt="Alecrim">
-          <h3>Alecrim: Muito Além do Tempero</h3>
-          <p>Propriedades do alecrim para memória e circulação.</p>
+        <a href="http://www.acaatinga.org.br/plantas-da-caatinga-e-suas-propriedades-medicinais/?gad_source=1&gad_campaignid=22839069055&gbraid=0AAAAAC8sT9xtO3ifWuXxCxManNSaJwzi1&gclid=CjwKCAjw2vTFBhAuEiwAFaScwiVv_0rQpFjB5YUfqjCgviwVDx2eizN04KBqt8BcBgleIb4P2F0BuRoC-hQQAvD_BwE" target="_blank"> <img src="assets/img/caatinga.jpeg" alt="Alecrim"></a>
+          <h3>Plantas da Caatinga</h3>
+          <p>Suas propriedades medicinais, saberes e propriedades terapêuticas.</p>
         </div>
         <div class="curiosidade-card">
-          <img src="assets/img/camomila.jpg" alt="Ervas">
-          <h3>A Magia das Ervas</h3>
-          <p>Ervas e infusões populares em remédios caseiros.</p>
+          <a href="https://super.abril.com.br/mundo-estranho/quais-sao-as-plantas-medicinais-mais-utilizadas/#google_vignette" target="_blank"> <img src="assets/img/aos.jpeg" alt="Ervas"></a>
+          <h3>Quais são as plantas medicinais mais utilizadas no Brasil?</h3>
+          <p>Conheça seis das plantas mais populares no país - aprovadas pela ciência e pelas nossas avós.</p>
         </div>
         <div class="curiosidade-card">
-          <img src="assets/img/camomila.jpg" alt="Camomila">
-          <h3>Camomila Relaxante</h3>
-          <p>Efeitos calmantes e terapêuticos da camomila.</p>
+          <a href="https://revistacasaejardim.globo.com/paisagismo/noticia/2023/07/9-plantas-medicinais-indigenas-e-suas-propriedades-curativas.ghtml" target="_blank"> <img src="assets/img/indigenas.png" alt="Ervas"></a>
+          <h3>Plantas medicinais indígenas</h3>
+          <p>O conhecimento tradicional indígena ensina como utilizar espécies nativas ou de fácil acesso no Brasil para o tratamento e a prevenção de doenças</p>
         </div>
         
       
-  </section>
-
-  <!-- HISTÓRIAS -->
-  <section id="historias" class="historias">
-    <div class="container">
-      <h2>Histórias de Cura com Plantas Medicinais</h2>
-
-      <!-- bloco principal com imagem + text -->
-      <div class="content">
-        <div class="text">
-          <h3>Como a Camomila Ajudou na Insônia</h3>
-          <p>A camomila, conhecida por suas propriedades relaxantes, tem sido usada por gerações para tratar a insônia e promover uma boa noite de sono. Estudos indicam que o consumo regular do chá de camomila pode ajudar a reduzir o estresse.</p>
-
-          <h3>O Poder do Gengibre Contra Náuseas</h3>
-          <p>O gengibre é amplamente reconhecido por suas propriedades anti-inflamatórias e sua eficácia no alívio de náuseas, especialmente durante viagens ou tratamentos médicos.</p>
-
-          <h3>Lavanda: Relaxamento em Forma de Planta</h3>
-          <p>O aroma calmante da lavanda é utilizado em óleos essenciais e chás para promover relaxamento, aliviar dores de cabeça e melhorar a qualidade do sono.</p>
-
-          <h3>O Segredo do Alecrim para a Memória</h3>
-          <p>Acredita-se que o alecrim melhora a memória e a concentração. Usado em óleos essenciais ou infusões, ele é popular para aumentar o foco mental.</p>
-        </div>
-
-        <img src="assets/img/historias.webp" alt="História das plantas">
-      </div>
-
-
-    </div>
   </section>
 
   <!-- RELATOS -->
@@ -121,8 +168,8 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'usuario') {
       <div class="relatos-grid">
         <div class="relato-card">
           <div class="relato-header">
-            <img src="assets/img/Ramo de camomila sobre mesa rústica.png" alt="Pessoa 1" class="relato-img">
-            <div class="relato-nome">Pessoa 1</div>
+            <img src="assets/img/fotoperfil.avif" alt="Pessoa 1" class="relato-img">
+            <div class="relato-nome">Juliana</div>
           </div>
           <p>O chá de camomila me ajudou a dormir melhor em noites de insônia. Usei por duas semanas e senti diferença.</p>
           <span>12/06/2025</span>
@@ -130,51 +177,45 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'usuario') {
 
         <div class="relato-card">
           <div class="relato-header">
-            <img src="assets/img/images.jpeg" alt="Pessoa 2" class="relato-img">
-            <div class="relato-nome">Pessoa 2</div>
+            <img src="assets/img/fotoperfil.avif" alt="Pessoa 2" class="relato-img">
+            <div class="relato-nome">Ana Júlia</div>
           </div>
-          <p>O gengibre em cápsulas diminuiu minhas náuseas ao viajar — recomendo procurar orientação antes de usar.</p>
-          <span>03/05/2025</span>
+          <p>Alecrim
+          Coloquei um galhinho de alecrim verde em uma jarra de 1 litros de água deixei por um dia e tomei como água  saborisada. 
+          Tive melhora nas minhas crises de ansiedade, nas dormência nas mãos que segundo médico era problema circulatório.  
+          De tempo em tempo faço  uso, sem ser contínuo por muito tempo.</p>
+          <span>08/09/2025</span>
         </div>
 
         <div class="relato-card">
           <div class="relato-header">
-            <img src="assets/img/foto3.jpg" alt="Pessoa 3" class="relato-img">
-            <div class="relato-nome">Pessoa 3</div>
+            <img src="assets/img/fotoperfil.avif" alt="Pessoa 3" class="relato-img">
+            <div class="relato-nome">Luana</div>
           </div>
           <p>Usei compressa de lavanda para dor de cabeça e senti alívio leve. Ótimo como complemento.</p>
           <span>21/04/2025</span>
         </div>
 
-        <div class="relato-card">
-          <div class="relato-header">
-            <img src="assets/img/foto4.jpg" alt="Pessoa 4" class="relato-img">
-            <div class="relato-nome">Pessoa 4</div>
-          </div>
-          <p>O óleo de alecrim me ajudou em momentos de concentração para estudar. Aroma estimulante.</p>
-          <span>18/03/2025</span>
-        </div>
-
-        <div class="relato-card">
-          <div class="relato-header">
-            <img src="assets/img/foto5.jpg" alt="Pessoa 5" class="relato-img">
-            <div class="relato-nome">Pessoa 5</div>
-          </div>
-          <p>Hortelã em chá, após refeições, diminuiu desconforto digestivo na família.</p>
-          <span>09/02/2025</span>
-        </div>
-
-        <div class="relato-card">
-          <div class="relato-header">
-            <img src="assets/img/foto6.jpg" alt="Pessoa 6" class="relato-img">
-            <div class="relato-nome">Pessoa 6</div>
-          </div>
-          <p>Compressas de camomila reduziram inflamação leve na pele em poucos dias.</p>
-          <span>27/01/2025</span>
-        </div>
-      </div>
-    </div>
+        
   </section>
+
+     <!-- SOBRE -->
+<section class="sobre" id="sobre">
+  <div class="container sobre-inner">
+    <div class="sobre-content">
+      <h2>Sobre nós</h2>
+      <p>
+        A <strong>Natural Medicina</strong> é uma plataforma dedicada à disseminação de conhecimento sobre plantas medicinais e seus benefícios para a saúde e bem-estar. Nosso objetivo é fornecer informações confiáveis e baseadas em ciência, destacando como cada planta pode ser utilizada de maneira eficaz para promover equilíbrio e qualidade de vida.
+      </p>
+      <p>
+        Cada planta em nossa plataforma é detalhadamente descrita, incluindo propriedades, usos recomendados, possíveis efeitos colaterais e formas seguras de integração na rotina. Estamos comprometidos em inspirar escolhas conscientes e saudáveis, aproximando as pessoas da natureza através do conhecimento.
+      </p>
+    </div>
+    <div class="sobre-img">
+      <img src="assets/img/fotofetec.jpg" alt="Imagem representando plantas medicinais">
+    </div>
+  </div>
+</section>
 
   <!-- RODAPÉ -->
   <footer id="sobre">

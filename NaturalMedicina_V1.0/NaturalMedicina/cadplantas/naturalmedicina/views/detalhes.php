@@ -17,13 +17,13 @@ $planta = $controller->buscarPlanta($id);
   
 </head>
 
-     <!-- HEADER -->
+    
   <header class="header">
     <div class="container header-inner">
       <div class="logo">🌿 Natural Medicina</div>
 
-      <a href="../../../indexLogado.admins.php" class="btn-header">Home</a>
-      <a href="../../../cadplantas/naturalmedicina/views/cadastro.php" class="btn-header">Cad</a>
+      <a href="../../../ContaAdmin/indexadmin.php" class="btn-header">Home</a>
+     
      
     </div>
   </header>

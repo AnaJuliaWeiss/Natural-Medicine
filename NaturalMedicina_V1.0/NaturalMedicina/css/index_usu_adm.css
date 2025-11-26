@@ -171,7 +171,7 @@
       background: #f9f9f9;
       border-radius: 12px;
       padding: 16px;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+      box-shadow: 0 8px 22px rgba(160, 71, 71, 0.06);
       display: flex;
       flex-direction: column;
       gap: .6rem;
@@ -181,7 +181,7 @@
     .relato-card:hover { transform: translateY(-6px); box-shadow: 0 16px 36px rgba(0,0,0,0.10); }
 
     .relato-header { display:flex; align-items:center; gap:.8rem; }
-    .relato-img { width:56px; height:56px; border-radius:50%; object-fit:cover; border:2px solid #eee; }
+    .relato-img { width:56px; height:56px; border-radius:50%; object-fit:cover; border:2px solid #eeeeee; }
     .relato-nome { font-weight:700; color:#2c3e50; }
     .relato-card p { color:#333; font-size:.98rem; margin:0; }
     .relato-card span { color:#777; font-size:.88rem; font-style:italic; margin-top:.35rem; }
@@ -221,4 +221,48 @@
 
   /*perfil do admin*/
 
-  
+.card-historia {
+  display: flex;
+  align-items: center;
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 20px auto;
+  max-width: 800px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.card-historia:hover {
+  transform: translateY(-4px);
+}
+
+.card-historia img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-right: 16px;
+}
+
+.card-content {
+  flex: 1;
+}
+
+.card-content h3 {
+  margin: 0 0 8px;
+  color: #2f5d50;
+  font-size: 20px;
+}
+
+.card-content p {
+  margin: 0;
+  color: #444;
+  line-height: 1.6;
+}
+
+
+
+
+
+ 

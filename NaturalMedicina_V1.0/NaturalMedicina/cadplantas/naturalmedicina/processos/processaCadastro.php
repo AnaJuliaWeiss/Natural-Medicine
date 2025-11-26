@@ -29,7 +29,7 @@ $dados = [
     'maleficios' => $_POST['maleficios'] ?? '',
     'imagem_url' => $imagemPath,
     'fonte' => $_POST['fonte'] ?? '',
-    'categoria' => $_POST['categoria'] ?? '' // <<<< campo categoria
+    'categoria' => $_POST['categoria'] ?? '' 
 ];
 
 $controller->cadastrarPlanta($dados);

@@ -41,7 +41,7 @@ class Planta {
         $stmt->bindValue(':maleficios', $dados['maleficios']);
         $stmt->bindValue(':imagem_url', $dados['imagem_url']);
         $stmt->bindValue(':fonte', $dados['fonte']);
-        $stmt->bindValue(':categoria', $dados['categoria']); // <<<< categoria adicionada
+        $stmt->bindValue(':categoria', $dados['categoria']); 
 
         return $stmt->execute();
     }
@@ -74,7 +74,7 @@ class Planta {
         $stmt->bindValue(':maleficios', $dados['maleficios']);
         $stmt->bindValue(':imagem_url', $dados['imagem_url']);
         $stmt->bindValue(':fonte', $dados['fonte']);
-        $stmt->bindValue(':categoria', $dados['categoria']); // <<<< categoria adicionada
+        $stmt->bindValue(':categoria', $dados['categoria']); 
 
         return $stmt->execute();
     }

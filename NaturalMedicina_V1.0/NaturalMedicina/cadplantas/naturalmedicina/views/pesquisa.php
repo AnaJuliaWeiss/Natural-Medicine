@@ -8,7 +8,7 @@ $categoria = isset($_GET['categoria']) ? trim($_GET['categoria']) : '';
 
 $plantas = $controller->listarPlantas();
 
-// Filtra resultados se houver termo de busca
+
 if (!empty($termoBusca)) {
     $plantas = array_filter($plantas, function ($planta) use ($termoBusca) {
         $termo = mb_strtolower($termoBusca);
@@ -17,7 +17,7 @@ if (!empty($termoBusca)) {
     });
 }
 
-// Filtra por categoria se houver
+
 if (!empty($categoria)) {
     $plantas = array_filter($plantas, function ($planta) use ($categoria) {
         return isset($planta['categoria']) && mb_strtolower($planta['categoria']) === mb_strtolower($categoria);
@@ -35,7 +35,69 @@ if (!empty($categoria)) {
   
 </head>
 <body>
+<style>
+  header.header {
+  background: linear-gradient(90deg, #3a7d44, #4caf50);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
 
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  height: 80px;
+  padding: 0;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+nav.menu {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+nav.menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  padding: .25rem .35rem;
+  transition: color .2s ease;
+}
+nav.menu a:hover { color: #d9f7d9; }
+
+.btn-header {
+  background: #fff;
+  color: #3a7d44;
+  padding: .6rem 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+  transition: background .2s ease, transform .15s ease;
+}
+.btn-header:hover { background: #d9f7d9; transform: translateY(-2px); }
+
+</style>
   <header class="header">
     <div class="logo">🌿 Natural Medicina</div>
 

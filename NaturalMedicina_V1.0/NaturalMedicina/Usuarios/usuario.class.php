@@ -1,5 +1,5 @@
 <?php
-require_once("../Relatos/Classes/Database.class.php"); // caminho ajustado para sua classe
+require_once("../Relatos/Classes/Database.class.php"); 
 
 class Usuario {
     private $nome;
@@ -10,7 +10,7 @@ class Usuario {
     public function __construct($nome, $email, $senha, $tipo = 'usuario') {
         $this->nome = $nome;
         $this->email = $email;
-        // Já guardamos a senha com hash aqui
+      
         $this->senha = password_hash($senha, PASSWORD_DEFAULT);
         $this->tipo = $tipo;
     }

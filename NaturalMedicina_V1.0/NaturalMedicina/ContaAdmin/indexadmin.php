@@ -1,14 +1,18 @@
 <?php
 session_start();
 
-// Verificação de acesso
+
 if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'admin') {
     header("Location: login.html");
     exit;
 }
 
-$nomeAdmin = $_SESSION['nome']; // Nome que veio do login
-$idAdmin = $_SESSION['id_usuario']; // ID do admin
+$nomeAdmin = $_SESSION['nome']; 
+$idAdmin = $_SESSION['id_usuario'] ?? '../img/perfil_padrao.png';
+
+
+
+
 
 require_once("../Relatos/Classes/Database.class.php");
 ?>
@@ -20,10 +24,69 @@ require_once("../Relatos/Classes/Database.class.php");
     <title>Perfil do Administrador</title>
 
     <link rel="stylesheet" href="../css/index_usu_adm.css">
-    <style>
-  
+</head>
+<body>
 
-/* ========= Títulos ========= */
+ <style>
+  
+  body {
+  background-image: url("../assets/img/Ramo\ de\ camomila\ sobre\ mesa\ rústica.png");
+  background-size: cover;          
+  background-position: center;     
+  background-repeat: no-repeat;    
+  background-attachment: fixed;   
+  position: relative;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25); 
+  z-index: -1;                    
+  backdrop-filter: brightness(0.9);
+}
+ /* HEADER  */
+    header.header {
+      background: linear-gradient(90deg, #3a7d44, #4caf50);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+      padding: 0 5%;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: #fff;
+    }
+    nav.menu {
+      display: flex;
+      gap: 2rem;
+    }
+    nav.menu a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: color .2s ease;
+    }
+    nav.menu a:hover { color: #d9f7d9; }        
+
+/*  Títulos */
 h1, h2 {
   text-align: center;
   color: #2d5e2d;
@@ -31,166 +94,161 @@ h1, h2 {
   letter-spacing: 0.5px;
 }
 
-/* ========= Seções ========= */
-section {
-  background: #ffffff;
-  margin: 30px auto;
-  padding: 30px 25px;
-  border-radius: 18px;
-  max-width: 800px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
+/*  Seções  */
+  section {
+  background: rgba(255, 255, 255, 0.70); 
+  backdrop-filter: blur(4px);            
+  -webkit-backdrop-filter: blur(4px);    
+  
+  margin: 20px auto;
+  padding: 30px;
+  border-radius: 16px;
+  max-width: 700px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+  transition: background 0.3s ease;
 }
-section:hover {
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-  transform: translateY(-2px);
-}
-
-/* ========= Foto do Perfil ========= */
-.foto-perfil {
+    /*  FOTO DE PERFIL  */
+   .foto-perfil {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
+
 .foto-perfil img {
-  width: 150px;
-  height: 150px;
+  width: 160px;
+  height: 160px;
   object-fit: cover;
   border-radius: 50%;
-  margin-bottom: 15px;
-  border: 4px solid #2d5e2d;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.foto-perfil img:hover {
-  transform: scale(1.07);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-}
-
-.foto-perfil button {
-  margin-top: 12px;
-  padding: 10px 20px;
-  border: none;
-  background-color: #2d5e2d;
-  color: #fff;
-  font-weight: 600;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-.foto-perfil button:hover {
-  background-color: #256a25;
-  transform: translateY(-2px);
-}
-
-/* ========= Tabelas ========= */
-table {
-  width: 100%;
-  border-collapse: collapse;
   margin-top: 20px;
-}
-th, td {
-  padding: 14px 16px;
-  border-bottom: 1px solid #e0e0e0;
-  text-align: left;
-  font-size: 14px;
-}
-th {
-  background-color: #2d5e2d;
-  color: #fff;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-tr:hover td {
-  background: #f4faf4;
+  border: 4px solid #2d5e2d;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* ========= Lista de plantas ========= */
-.plantas ul {
-  list-style: none;
-  padding-left: 0;
-  margin-top: 12px;
+
+    .foto-perfil input[type="file"] {
+      display: none;
+    }
+
+    .foto-perfil label {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 15px;
+      background: #3a7d44;
+      color: #fff;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .foto-perfil label:hover {
+      background: #2d5e2d;
+    }
+
+    .foto-perfil button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      background: #4caf50;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .foto-perfil button:hover {
+      background: #3a7d44;
+    }
+
+/*  Botões do Admin  */
+
+.acoes-admin {
+    text-align: center;
+    padding: 35px 25px;
 }
-.plantas li {
-  padding: 10px 14px;
-  margin-bottom: 8px;
-  border-radius: 10px;
-  background-color: #f0fdf0;
-  border-left: 4px solid #2d5e2d;
-  transition: background 0.2s ease, transform 0.2s ease;
+
+.grid-botoes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    max-width: 500px;
+    margin: 0 auto;
 }
-.plantas li:hover {
-  background-color: #e8f7e8;
-  transform: translateX(2px);
+
+.botao-acao {
+    background: #e8f5e9;
+    color: #2d5e2d;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: background 0.25s ease, transform 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.botao-acao:hover {
+    background: #d0ebd3;
+    transform: translateY(-2px);
+}
+
+.botao-acao.sair {
+    background: #ffe5e5;
+    color: #b30000;
+}
+
+.botao-acao.sair:hover {
+    background: #ffcccc;
+}
+
     </style>
-</head>
-<body>
      <header class="header">
     <div class="container header-inner">
       <div class="logo">🌿 Natural Medicina</div>
 
         <nav class="menu">
-          <a href="../Relatos/Relato/form_cad_relato.html">Relatos</a>
-          <a href="../cadplantas/naturalmedicina/views/ver_plantas.php">Plantas</a>
-          <a href="../indexLogado.admins.php">Home</a>
-          <a href="../sobre.html">Sobre</a>
-          <a href="../logout.php">Sair</a>
         </nav>
       </div>
     </header>
 
-    <section class="foto-perfil">
-         <img src="uploads/<?php echo htmlspecialchars($idAdmin); ?>.jpg?<?php echo time(); ?>" alt="Sua Foto de Perfil">
-        <form action="upload.foto.php" method="POST" enctype="multipart/form-data">
-            <input type="file" name="foto" accept="image/*">
-            <button type="submit">Atualizar Foto</button>
-        </form>
-        <h1>Olá, <?php echo htmlspecialchars($nomeAdmin); ?>!</h1>
-    </section>
+   
+   <section class="foto-perfil">
+    <img src="uploads/<?php echo htmlspecialchars($idAdmin); ?>.jpg?<?php echo time(); ?>" alt="Sua Foto de Perfil">
+   <form action="upload.foto.php" method="POST" enctype="multipart/form-data"><h1>Olá, <?php echo htmlspecialchars($nomeAdmin); ?>!</h1>
+      <label for="foto">📸 Escolher Foto</label>
+      <input type="file" id="foto" name="foto" accept="image/*">
+      <br>
+      <button type="submit">Atualizar Foto</button>
+    </form>
+  </section>
 
-    <section class="relatos">
-        <h2>Relatos cadastrados</h2>
-        <table>
-            <tr>
-                <th>Título</th>
-                <th>Descrição</th>
-                <th>Data</th>
-                <th>Usuário</th>
-            </tr>
-            <?php
-            $sql = "SELECT r.titulo, r.descricao, r.data_relato, u.nome 
-                    FROM relatos r 
-                    JOIN usuarios u ON r.id_usuario = u.id_usuario 
-                    ORDER BY r.data_relato DESC";
-            $stmt = Database::executar($sql, []);
-            foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $relato) {
-                echo "<tr>
-                        <td>{$relato['titulo']}</td>
-                        <td>{$relato['descricao']}</td>
-                        <td>{$relato['data_relato']}</td>
-                        <td>{$relato['nome']}</td>
-                      </tr>";
-            }
-            ?>
-        </table>
-    </section>
+    <section class="acoes-admin">
+    <h2>Painel do Administrador</h2>
 
-    <section class="plantas">
-        <h2>Plantas cadastradas por você</h2>
-        <?php
-        $sqlPlantas = "SELECT nome_popular, data_criacao 
-                       FROM plantas 
-                       WHERE criado_por = :id_admin 
-                       ORDER BY data_criacao DESC";
-        $stmtPlantas = Database::executar($sqlPlantas, [':id_admin' => $idAdmin]);
-        $plantas = $stmtPlantas->fetchAll(PDO::FETCH_ASSOC);
+    <div class="grid-botoes">
+        <a href="../cadplantas/naturalmedicina/views/ver_plantas.php" class="botao-acao">
+            📗 Cadastrar Planta
+        </a>
 
-        echo "<p>Total de plantas cadastradas: " . count($plantas) . "</p>";
-        echo "<ul>";
-        foreach ($plantas as $planta) {
-            echo "<li><strong>{$planta['nome_popular']}</strong> — Criada em: {$planta['data_criacao']}</li>";
-        }
-        echo "</ul>";
-        ?>
-    </section>
+        <a href="../Relatos/Relato/form_cad_relato.html" class="botao-acao">
+            📝 Relatos
+        </a>
+
+        <a href="../indexLogado.admins.php" class="botao-acao">
+            🏠 Home
+        </a>
+
+        <a href="../logout.php" class="botao-acao sair">
+            🚪 Sair
+        </a>
+    </div>
+</section>
+
+
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Verifica se está logado e é admin
+
 if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'admin') {
     header("Location: login.html");
     exit;
@@ -27,6 +27,64 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'admin') {
   <link rel="stylesheet" href="./css/index_usu_adm.css">
 </head>
 <body>
+  <style>
+    /* ======== SOBRE ======== */
+.sobre {
+  background: #f9f9f9;
+  padding: 60px 20px;
+}
+
+.sobre-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.sobre-content {
+  flex: 1;
+}
+
+.sobre-content h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #2f4f2f;
+}
+
+.sobre-content p {
+  margin-bottom: 15px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+.sobre-img {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.sobre-img img {
+  max-width: 100%;
+  width: 450px;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .sobre-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .sobre-img img {
+    width: 80%;
+    margin-top: 20px;
+  }
+}
+
+  </style>
 
   <!-- HEADER -->
   <header class="header">
@@ -35,8 +93,7 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'admin') {
 
       <nav class="menu" role="navigation" aria-label="Menu principal">
         <a href="#curiosidades">Curiosidades</a>
-        <a href="#historias">Histórias</a>
-        <a href="#relatos">Relatos</a>
+        <a href="./Relatos/Relato/form_cad_relato.html">Relatos</a>
         <a href="#sobre">Sobre</a>
       </nav>
 
@@ -86,34 +143,6 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'admin') {
       
   </section>
 
-  <!-- HISTÓRIAS -->
-  <section id="historias" class="historias">
-    <div class="container">
-      <h2>Histórias de Cura com Plantas Medicinais</h2>
-
-      <!-- bloco principal com imagem + text -->
-      <div class="content">
-        <div class="text">
-          <h3>Como a Camomila Ajudou na Insônia</h3>
-          <p>A camomila, conhecida por suas propriedades relaxantes, tem sido usada por gerações para tratar a insônia e promover uma boa noite de sono. Estudos indicam que o consumo regular do chá de camomila pode ajudar a reduzir o estresse.</p>
-
-          <h3>O Poder do Gengibre Contra Náuseas</h3>
-          <p>O gengibre é amplamente reconhecido por suas propriedades anti-inflamatórias e sua eficácia no alívio de náuseas, especialmente durante viagens ou tratamentos médicos.</p>
-
-          <h3>Lavanda: Relaxamento em Forma de Planta</h3>
-          <p>O aroma calmante da lavanda é utilizado em óleos essenciais e chás para promover relaxamento, aliviar dores de cabeça e melhorar a qualidade do sono.</p>
-
-          <h3>O Segredo do Alecrim para a Memória</h3>
-          <p>Acredita-se que o alecrim melhora a memória e a concentração. Usado em óleos essenciais ou infusões, ele é popular para aumentar o foco mental.</p>
-        </div>
-
-        <img src="assets/img/historias.webp" alt="História das plantas">
-      </div>
-
-
-    </div>
-  </section>
-
   <!-- RELATOS -->
   <section id="relatos" class="relatos-section">
     <div class="container">
@@ -122,8 +151,8 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'admin') {
       <div class="relatos-grid">
         <div class="relato-card">
           <div class="relato-header">
-            <img src="assets/img/Ramo de camomila sobre mesa rústica.png" alt="Pessoa 1" class="relato-img">
-            <div class="relato-nome">Pessoa 1</div>
+            <img src="assets/img/fotoperfil.avif" alt="Pessoa 1" class="relato-img">
+            <div class="relato-nome">Juliana</div>
           </div>
           <p>O chá de camomila me ajudou a dormir melhor em noites de insônia. Usei por duas semanas e senti diferença.</p>
           <span>12/06/2025</span>
@@ -131,51 +160,45 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] !== 'admin') {
 
         <div class="relato-card">
           <div class="relato-header">
-            <img src="assets/img/images.jpeg" alt="Pessoa 2" class="relato-img">
-            <div class="relato-nome">Pessoa 2</div>
+            <img src="assets/img/fotoperfil.avif" alt="Pessoa 2" class="relato-img">
+            <div class="relato-nome">Ana Júlia</div>
           </div>
-          <p>O gengibre em cápsulas diminuiu minhas náuseas ao viajar — recomendo procurar orientação antes de usar.</p>
-          <span>03/05/2025</span>
+          <p>Alecrim
+          Coloquei um galhinho de alecrim verde em uma jarra de 1 litros de água deixei por um dia e tomei como água  saborisada. 
+          Tive melhora nas minhas crises de ansiedade, nas dormência nas mãos que segundo médico era problema circulatório.  
+          De tempo em tempo faço  uso, sem ser contínuo por muito tempo.</p>
+          <span>08/09/2025</span>
         </div>
 
         <div class="relato-card">
           <div class="relato-header">
-            <img src="assets/img/foto3.jpg" alt="Pessoa 3" class="relato-img">
-            <div class="relato-nome">Pessoa 3</div>
+            <img src="assets/img/fotoperfil.avif" alt="Pessoa 3" class="relato-img">
+            <div class="relato-nome">Luana</div>
           </div>
           <p>Usei compressa de lavanda para dor de cabeça e senti alívio leve. Ótimo como complemento.</p>
           <span>21/04/2025</span>
         </div>
 
-        <div class="relato-card">
-          <div class="relato-header">
-            <img src="assets/img/foto4.jpg" alt="Pessoa 4" class="relato-img">
-            <div class="relato-nome">Pessoa 4</div>
-          </div>
-          <p>O óleo de alecrim me ajudou em momentos de concentração para estudar. Aroma estimulante.</p>
-          <span>18/03/2025</span>
-        </div>
-
-        <div class="relato-card">
-          <div class="relato-header">
-            <img src="assets/img/foto5.jpg" alt="Pessoa 5" class="relato-img">
-            <div class="relato-nome">Pessoa 5</div>
-          </div>
-          <p>Hortelã em chá, após refeições, diminuiu desconforto digestivo na família.</p>
-          <span>09/02/2025</span>
-        </div>
-
-        <div class="relato-card">
-          <div class="relato-header">
-            <img src="assets/img/foto6.jpg" alt="Pessoa 6" class="relato-img">
-            <div class="relato-nome">Pessoa 6</div>
-          </div>
-          <p>Compressas de camomila reduziram inflamação leve na pele em poucos dias.</p>
-          <span>27/01/2025</span>
-        </div>
-      </div>
-    </div>
+        
   </section>
+
+     <!-- SOBRE -->
+<section class="sobre" id="sobre">
+  <div class="container sobre-inner">
+    <div class="sobre-content">
+      <h2>Sobre nós</h2>
+      <p>
+        A <strong>Natural Medicina</strong> é uma plataforma dedicada à disseminação de conhecimento sobre plantas medicinais e seus benefícios para a saúde e bem-estar. Nosso objetivo é fornecer informações confiáveis e baseadas em ciência, destacando como cada planta pode ser utilizada de maneira eficaz para promover equilíbrio e qualidade de vida.
+      </p>
+      <p>
+        Cada planta em nossa plataforma é detalhadamente descrita, incluindo propriedades, usos recomendados, possíveis efeitos colaterais e formas seguras de integração na rotina. Estamos comprometidos em inspirar escolhas conscientes e saudáveis, aproximando as pessoas da natureza através do conhecimento.
+      </p>
+    </div>
+    <div class="sobre-img">
+      <img src="assets/img/fotofetec.jpg" alt="Imagem representando plantas medicinais">
+    </div>
+  </div>
+</section>
 
   <!-- RODAPÉ -->
   <footer id="sobre">

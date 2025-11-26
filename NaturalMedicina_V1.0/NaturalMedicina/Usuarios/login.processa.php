@@ -12,12 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($usuario && password_verify($senha, $usuario['senha'])) {
-        // Login OK - salva dados na sessão
+       
         $_SESSION['id_usuario'] = $usuario['id_usuario'];
         $_SESSION['nome'] = $usuario['nome'];
         $_SESSION['tipo'] = $usuario['tipo'];
 
-        // Redireciona conforme tipo
+       
         if ($usuario['tipo'] === 'admin') {
             header("Location: ../indexLogado.admins.php");
         } else {
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo "E-mail ou senha inválidos.";
            
-        // Aqui você pode redirecionar para login com mensagem de erro
+       
     }
 }
 ?>

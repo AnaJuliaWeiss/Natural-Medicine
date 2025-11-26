@@ -4,55 +4,179 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Natural Medicine</title>
-    <link rel="stylesheet" href="css/sobre.css" />
-    <link
-      rel="shortcut icon"
-      href="assets/favicon/logo.png"
-      type="image/x-icon"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      rel="stylesheet"
-    />
+    <link rel="shortcut icon" href="assets/favicon/logo.png" type="image/x-icon"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
+    <style>
+      /* ========= Reset ========= */
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html,body { height: 100%; }
+      img { max-width: 100%; height: auto; display: block; }
+
+      /* ========= Tipografia & Container ========= */
+      body {
+        font-family: 'Caladea', serif;
+        background: #ffffff;
+        color: #333;
+        line-height: 1.7;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      /* ========= HEADER ========= */
+      header.header {
+        background: linear-gradient(90deg, #3a7d44, #4caf50);
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      }
+
+      .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 80px;
+      }
+
+      .logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 26px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+      }
+
+      nav.menu {
+        display: flex;
+        gap: 2rem;
+        align-items:center;
+      }
+
+      nav.menu a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        transition: color .2s ease;
+      }
+      nav.menu a:hover { color: #d9f7d9; }
+
+      .btn-header {
+        background: #fff;
+        color: #3a7d44;
+        padding: .6rem 1rem;
+        border-radius: 8px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: background .2s ease, transform .15s ease;
+      }
+      .btn-header:hover { background: #d9f7d9; transform: translateY(-2px); }
+
+      /* ========= HERO ========= */
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 2rem;
+        padding: 4rem 1.5rem;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+        color: #2d5e2d;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-content p {
+        font-size: 1.1rem;
+        text-align: justify;
+        color: #444;
+      }
+
+      .hero img {
+        border-radius: 16px;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      }
+
+      /* ========= FOOTER ========= */
+      footer {
+        background: #3a7d44;
+        color: #fff;
+        padding: 2rem 1rem;
+        margin-top: 3rem;
+      }
+
+      .footer {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .footer p {
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      .links a {
+        color: #fff;
+        font-size: 1.2rem;
+        margin-left: 1rem;
+        transition: color 0.2s ease;
+      }
+      .links a:hover { color: #d9f7d9; }
+
+      /* ========= RESPONSIVO ========= */
+      @media(max-width: 900px) {
+        .hero {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .hero-content h1 { font-size: 2rem; }
+        .hero-content p { text-align: center; }
+      }
+    </style>
   </head>
   <body>
+    <!-- HEADER -->
     <header class="header">
-      <div class="logo"><img src="assets/favicon/logo.png" alt="" /></div>
-      <nav class="menu">
-        <a href="index.php">Home</a>
-        
-      </nav>
+      <div class="container header-inner">
+        <div class="logo">🌿 Natural Medicina</div>
+        <nav class="menu" role="navigation" aria-label="Menu principal">
+          <a href="./">Curiosidades</a>
+        </nav>
+        <a href="./ContaAdmin/indexadmin.php" class="btn-header">Conta</a>
+      </div>
     </header>
 
+    <!-- HERO -->
     <main>
-      <section class="hero">
+      <section class="hero" id="sobre">
         <div class="hero-content">
           <h1>Sobre nós</h1>
           <p>
-            Natural Medicine é uma plataforma dedicada à disseminação de
-            conhecimento sobre as plantas medicinais e seus benefícios para a
-            saúde e bem-estar. Nosso objetivo é fornecer informações científicas
-            e precisas sobre uma variedade de espécies, destacando como cada
-            planta pode ser utilizada de maneira eficaz para promover o
-            equilíbrio e a qualidade de vida. Com a crescente busca por
-            alternativas naturais de cuidados, oferecemos aos nossos usuários
-            uma base de dados confiável, para que possam tomar decisões
-            informadas sobre o uso de ervas e plantas em tratamentos de saúde.
-            Cada planta em nossa plataforma é detalhadamente descrita, incluindo
-            suas propriedades, usos recomendados, possíveis efeitos colaterais e
-            como integrá-las em sua rotina de forma segura e eficiente. Estamos
-            comprometidos com a promoção do bem-estar através do conhecimento e
-            da conscientização sobre as terapias naturais, inspirando aqueles
-            que buscam uma vida mais saudável e conectada à natureza.
+            A <strong>Natural Medicina</strong> é uma plataforma dedicada à disseminação de conhecimento sobre plantas medicinais e seus benefícios para a saúde e bem-estar. Nosso objetivo é fornecer informações confiáveis e baseadas em ciência, destacando como cada planta pode ser utilizada de maneira eficaz para promover equilíbrio e qualidade de vida.
+          </p>
+          <p>
+            Cada planta em nossa plataforma é detalhadamente descrita, incluindo propriedades, usos recomendados, possíveis efeitos colaterais e formas seguras de integração na rotina. Estamos comprometidos em inspirar escolhas conscientes e saudáveis, aproximando as pessoas da natureza através do conhecimento.
           </p>
         </div>
-        <img src="assets/img/sobreImagem.jpg" alt="Imagem principal" />
+        <img src="assets/img/charelatos.png" alt="Imagem principal - plantas medicinais" />
       </section>
     </main>
 
+    <!-- FOOTER -->
     <footer>
       <div class="footer">
-        <p>Natural Medicina</p>
+        <p>🌿 Natural Medicina</p>
         <div class="links">
           <a href="#"><i class="fab fa-instagram"></i></a>
           <a href="#"><i class="fab fa-facebook-f"></i></a>

@@ -9,7 +9,7 @@ class PlantaController {
     public function __construct() {
         $db = new Database();
         $this->conn = $db->getConnection();
-        $this->planta = new Planta($this->conn); // <- isso estava faltando em cima!
+        $this->planta = new Planta($this->conn); 
     }
 
     public function listarPlantas() {

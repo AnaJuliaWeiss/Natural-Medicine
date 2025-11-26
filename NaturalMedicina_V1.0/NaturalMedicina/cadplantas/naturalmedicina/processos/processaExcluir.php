@@ -5,7 +5,7 @@ $controller = new PlantaController();
 $id = $_GET['id'] ?? null;
 
 if ($id) {
-    // Opcional: Apagar imagem antiga
+
     $planta = $controller->buscarPlanta($id);
     if ($planta && !empty($planta['imagem_url'])) {
         $caminhoImagem = __DIR__ . '/../uploads/' . $planta['imagem_url'];

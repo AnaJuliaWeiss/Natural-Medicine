@@ -22,7 +22,7 @@ $planta = $controller->buscarPlanta($id);
     <div class="container header-inner">
       <div class="logo">🌿 Natural Medicina</div>
 
-      <a href="../../../indexLogado.admins.php" class="btn-header">Home</a>
+      <a href="../../../cadplantas/naturalmedicina/views/pesquisa.php" class="btn-header">Home</a>
     </div>
   </header>
 

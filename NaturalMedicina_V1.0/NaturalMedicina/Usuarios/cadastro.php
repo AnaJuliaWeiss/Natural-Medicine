@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $senha = $_POST['senha'];
     $confirmar_senha = $_POST['confirmar_senha'];
     
-    // Recebe o tipo vindo do form (radio), ou assume 'usuario' se não existir
+    
     $tipo = $_POST['tipo'] ?? 'usuario';
    
 
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['nome'] = $nome;
             $_SESSION['tipo'] = $tipo;
 
-            // Redireciona conforme tipo
+            
             if ($tipo === 'admin') {
                 header("Location: ../indexLogado.admins.php");
             } else {
